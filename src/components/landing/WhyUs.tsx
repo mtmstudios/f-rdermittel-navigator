@@ -13,7 +13,7 @@ export default function WhyUs() {
   return (
     <section
       className="section-padding dark-section"
-      style={{ background: "hsl(222 47% 11%)" }}
+      style={{ background: "#0a0909" }}
     >
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">

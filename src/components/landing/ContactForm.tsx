@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useUtmParams } from "@/hooks/useUtmParams";
 import { Lock } from "lucide-react";
+import CustomSelect from "./CustomSelect";
 
 export default function ContactForm() {
   const ref = useScrollAnimation();
@@ -25,6 +26,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.mitarbeiter || !form.entwicklung) return;
     setSubmitting(true);
     const payload = { ...form, ...utm };
     try {
@@ -47,7 +49,7 @@ export default function ContactForm() {
   };
 
   const inputClass =
-    "w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-[hsl(222,47%,16%)]/20 focus:border-[hsl(222,47%,16%)] transition-all placeholder:text-gray-300";
+    "w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-[#307abe]/10 focus:border-[#307abe] transition-all duration-200 placeholder:text-gray-400";
 
   return (
     <section id="kontakt" className="section-padding section-alt">
@@ -70,14 +72,14 @@ export default function ContactForm() {
             </div>
 
             {/* Video placeholder */}
-            <div className="bg-white rounded-lg aspect-video flex items-center justify-center border border-border">
+            <div className="bg-white rounded-lg aspect-video flex items-center justify-center border border-border group cursor-pointer hover:shadow-md transition-shadow duration-300">
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-gray-50 border border-border flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-4 h-4 text-muted-foreground ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <div className="w-14 h-14 rounded-full bg-gray-50 border border-border flex items-center justify-center mx-auto mb-2 group-hover:bg-[hsl(222,47%,16%)] group-hover:border-transparent transition-all duration-300">
+                  <svg className="w-5 h-5 text-muted-foreground ml-0.5 group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
                   </svg>
                 </div>
-                <p className="text-[12px] text-muted-foreground">Erklärvideo folgt</p>
+                <p className="text-[12px] text-muted-foreground">Erklärvideo</p>
               </div>
             </div>
           </div>
@@ -85,7 +87,7 @@ export default function ContactForm() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="bg-white rounded-lg border border-border p-7 shadow-sm"
+            className="bg-white rounded-lg border border-border p-7 shadow-sm hover:shadow-md transition-shadow duration-300"
           >
             <h3 className="font-bold text-[17px] mb-5">Ihre Kontaktdaten</h3>
 
@@ -101,25 +103,41 @@ export default function ContactForm() {
               onChange={e => update("email", e.target.value)} className={`${inputClass} mb-3`} />
             <input required type="tel" placeholder="Telefonnummer" value={form.telefon}
               onChange={e => update("telefon", e.target.value)} className={`${inputClass} mb-3`} />
-            <select required value={form.mitarbeiter}
-              onChange={e => update("mitarbeiter", e.target.value)} className={`${inputClass} mb-3`}>
-              <option value="">Mitarbeiterzahl</option>
-              <option value="Bis 9">Bis 9</option>
-              <option value="10–49">10–49</option>
-              <option value="50–249">50–249</option>
-              <option value="250+">250+</option>
-            </select>
-            <select required value={form.entwicklung}
-              onChange={e => update("entwicklung", e.target.value)} className={`${inputClass} mb-6`}>
-              <option value="">Entwickelt Ihr Unternehmen aktiv?</option>
-              <option value="Ja, regelmäßig">Ja, regelmäßig</option>
-              <option value="Ja, gelegentlich">Ja, gelegentlich</option>
-              <option value="Nein / Unsicher">Nein / Unsicher</option>
-            </select>
+
+            <div className="mb-3">
+              <CustomSelect
+                placeholder="Mitarbeiterzahl wählen"
+                value={form.mitarbeiter}
+                onChange={v => update("mitarbeiter", v)}
+                required
+                options={[
+                  { value: "Bis 9", label: "Bis 9 Mitarbeiter" },
+                  { value: "10–49", label: "10–49 Mitarbeiter" },
+                  { value: "50–249", label: "50–249 Mitarbeiter" },
+                  { value: "250+", label: "250+ Mitarbeiter" },
+                ]}
+              />
+            </div>
+
+            <div className="mb-6">
+              <CustomSelect
+                placeholder="Entwickelt Ihr Unternehmen aktiv?"
+                value={form.entwicklung}
+                onChange={v => update("entwicklung", v)}
+                required
+                options={[
+                  { value: "Ja, regelmäßig", label: "Ja, regelmäßig" },
+                  { value: "Ja, gelegentlich", label: "Ja, gelegentlich" },
+                  { value: "Nein / Unsicher", label: "Nein / Unsicher" },
+                ]}
+              />
+            </div>
 
             <button type="submit" disabled={submitting}
-              className="btn-primary w-full text-center disabled:opacity-60 !text-[15px]">
-              {submitting ? "Wird gesendet..." : "Ersteinschätzung anfordern"}
+              className="btn-primary w-full text-center disabled:opacity-60 !text-[15px] group relative overflow-hidden">
+              <span className="relative z-10">
+                {submitting ? "Wird gesendet..." : "Ersteinschätzung anfordern"}
+              </span>
             </button>
 
             <p className="flex items-center gap-1.5 text-[11px] text-muted-foreground mt-4 justify-center">

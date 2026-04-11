@@ -70,7 +70,7 @@ export default function Calculator() {
     <section
       id="rechner"
       className="section-padding dark-section"
-      style={{ background: "hsl(222 47% 11%)" }}
+      style={{ background: "#0a0909" }}
     >
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
@@ -107,7 +107,7 @@ export default function Calculator() {
                         onClick={() => { setBranche(b); setStep(1); }}
                         className={`rounded-lg border px-4 py-3 text-[14px] font-medium text-left transition-all ${
                           branche === b
-                            ? "border-[hsl(222,47%,16%)] bg-[hsl(222,47%,96%)] text-foreground"
+                            ? "border-[#307abe] bg-[#307abe]/5 text-foreground"
                             : "border-gray-100 text-muted-foreground hover:border-gray-200 hover:bg-gray-50"
                         }`}
                       >
@@ -137,7 +137,7 @@ export default function Calculator() {
                     />
                     <div className="flex justify-between text-[12px] text-muted-foreground mt-2">
                       <span>1</span>
-                      <span className={`font-semibold ${mitarbeiter < 250 ? "text-[hsl(173,58%,39%)]" : "text-foreground"}`}>
+                      <span className={`font-semibold ${mitarbeiter < 250 ? "text-[#307abe]" : "text-foreground"}`}>
                         {mitarbeiter < 250 ? "KMU — 35 % Förderquote" : "Großunternehmen — 25 %"}
                       </span>
                       <span>500+</span>

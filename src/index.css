@@ -7,32 +7,33 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 28% 14%;
+    --foreground: 0 2% 4%;
     --card: 0 0% 100%;
-    --card-foreground: 222 28% 14%;
+    --card-foreground: 0 2% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 28% 14%;
-    --primary: 222 47% 16%;
+    --popover-foreground: 0 2% 4%;
+    --primary: 0 2% 4%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 222 47% 16%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-    --accent: 222 47% 16%;
+    --secondary: 240 5% 95%;
+    --secondary-foreground: 0 2% 4%;
+    --muted: 240 5% 95%;
+    --muted-foreground: 0 0% 48%;
+    --accent: 0 2% 4%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 90%;
-    --input: 220 13% 90%;
-    --ring: 222 47% 16%;
+    --border: 240 6% 93%;
+    --input: 240 6% 93%;
+    --ring: 210 60% 46%;
     --radius: 0.5rem;
 
-    --section-alt: 220 20% 97%;
-    --body-text: 220 9% 40%;
-    --teal: 173 58% 39%;
-    --gold: 38 55% 52%;
-    --dark-bg: 222 47% 11%;
-    --dark-surface: 222 40% 15%;
+    --section-alt: 0 0% 97.5%;
+    --body-text: 0 0% 32%;
+    --pca-blue: 210 60% 46%;
+    --pca-blue-light: 207 60% 65%;
+    --pca-blue-pale: 210 45% 90%;
+    --dark-bg: 0 2% 4%;
+    --dark-surface: 0 1% 8%;
   }
 }
 
@@ -65,19 +66,19 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: hsl(var(--primary));
+  background: hsl(var(--pca-blue));
   cursor: pointer;
   border: 3px solid white;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 4px rgba(48,122,190,0.3);
 }
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: hsl(var(--primary));
+  background: hsl(var(--pca-blue));
   cursor: pointer;
   border: 3px solid white;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 4px rgba(48,122,190,0.3);
 }
 
 .dark-section h1, .dark-section h2, .dark-section h3,
@@ -114,11 +115,11 @@ input[type="range"]::-moz-range-thumb {
   }
   .eyebrow {
     @apply text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 inline-block;
-    color: hsl(var(--teal));
+    color: hsl(var(--pca-blue));
   }
   .eyebrow-dark {
     @apply text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 inline-block;
-    color: hsl(var(--gold));
+    color: hsl(var(--pca-blue-light));
   }
   .body-text {
     color: hsl(var(--body-text));
@@ -142,11 +143,11 @@ input[type="range"]::-moz-range-thumb {
   }
   .btn-cta {
     @apply inline-flex items-center justify-center font-semibold rounded-lg px-8 py-4 text-[15px] transition-all duration-200 text-white;
-    background: hsl(var(--teal));
+    background: hsl(var(--pca-blue));
   }
   .btn-cta:hover {
-    opacity: 0.92;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: hsl(210 60% 40%);
+    box-shadow: 0 4px 12px rgba(48,122,190,0.2);
   }
   .btn-outline-light {
     @apply inline-flex items-center justify-center border border-white/20 text-white/80 font-medium rounded-lg px-8 py-4 text-[15px] transition-all duration-200;
@@ -171,11 +172,39 @@ input[type="range"]::-moz-range-thumb {
     .fade-in-up[data-animate="true"] {
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
     .fade-in-up[data-animate="true"].visible {
       opacity: 1;
       transform: translateY(0);
     }
   }
+}
+
+/* Smooth hover transitions for interactive elements */
+input:focus, select:focus, textarea:focus {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Navbar transition */
+nav {
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Link hover underline animation */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
 }

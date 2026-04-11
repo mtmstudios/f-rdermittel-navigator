@@ -30,7 +30,7 @@ export default function Process() {
                 <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground block mb-3">{s.num}</span>
                 <h3 className="text-[17px] font-bold mb-2">{s.title}</h3>
                 <p className="text-[14px] text-muted-foreground leading-relaxed mb-3">{s.text}</p>
-                <span className="text-[12px] font-semibold" style={{ color: "hsl(173 58% 39%)" }}>
+                <span className="text-[12px] font-semibold text-[#307abe]">
                   {s.time}
                 </span>
               </div>

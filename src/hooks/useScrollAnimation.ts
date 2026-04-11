@@ -7,11 +7,14 @@ export function useScrollAnimation() {
     const el = ref.current;
     if (!el) return;
 
-    // Mark element for animation
     const fadeEls = el.querySelectorAll(".fade-in-up");
-    fadeEls.forEach((child) => child.setAttribute("data-animate", "true"));
 
-    // Also handle case where fade-in-up is on the ref itself
+    // Set up animation with stagger delays
+    fadeEls.forEach((child, i) => {
+      child.setAttribute("data-animate", "true");
+      (child as HTMLElement).style.transitionDelay = `${i * 120}ms`;
+    });
+
     if (el.classList.contains("fade-in-up")) {
       el.setAttribute("data-animate", "true");
     }
@@ -19,7 +22,6 @@ export function useScrollAnimation() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Add visible to all fade-in-up children
           fadeEls.forEach((child) => child.classList.add("visible"));
           if (el.classList.contains("fade-in-up")) {
             el.classList.add("visible");
@@ -27,12 +29,12 @@ export function useScrollAnimation() {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
+      { threshold: 0.05, rootMargin: "0px 0px -30px 0px" }
     );
 
     observer.observe(el);
 
-    // Fallback: if observer doesn't fire within 2s, show content anyway
+    // Fallback
     const timeout = setTimeout(() => {
       fadeEls.forEach((child) => child.classList.add("visible"));
       if (el.classList.contains("fade-in-up")) {

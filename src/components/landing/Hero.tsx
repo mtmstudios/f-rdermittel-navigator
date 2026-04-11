@@ -7,7 +7,7 @@ export default function Hero() {
     <section
       className="dark-section relative"
       style={{
-        background: "linear-gradient(170deg, hsl(222 47% 11%) 0%, hsl(222 40% 17%) 100%)",
+        background: "linear-gradient(170deg, #0a0909 0%, #141414 100%)",
       }}
     >
       <div className="relative pt-32 pb-24 md:pt-40 md:pb-32">
@@ -23,7 +23,7 @@ export default function Hero() {
               den deutschen Mittelstand
             </h1>
 
-            <p className="text-xl md:text-2xl font-semibold mb-8" style={{ color: "hsl(173 58% 50%)" }}>
+            <p className="text-xl md:text-2xl font-semibold mb-8" style={{ color: "#57a7dd" }}>
               Bis zu 35 % Ihrer Entwicklungskosten zurück.
             </p>
 
