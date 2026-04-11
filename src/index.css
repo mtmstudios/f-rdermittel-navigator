@@ -141,13 +141,19 @@ input[type="range"]::-moz-range-thumb {
 
 @layer utilities {
   .fade-in-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  }
-  .fade-in-up.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in-up[data-animate="true"] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .fade-in-up[data-animate="true"].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .text-gradient {
     background: linear-gradient(135deg, hsl(168 80% 36%), hsl(168 80% 50%));
