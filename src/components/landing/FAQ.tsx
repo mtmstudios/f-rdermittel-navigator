@@ -31,16 +31,20 @@ export default function FAQ() {
               <div key={i} className="border-b border-border">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-4"
+                  className="w-full flex items-center justify-between py-5 text-left gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe] focus-visible:ring-offset-2 rounded-sm"
                   aria-expanded={open === i}
+                  aria-controls={`faq-answer-${i}`}
                 >
                   <span className="text-[15px] font-semibold">{f.q}</span>
                   <ChevronDown
                     size={18}
                     className={`text-muted-foreground flex-shrink-0 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`}
+                    aria-hidden="true"
                   />
                 </button>
                 <div
+                  id={`faq-answer-${i}`}
+                  role="region"
                   className="overflow-hidden transition-all duration-200"
                   style={{ maxHeight: open === i ? "300px" : "0" }}
                 >

@@ -28,10 +28,15 @@ export default function CustomerStory() {
 
             <div>
               {/* Video placeholder */}
-              <div className="bg-gray-100 rounded-lg aspect-video flex items-center justify-center mb-6 border border-border">
+              <div
+                role="button"
+                tabIndex={0}
+                aria-label="Referenzvideo abspielen"
+                className="bg-gray-100 rounded-lg aspect-video flex items-center justify-center mb-6 border border-border cursor-pointer hover:shadow-md transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe]"
+              >
                 <div className="text-center">
                   <div className="w-14 h-14 rounded-full bg-white border border-border flex items-center justify-center mx-auto mb-3 shadow-sm">
-                    <svg className="w-5 h-5 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
                     </svg>
                   </div>

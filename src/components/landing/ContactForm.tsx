@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useUtmParams } from "@/hooks/useUtmParams";
-import { Lock } from "lucide-react";
+import { Lock, Check } from "lucide-react";
 import CustomSelect from "./CustomSelect";
 
 export default function ContactForm() {
@@ -66,16 +66,27 @@ export default function ContactForm() {
             </p>
 
             <div className="space-y-4 mb-8">
-              <p className="text-[14px] text-foreground font-medium">✓ Antwort innerhalb von 24 Stunden</p>
-              <p className="text-[14px] text-foreground font-medium">✓ Persönliches Gespräch mit einem Wirtschaftsprüfer</p>
-              <p className="text-[14px] text-foreground font-medium">✓ Vollständig kostenlos und unverbindlich</p>
+              <p className="text-[14px] text-foreground font-medium flex items-center gap-2">
+                <Check size={16} className="text-[#307abe] flex-shrink-0" /> Antwort innerhalb von 24 Stunden
+              </p>
+              <p className="text-[14px] text-foreground font-medium flex items-center gap-2">
+                <Check size={16} className="text-[#307abe] flex-shrink-0" /> Persönliches Gespräch mit einem Wirtschaftsprüfer
+              </p>
+              <p className="text-[14px] text-foreground font-medium flex items-center gap-2">
+                <Check size={16} className="text-[#307abe] flex-shrink-0" /> Vollständig kostenlos und unverbindlich
+              </p>
             </div>
 
             {/* Video placeholder */}
-            <div className="bg-white rounded-lg aspect-video flex items-center justify-center border border-border group cursor-pointer hover:shadow-md transition-shadow duration-300">
+            <div
+              role="button"
+              tabIndex={0}
+              aria-label="Erklärvideo abspielen"
+              className="bg-white rounded-lg aspect-video flex items-center justify-center border border-border group cursor-pointer hover:shadow-md transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe]"
+            >
               <div className="text-center">
                 <div className="w-14 h-14 rounded-full bg-gray-50 border border-border flex items-center justify-center mx-auto mb-2 group-hover:bg-[hsl(222,47%,16%)] group-hover:border-transparent transition-all duration-300">
-                  <svg className="w-5 h-5 text-muted-foreground ml-0.5 group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-muted-foreground ml-0.5 group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
                   </svg>
                 </div>
@@ -92,17 +103,26 @@ export default function ContactForm() {
             <h3 className="font-bold text-[17px] mb-5">Ihre Kontaktdaten</h3>
 
             <div className="grid grid-cols-2 gap-3 mb-3">
-              <input required type="text" placeholder="Vorname" value={form.vorname}
-                onChange={e => update("vorname", e.target.value)} className={inputClass} />
-              <input required type="text" placeholder="Nachname" value={form.nachname}
-                onChange={e => update("nachname", e.target.value)} className={inputClass} />
+              <div>
+                <label htmlFor="vorname" className="sr-only">Vorname</label>
+                <input id="vorname" required type="text" placeholder="Vorname" value={form.vorname}
+                  onChange={e => update("vorname", e.target.value)} className={inputClass} autoComplete="given-name" />
+              </div>
+              <div>
+                <label htmlFor="nachname" className="sr-only">Nachname</label>
+                <input id="nachname" required type="text" placeholder="Nachname" value={form.nachname}
+                  onChange={e => update("nachname", e.target.value)} className={inputClass} autoComplete="family-name" />
+              </div>
             </div>
-            <input required type="text" placeholder="Unternehmen" value={form.unternehmen}
-              onChange={e => update("unternehmen", e.target.value)} className={`${inputClass} mb-3`} />
-            <input required type="email" placeholder="E-Mail-Adresse" value={form.email}
-              onChange={e => update("email", e.target.value)} className={`${inputClass} mb-3`} />
-            <input required type="tel" placeholder="Telefonnummer" value={form.telefon}
-              onChange={e => update("telefon", e.target.value)} className={`${inputClass} mb-3`} />
+            <label htmlFor="unternehmen" className="sr-only">Unternehmen</label>
+            <input id="unternehmen" required type="text" placeholder="Unternehmen" value={form.unternehmen}
+              onChange={e => update("unternehmen", e.target.value)} className={`${inputClass} mb-3`} autoComplete="organization" />
+            <label htmlFor="email" className="sr-only">E-Mail-Adresse</label>
+            <input id="email" required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
+              onChange={e => update("email", e.target.value)} className={`${inputClass} mb-3`} autoComplete="email" />
+            <label htmlFor="telefon" className="sr-only">Telefonnummer</label>
+            <input id="telefon" required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
+              onChange={e => update("telefon", e.target.value)} className={`${inputClass} mb-3`} autoComplete="tel" />
 
             <div className="mb-3">
               <CustomSelect

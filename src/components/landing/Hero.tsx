@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="relative pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="container-main text-center" ref={ref}>
           <div className="fade-in-up visible max-w-[760px] mx-auto">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40 mb-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-8">
               PCA Partners &middot; Wirtschaftsprüfer
             </p>
 
@@ -27,7 +27,7 @@ export default function Hero() {
               Bis zu 35 % Ihrer Entwicklungskosten zurück.
             </p>
 
-            <p className="text-[17px] text-white/50 max-w-[560px] mx-auto mb-12 leading-[1.7]">
+            <p className="text-[17px] text-white/60 max-w-[560px] mx-auto mb-12 leading-[1.7]">
               Die Forschungszulage ist ein gesetzlicher Anspruch — kein Förderprogramm.
               Wir prüfen kostenlos, ob Ihr Unternehmen berechtigt ist.
             </p>
@@ -41,11 +41,11 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-[13px] text-white/30">
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-[13px] text-white/50">
               <span>Kostenlos &amp; unverbindlich</span>
-              <span className="hidden sm:inline text-white/10">|</span>
+              <span className="hidden sm:inline text-white/15">|</span>
               <span>98 % Bewilligungsquote</span>
-              <span className="hidden sm:inline text-white/10">|</span>
+              <span className="hidden sm:inline text-white/15">|</span>
               <span>Rückwirkend bis 3 Jahre</span>
             </div>
           </div>

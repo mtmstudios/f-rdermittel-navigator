@@ -48,7 +48,10 @@ export default function CustomSelect({ options, value, onChange, placeholder, re
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full rounded-lg border px-4 py-3 text-[15px] text-left flex items-center justify-between transition-all duration-200 ${
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-label={placeholder}
+        className={`w-full rounded-lg border px-4 py-3 text-[15px] text-left flex items-center justify-between transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe] ${
           isOpen
             ? "border-[#307abe] ring-2 ring-[#307abe]/10 bg-white"
             : value
@@ -67,22 +70,27 @@ export default function CustomSelect({ options, value, onChange, placeholder, re
 
       {/* Dropdown */}
       <div
-        className={`absolute z-50 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-all duration-200 origin-top ${
+        role="listbox"
+        aria-label={placeholder}
+        className={`absolute z-50 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden origin-top ${
           isOpen
             ? "opacity-100 scale-y-100 translate-y-0"
             : "opacity-0 scale-y-95 -translate-y-1 pointer-events-none"
         }`}
+        style={{ transition: "opacity 0.2s, transform 0.2s" }}
       >
         {options.map((o, i) => (
           <button
             key={o.value}
             type="button"
+            role="option"
+            aria-selected={value === o.value}
             onClick={() => { onChange(o.value); setIsOpen(false); }}
-            className={`w-full px-4 py-2.5 text-[14px] text-left transition-colors duration-100 ${
+            className={`w-full px-4 py-3 text-[14px] text-left transition-colors duration-100 cursor-pointer ${
               value === o.value
                 ? "bg-[#307abe]/5 text-foreground font-medium"
                 : "text-muted-foreground hover:bg-gray-50 hover:text-foreground"
-            } ${i === 0 ? "pt-3" : ""} ${i === options.length - 1 ? "pb-3" : ""}`}
+            } ${i === 0 ? "pt-3.5" : ""} ${i === options.length - 1 ? "pb-3.5" : ""}`}
           >
             {o.label}
           </button>

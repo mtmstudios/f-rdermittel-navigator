@@ -79,7 +79,7 @@ export default function Calculator() {
             <h2 className="text-2xl md:text-[36px] font-bold text-white leading-tight mb-3">
               Unverbindliche Erstschätzung
             </h2>
-            <p className="text-[16px] text-white/40 max-w-md mx-auto">
+            <p className="text-[16px] text-white/60 max-w-md mx-auto">
               Berechnen Sie in wenigen Schritten Ihr mögliches Förderpotenzial.
             </p>
           </div>
@@ -105,7 +105,7 @@ export default function Calculator() {
                       <button
                         key={b}
                         onClick={() => { setBranche(b); setStep(1); }}
-                        className={`rounded-lg border px-4 py-3 text-[14px] font-medium text-left transition-all ${
+                        className={`rounded-lg border px-4 py-3 text-[14px] font-medium text-left transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe] ${
                           branche === b
                             ? "border-[#307abe] bg-[#307abe]/5 text-foreground"
                             : "border-gray-100 text-muted-foreground hover:border-gray-200 hover:bg-gray-50"
@@ -171,7 +171,7 @@ export default function Calculator() {
                       type="range" min={50000} max={4000000} step={10000}
                       value={kostenPersonal}
                       onChange={e => setKostenPersonal(Number(e.target.value))}
-                      className="w-full"
+                      className="w-full" aria-label="Personalkosten F&E"
                     />
                     <div className="flex justify-between text-[11px] text-muted-foreground mt-1">
                       <span>50.000 €</span>
@@ -190,7 +190,7 @@ export default function Calculator() {
                       type="range" min={0} max={2000000} step={10000}
                       value={kostenExtern}
                       onChange={e => setKostenExtern(Number(e.target.value))}
-                      className="w-full"
+                      className="w-full" aria-label="Externe F&E-Aufträge"
                     />
                     <div className="flex justify-between text-[11px] text-muted-foreground mt-1">
                       <span>0 €</span>
@@ -251,7 +251,7 @@ export default function Calculator() {
             </div>
           </div>
 
-          <p className="text-center text-[11px] text-white/20 mt-6 max-w-md mx-auto">
+          <p className="text-center text-[11px] text-white/40 mt-6 max-w-md mx-auto">
             Unverbindliche Erstschätzung. Keine Steuerberatung. Das tatsächliche Förderpotenzial hängt von der individuellen Prüfung ab.
           </p>
         </div>

@@ -4,6 +4,12 @@ function useCountUp(target: number, duration = 1800, start = false) {
   const [value, setValue] = useState(0);
   useEffect(() => {
     if (!start) return;
+    // Skip animation if user prefers reduced motion
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      setValue(target);
+      return;
+    }
     const t0 = performance.now();
     function tick(now: number) {
       const p = Math.min((now - t0) / duration, 1);
@@ -51,7 +57,7 @@ export default function SocialProof() {
           {stats.map((s, i) => (
             <div
               key={i}
-              className="transition-all duration-700"
+              className="motion-safe:transition-all motion-safe:duration-700"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(12px)",

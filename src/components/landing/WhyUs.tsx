@@ -22,7 +22,7 @@ export default function WhyUs() {
             <h2 className="text-2xl md:text-[36px] font-bold text-white leading-tight mb-4">
               Wirtschaftsprüfer. Nicht nur Berater.
             </h2>
-            <p className="text-[16px] text-white/40 leading-[1.7]">
+            <p className="text-[16px] text-white/60 leading-[1.7]">
               Wir verbinden steuerrechtliche Expertise mit technischem Projektverständnis.
             </p>
           </div>
@@ -31,7 +31,7 @@ export default function WhyUs() {
             {points.map((p, i) => (
               <div key={i} className="border border-white/8 rounded-lg p-7">
                 <h3 className="text-[17px] font-bold text-white mb-3">{p.title}</h3>
-                <p className="text-[15px] text-white/40 leading-relaxed">{p.text}</p>
+                <p className="text-[15px] text-white/55 leading-relaxed">{p.text}</p>
               </div>
             ))}
           </div>
