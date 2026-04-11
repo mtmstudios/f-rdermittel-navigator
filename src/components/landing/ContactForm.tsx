@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useUtmParams } from "@/hooks/useUtmParams";
-import { Lock } from "lucide-react";
+import { Lock, Clock, CheckCircle2, Phone } from "lucide-react";
 
 export default function ContactForm() {
   const ref = useScrollAnimation();
@@ -29,48 +29,75 @@ export default function ContactForm() {
 
     const payload = { ...form, ...utm };
 
-    // TODO: Replace with webhook URL
-    console.log("Form submission:", JSON.stringify(payload, null, 2));
+    try {
+      const res = await fetch("https://mtmstudios.app.n8n.cloud/webhook/factonet-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    // Simulate submission delay
-    await new Promise((r) => setTimeout(r, 500));
-    navigate("/danke");
+      if (!res.ok) throw new Error("Webhook error");
+
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", {
+          content_name: "Forschungszulage Ersteinschätzung",
+          content_category: "lead_form",
+        });
+      }
+
+      navigate("/danke");
+    } catch (err) {
+      console.error("Submission failed:", err);
+      navigate("/danke");
+    }
   };
 
   const inputClass =
-    "w-full rounded-lg border border-border bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-accent";
+    "w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-300";
+
+  const benefits = [
+    { icon: Clock, text: "Antwort innerhalb von 24 Stunden" },
+    { icon: CheckCircle2, text: "Vollständig kostenlos und unverbindlich" },
+    { icon: Phone, text: "Persönliches Gespräch, kein Callcenter" },
+  ];
 
   return (
     <section id="kontakt" className="section-padding">
       <div className="container-main" ref={ref}>
-        <div className="fade-in-up grid md:grid-cols-2 gap-12 items-start">
+        <div className="fade-in-up grid md:grid-cols-2 gap-12 items-start max-w-[1000px] mx-auto">
           {/* Left */}
-          <div>
+          <div className="md:sticky md:top-24">
             <p className="eyebrow">NÄCHSTER SCHRITT</p>
             <h2 className="text-2xl md:text-4xl font-bold mb-4">
               Kostenlose Ersteinschätzung anfragen
             </h2>
-            <p className="body-text mb-6">
-              In einem kurzen Gespräch prüfen wir, ob und in welchem Umfang die Forschungszulage für Ihr Unternehmen relevant ist. Keine Verpflichtung, keine Kosten — sondern eine fundierte Einschätzung durch erfahrene Wirtschaftsprüfer.
+            <p className="body-text mb-8">
+              In einem kurzen Gespräch prüfen wir, ob und in welchem Umfang die Forschungszulage für Ihr Unternehmen relevant ist.
             </p>
-            <div className="space-y-2 text-base">
-              <p className="text-foreground">✓ Antwort innerhalb von 24 Stunden</p>
-              <p className="text-foreground">✓ Vollständig kostenlos und unverbindlich</p>
-              <p className="text-foreground">✓ Persönliches Gespräch, kein Callcenter</p>
+            <div className="space-y-4">
+              {benefits.map((b, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <b.icon className="text-accent" size={20} />
+                  </div>
+                  <p className="text-sm font-medium text-foreground">{b.text}</p>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Right — Form */}
           <form
             onSubmit={handleSubmit}
-            className="bg-card rounded-2xl border border-border p-6 md:p-8"
-            style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.08)" }}
+            className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-xl"
           >
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <h3 className="font-bold text-lg mb-5">Ihre Daten</h3>
+
+            <div className="grid grid-cols-2 gap-3 mb-3">
               <input
                 required
                 type="text"
-                placeholder="Max"
+                placeholder="Vorname"
                 value={form.vorname}
                 onChange={(e) => update("vorname", e.target.value)}
                 className={inputClass}
@@ -79,7 +106,7 @@ export default function ContactForm() {
               <input
                 required
                 type="text"
-                placeholder="Mustermann"
+                placeholder="Nachname"
                 value={form.nachname}
                 onChange={(e) => update("nachname", e.target.value)}
                 className={inputClass}
@@ -90,30 +117,30 @@ export default function ContactForm() {
             <input
               required
               type="text"
-              placeholder="Musterfirma GmbH"
+              placeholder="Unternehmen"
               value={form.unternehmen}
               onChange={(e) => update("unternehmen", e.target.value)}
-              className={`${inputClass} mb-4`}
+              className={`${inputClass} mb-3`}
               aria-label="Unternehmen"
             />
 
             <input
               required
               type="email"
-              placeholder="max@musterfirma.de"
+              placeholder="E-Mail"
               value={form.email}
               onChange={(e) => update("email", e.target.value)}
-              className={`${inputClass} mb-4`}
+              className={`${inputClass} mb-3`}
               aria-label="E-Mail"
             />
 
             <input
               required
               type="tel"
-              placeholder="+49 123 456789"
+              placeholder="Telefon"
               value={form.telefon}
               onChange={(e) => update("telefon", e.target.value)}
-              className={`${inputClass} mb-4`}
+              className={`${inputClass} mb-3`}
               aria-label="Telefon"
             />
 
@@ -121,7 +148,7 @@ export default function ContactForm() {
               required
               value={form.mitarbeiter}
               onChange={(e) => update("mitarbeiter", e.target.value)}
-              className={`${inputClass} mb-4`}
+              className={`${inputClass} mb-3`}
               aria-label="Mitarbeiterzahl"
             >
               <option value="">Mitarbeiterzahl wählen...</option>
@@ -147,12 +174,12 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={submitting}
-              className="btn-primary w-full text-center disabled:opacity-60"
+              className="btn-primary w-full text-center disabled:opacity-60 !text-base !py-4"
             >
               {submitting ? "Wird gesendet..." : "Ersteinschätzung anfordern →"}
             </button>
 
-            <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-3 justify-center">
+            <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-4 justify-center">
               <Lock size={12} />
               Ihre Daten werden vertraulich behandelt und nicht an Dritte weitergegeben.
             </p>

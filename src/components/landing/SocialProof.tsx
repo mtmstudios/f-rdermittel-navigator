@@ -1,22 +1,22 @@
 export default function SocialProof() {
   const stats = [
     { value: "500+", label: "geprüfte Projekte" },
-    { value: "Ø €95.000", label: "Förderpotenzial" },
-    { value: "98%", label: "Bewilligungsquote" },
+    { value: "Ø €95.000", label: "Förderpotenzial pro Unternehmen" },
+    { value: "98 %", label: "Bewilligungsquote" },
+    { value: "3 Jahre", label: "rückwirkend möglich" },
   ];
 
   return (
-    <section className="section-alt py-8">
-      <div className="container-main flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center">
-        {stats.map((s, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span className="text-[15px] font-semibold text-primary">{s.value}</span>
-            <span className="text-[15px] text-muted-foreground">{s.label}</span>
-            {i < stats.length - 1 && (
-              <span className="hidden md:inline text-muted-foreground ml-4">·</span>
-            )}
-          </div>
-        ))}
+    <section className="py-12 md:py-16 border-b border-border">
+      <div className="container-main">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((s, i) => (
+            <div key={i}>
+              <p className="text-2xl md:text-3xl font-extrabold text-foreground mb-1">{s.value}</p>
+              <p className="text-sm text-muted-foreground">{s.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
