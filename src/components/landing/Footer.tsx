@@ -1,27 +1,19 @@
 export default function Footer() {
   return (
-    <footer
-      className="dark-section py-12"
-      style={{
-        background: "linear-gradient(135deg, hsl(220 35% 10%) 0%, hsl(220 30% 16%) 100%)",
-      }}
-    >
+    <footer style={{ background: "hsl(222 47% 9%)" }} className="dark-section py-10">
       <div className="container-main">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
           <div>
-            <a href="/" className="text-xl font-extrabold text-white tracking-tight">
-              facto<span className="text-accent">net</span>
-            </a>
-            <p className="text-sm text-white/30 mt-1">Forschungszulage für den Mittelstand</p>
+            <span className="text-[15px] font-bold text-white">factonet</span>
+            <span className="text-[13px] text-white/20 ml-3">by PCA Partners WPG</span>
           </div>
-          <div className="flex gap-8 text-sm">
-            <a href="/impressum" className="text-white/40 hover:text-white transition-colors">Impressum</a>
-            <a href="/datenschutz" className="text-white/40 hover:text-white transition-colors">Datenschutz</a>
-            <a href="#kontakt" className="text-white/40 hover:text-accent transition-colors">Kontakt</a>
+          <div className="flex gap-8 text-[13px]">
+            <a href="/impressum" className="text-white/30 hover:text-white/60 transition-colors">Impressum</a>
+            <a href="/datenschutz" className="text-white/30 hover:text-white/60 transition-colors">Datenschutz</a>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-6">
-          <p className="text-xs text-white/20 text-center">
+        <div className="border-t border-white/5 pt-4">
+          <p className="text-[11px] text-white/15 text-center">
             © 2026 factonet. Alle Rechte vorbehalten. Privates Beratungsangebot — keine staatliche Stelle.
           </p>
         </div>

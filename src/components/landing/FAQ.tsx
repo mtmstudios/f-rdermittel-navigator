@@ -3,12 +3,12 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
-  { q: "Ist die Forschungszulage nur für große Konzerne?", a: "Nein. Die Forschungszulage richtet sich ausdrücklich an alle Unternehmen in Deutschland — unabhängig von Größe oder Branche. Gerade mittelständische Unternehmen mit eigener Produktentwicklung, Softwareentwicklung oder Verfahrensinnovation sind häufig förderfähig, ohne es zu wissen." },
-  { q: "Was genau zählt als förderfähige Forschung und Entwicklung?", a: "Es geht nicht um Grundlagenforschung oder Labore. Förderfähig ist die systematische Entwicklung neuer oder verbesserter Produkte, Verfahren oder Software — überall dort, wo technische Unsicherheiten überwunden und neue Lösungen erarbeitet werden." },
-  { q: "Wie hoch ist der Aufwand für mein Unternehmen?", a: "Minimal. Wir benötigen zu Beginn einige Eckdaten und ein kurzes Gespräch über Ihre Projekte. Die gesamte Dokumentation, Aufbereitung und Antragstellung übernehmen wir. Sie müssen kein Förderexperte werden." },
-  { q: "Was passiert, wenn der Antrag abgelehnt wird?", a: "Ein Projekt kann in der Regel nur einmal eingereicht werden. Deshalb ist es entscheidend, von Anfang an professionell vorzugehen. Als Wirtschaftsprüfer setzen wir jeden Antrag so auf, dass er einer Betriebsprüfung standhält." },
-  { q: "Was kostet die Beratung?", a: "Die Ersteinschätzung ist vollständig kostenlos und unverbindlich. Unser Vergütungsmodell orientiert sich maßgeblich am tatsächlichen Erfolg — Sie zahlen nur, wenn Sie auch tatsächlich Förderung erhalten." },
-  { q: "Kann ich die Forschungszulage rückwirkend beantragen?", a: "Ja. Projekte der letzten 3 Geschäftsjahre können in der Regel noch berücksichtigt werden. Das bedeutet: Auch wenn Sie das Thema bisher nicht auf dem Schirm hatten, kann sich eine Prüfung für vergangene Jahre lohnen." },
+  { q: "Ist die Forschungszulage nur für große Konzerne?", a: "Nein. Die Forschungszulage richtet sich an alle steuerpflichtigen Unternehmen in Deutschland — unabhängig von Größe oder Branche. Gerade mittelständische Unternehmen mit eigener Produktentwicklung sind häufig förderfähig." },
+  { q: "Was zählt als förderfähige Forschung und Entwicklung?", a: "Förderfähig ist die systematische Entwicklung neuer oder verbesserter Produkte, Verfahren oder Software — überall dort, wo technische Unsicherheiten überwunden und neue Lösungen erarbeitet werden. Es muss kein Labor involviert sein." },
+  { q: "Wie hoch ist der Aufwand für mein Unternehmen?", a: "Minimal. Wir benötigen zu Beginn einige Eckdaten und ein kurzes Gespräch über Ihre Projekte. Die gesamte Dokumentation, Aufbereitung und Antragstellung übernehmen wir." },
+  { q: "Was passiert, wenn der Antrag abgelehnt wird?", a: "Ein Projekt kann nur einmal eingereicht werden. Deshalb setzen wir jeden Antrag von Anfang an so auf, dass er einer Betriebsprüfung standhält. Unsere Bewilligungsquote liegt bei 98 %." },
+  { q: "Was kostet die Beratung?", a: "Die Ersteinschätzung ist kostenlos und unverbindlich. Unser Vergütungsmodell ist erfolgsbasiert — Sie zahlen nur, wenn Sie tatsächlich Förderung erhalten." },
+  { q: "Kann ich die Forschungszulage rückwirkend beantragen?", a: "Ja. Projekte der letzten drei Geschäftsjahre können in der Regel noch berücksichtigt werden." },
 ];
 
 export default function FAQ() {
@@ -16,35 +16,35 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="section-alt section-padding">
+    <section className="section-padding">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <div className="text-center mb-12">
-            <p className="eyebrow">HÄUFIGE FRAGEN</p>
-            <h2 className="text-2xl md:text-4xl font-bold">
-              Das werden wir am häufigsten gefragt
+          <div className="max-w-[600px] mb-12">
+            <p className="eyebrow">Häufige Fragen</p>
+            <h2 className="text-2xl md:text-[36px] font-bold leading-tight">
+              Was Sie wissen sollten
             </h2>
           </div>
 
-          <div className="max-w-[800px] mx-auto space-y-3">
+          <div className="max-w-[740px]">
             {faqs.map((f, i) => (
-              <div key={i} className={`rounded-xl border transition-all ${open === i ? "border-accent/30 bg-white shadow-md" : "border-border bg-white"}`}>
+              <div key={i} className="border-b border-border">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left gap-4"
+                  className="w-full flex items-center justify-between py-5 text-left gap-4"
                   aria-expanded={open === i}
                 >
-                  <span className="font-semibold text-base">{f.q}</span>
+                  <span className="text-[15px] font-semibold">{f.q}</span>
                   <ChevronDown
-                    size={20}
-                    className={`text-muted-foreground flex-shrink-0 transition-transform duration-300 ${open === i ? "rotate-180 text-accent" : ""}`}
+                    size={18}
+                    className={`text-muted-foreground flex-shrink-0 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`}
                   />
                 </button>
                 <div
-                  className="overflow-hidden transition-all duration-300"
+                  className="overflow-hidden transition-all duration-200"
                   style={{ maxHeight: open === i ? "300px" : "0" }}
                 >
-                  <p className="body-text text-base px-5 pb-5">{f.a}</p>
+                  <p className="text-[15px] text-muted-foreground leading-relaxed pb-5">{f.a}</p>
                 </div>
               </div>
             ))}

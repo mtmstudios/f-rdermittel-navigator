@@ -13,26 +13,32 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-md"
+          ? "bg-white/95 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <div className="container-main flex items-center justify-between h-16">
-        <a href="/" className={`text-xl font-extrabold tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
-          facto<span className="text-accent">net</span>
+      <div className="container-main flex items-center justify-between h-[60px]">
+        <a href="/" className={`text-lg font-bold tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
+          factonet
         </a>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-8">
           <a
             href="#rechner"
-            className={`hidden sm:inline text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
+            className={`hidden sm:inline text-[13px] font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/50 hover:text-white"}`}
           >
             Förder-Rechner
           </a>
           <a
-            href="#kontakt"
-            className="btn-primary !py-2.5 !px-5 !text-sm !rounded-lg"
+            href="#prozess"
+            className={`hidden sm:inline text-[13px] font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/50 hover:text-white"}`}
           >
-            Kostenlose Ersteinschätzung
+            Ablauf
+          </a>
+          <a
+            href="#kontakt"
+            className="btn-primary !py-2 !px-5 !text-[13px]"
+          >
+            Ersteinschätzung anfragen
           </a>
         </div>
       </div>

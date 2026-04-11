@@ -1,49 +1,43 @@
-import { Building2, Clock, AlertTriangle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-const cards = [
-  {
-    icon: Building2,
-    title: "Falsches Bild von Forschung",
-    text: "Viele Geschäftsführer denken bei Forschungszulage an Labore und Grundlagenforschung. In Wahrheit reicht systematische Produktentwicklung oder Softwareentwicklung.",
-    num: "01",
-  },
-  {
-    icon: Clock,
-    title: "Keine Zeit, sich damit zu befassen",
-    text: "Im Tagesgeschäft bleibt das Thema liegen. Der Steuerberater fokussiert sich auf die Steuererklärung — nicht auf Fördermöglichkeiten.",
-    num: "02",
-  },
-  {
-    icon: AlertTriangle,
-    title: "Ein Antrag, eine Chance",
-    text: "Projekte können nur einmal eingereicht werden. Ein falsch aufgesetzter Antrag bedeutet: Das Geld ist dauerhaft verloren.",
-    num: "03",
-  },
-];
 
 export default function ProblemSection() {
   const ref = useScrollAnimation();
+
+  const cards = [
+    {
+      title: "Falsches Bild von Forschung",
+      text: "Die meisten Geschäftsführer denken bei Forschung an Labore. In Wahrheit genügt systematische Produktentwicklung, Verfahrensverbesserung oder Softwareentwicklung.",
+    },
+    {
+      title: "Kein Thema beim Steuerberater",
+      text: "Die Forschungszulage wird selten proaktiv angesprochen. Sie erfordert eine technische Projektbewertung — das geht über die klassische Steuerberatung hinaus.",
+    },
+    {
+      title: "Ein Antrag — eine Chance",
+      text: "Projekte können nur einmal eingereicht werden. Ein fehlerhaft aufgesetzter Antrag bedeutet: Die Förderung ist dauerhaft verloren.",
+    },
+  ];
 
   return (
     <section className="section-padding">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <div className="text-center mb-14">
-            <p className="eyebrow">DAS PROBLEM</p>
-            <h2 className="text-2xl md:text-4xl font-bold max-w-3xl mx-auto">
+          <div className="max-w-[680px] mb-14">
+            <p className="eyebrow">Das Problem</p>
+            <h2 className="text-2xl md:text-[36px] font-bold leading-tight mb-4">
               Die meisten Unternehmen verschenken Fördergeld — ohne es zu wissen.
             </h2>
+            <p className="body-text">
+              Die Forschungszulage existiert seit 2020. Dennoch nutzen nur wenige mittelständische Unternehmen diesen gesetzlichen Anspruch.
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+
+          <div className="grid md:grid-cols-3 gap-px bg-border rounded-lg overflow-hidden border border-border">
             {cards.map((c, i) => (
-              <div key={i} className="card-subtle group relative overflow-hidden">
-                <span className="absolute top-4 right-4 text-5xl font-extrabold text-accent/5 group-hover:text-accent/10 transition-colors">{c.num}</span>
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                  <c.icon className="text-accent" size={24} />
-                </div>
+              <div key={i} className="bg-white p-8">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-4 block">0{i+1}</span>
                 <h3 className="text-lg font-bold mb-3">{c.title}</h3>
-                <p className="body-text text-base">{c.text}</p>
+                <p className="body-text text-[15px]">{c.text}</p>
               </div>
             ))}
           </div>
