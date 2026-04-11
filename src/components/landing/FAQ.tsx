@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Plus, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   { q: "Ist die Forschungszulage nur für große Konzerne?", a: "Nein. Die Forschungszulage richtet sich ausdrücklich an alle Unternehmen in Deutschland — unabhängig von Größe oder Branche. Gerade mittelständische Unternehmen mit eigener Produktentwicklung, Softwareentwicklung oder Verfahrensinnovation sind häufig förderfähig, ohne es zu wissen." },
@@ -19,27 +19,32 @@ export default function FAQ() {
     <section className="section-alt section-padding">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <p className="eyebrow">HÄUFIGE FRAGEN</p>
-          <h2 className="text-2xl md:text-4xl font-bold mb-10">
-            Das werden wir am häufigsten gefragt
-          </h2>
+          <div className="text-center mb-12">
+            <p className="eyebrow">HÄUFIGE FRAGEN</p>
+            <h2 className="text-2xl md:text-4xl font-bold">
+              Das werden wir am häufigsten gefragt
+            </h2>
+          </div>
 
-          <div className="max-w-[800px] mx-auto">
+          <div className="max-w-[800px] mx-auto space-y-3">
             {faqs.map((f, i) => (
-              <div key={i} className="border-b border-border">
+              <div key={i} className={`rounded-xl border transition-all ${open === i ? "border-accent/30 bg-white shadow-md" : "border-border bg-white"}`}>
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-4"
+                  className="w-full flex items-center justify-between p-5 text-left gap-4"
                   aria-expanded={open === i}
                 >
                   <span className="font-semibold text-base">{f.q}</span>
-                  {open === i ? <X size={18} className="text-muted-foreground flex-shrink-0" /> : <Plus size={18} className="text-muted-foreground flex-shrink-0" />}
+                  <ChevronDown
+                    size={20}
+                    className={`text-muted-foreground flex-shrink-0 transition-transform duration-300 ${open === i ? "rotate-180 text-accent" : ""}`}
+                  />
                 </button>
                 <div
                   className="overflow-hidden transition-all duration-300"
                   style={{ maxHeight: open === i ? "300px" : "0" }}
                 >
-                  <p className="body-text text-base pb-5">{f.a}</p>
+                  <p className="body-text text-base px-5 pb-5">{f.a}</p>
                 </div>
               </div>
             ))}
