@@ -97,12 +97,12 @@ export default function VideoPlayer({
             )}
           </div>
 
-          {/* "VIDEO NICHT VERFÜGBAR" overlay when no URL */}
+          {/* Subtle hint — no URL yet */}
           {!embedUrl && (
-            <div className={`absolute bottom-3 left-0 right-0 text-center text-[10px] font-medium tracking-wider uppercase ${
-              isDark ? "text-white/15" : "text-muted-foreground/30"
+            <div className={`absolute bottom-2.5 left-0 right-0 text-center text-[9px] tracking-wider uppercase ${
+              isDark ? "text-white/[0.08]" : "text-muted-foreground/20"
             }`}>
-              Video-URL folgt nach Upload
+              Video wird geladen
             </div>
           )}
         </div>

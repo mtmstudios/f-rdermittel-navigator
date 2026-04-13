@@ -43,17 +43,17 @@ export default function PodcastSection() {
               />
             </div>
 
-            {/* Chapter List — scrollable on mobile, sidebar on desktop */}
-            <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0 scroll-fade-r md:[mask-image:none]">
+            {/* Chapter List — compact grid on mobile, sidebar on desktop */}
+            <div className="grid grid-cols-3 md:grid-cols-1 gap-1.5 md:gap-2">
               {chapters.map((ch, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.06] rounded-xl px-3.5 py-2.5 min-w-[150px] md:min-w-0 hover:bg-white/[0.07] transition-colors duration-200 cursor-pointer"
+                  className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3 bg-white/[0.04] border border-white/[0.06] rounded-lg md:rounded-xl px-2.5 py-2 md:px-3.5 md:py-2.5 hover:bg-white/[0.07] transition-colors duration-200 cursor-pointer"
                 >
-                  <span className="text-[11px] font-mono text-[#57a7dd] font-semibold flex-shrink-0 w-8">
+                  <span className="text-[10px] md:text-[11px] font-mono text-[#57a7dd] font-semibold flex-shrink-0">
                     {ch.time}
                   </span>
-                  <span className="text-[12px] md:text-[13px] text-white/50 font-medium leading-tight whitespace-nowrap md:whitespace-normal">
+                  <span className="text-[11px] md:text-[13px] text-white/50 font-medium leading-tight">
                     {ch.title}
                   </span>
                 </div>
