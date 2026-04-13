@@ -60,14 +60,14 @@ export default function Hero() {
       </div>
 
       {/* Disclaimer */}
-      <div className="relative pb-6 md:pb-10">
-        <p className="text-center text-[10px] text-white/15 max-w-sm mx-auto leading-relaxed px-4">
+      <div className="relative z-10 pb-8 md:pb-12">
+        <p className="text-center text-[10px] text-white/20 max-w-sm mx-auto leading-relaxed px-4">
           Unverbindliche Erstschätzung. Keine Steuerberatung. Das tatsächliche Förderpotenzial hängt von der individuellen Prüfung ab.
         </p>
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-24 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-12 md:h-16 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
     </section>
   );
 }
