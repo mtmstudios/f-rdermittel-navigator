@@ -5,7 +5,7 @@ const myths = [
   {
     num: "01",
     title: "„Unsere Arbeit ist nicht forschungsnah genug."",
-    text: "Der häufigste Irrtum. Sie brauchen kein Labor und keine Grundlagenforschung. Eigene Softwareentwicklung, technische Produktinnovationen oder neue Produktionsverfahren reichen aus.",
+    text: "Der häufigste Irrtum. Sie müssen kein High-Tech-Konzern sein. Wenn Sie ein Produkt oder eine Lösung entwickeln, die es so noch nicht auf dem Markt gibt — Software, Produktinnovationen, neue Verfahren — sind Sie grundsätzlich förderfähig.",
   },
   {
     num: "02",
@@ -27,8 +27,9 @@ export default function ProblemSection() {
               Die meisten Unternehmen verschenken Fördergeld.
             </h2>
             <p className="body-text">
-              Die Forschungszulage existiert seit 2020. Dennoch schließen sich viele mittelständische
-              Unternehmen selbst aus — obwohl sie förderfähige Entwicklungsarbeit leisten.
+              Die Forschungszulage ist ein gesetzlich verankertes Förderinstrument.
+              Dennoch schließen sich viele mittelständische Unternehmen selbst aus —
+              obwohl sie genau die Art von Arbeit leisten, die förderfähig ist.
             </p>
           </div>
 
@@ -68,9 +69,9 @@ export default function ProblemSection() {
                   Ein Antrag — eine Chance.
                 </h3>
                 <p className="text-[14px] md:text-[15px] text-white/55 leading-[1.7]">
-                  Projekte können bei der Bescheinigungsstelle nur <span className="text-white font-semibold">einmal eingereicht</span> werden.
-                  Ein fehlerhafter Eigenantrag bedeutet: Die Förderung für dieses Projekt ist <span className="text-white font-semibold">dauerhaft verloren</span>.
-                  Deshalb setzen wir jeden Antrag von Anfang an prüfungssicher auf.
+                  Man hat nur <span className="text-white font-semibold">einmal die Möglichkeit</span>, den Antrag zu stellen — ein klassischer One-Shot-Ansatz.
+                  Wenn der Antrag abgelehnt wird, hat man <span className="text-white font-semibold">keine weitere Möglichkeit</span>, diese Projekte fördern zu lassen.
+                  Eigenanträge entsprechen oft nicht der nötigen Qualität. Deshalb übernehmen wir die komplette Antragstellung.
                 </p>
               </div>
             </div>

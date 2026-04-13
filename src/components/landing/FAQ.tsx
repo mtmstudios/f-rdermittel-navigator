@@ -5,19 +5,19 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 const faqs = [
   {
     q: "Ist die Forschungszulage nur für Großkonzerne oder High-Tech-Unternehmen?",
-    a: "Nein. Die Forschungszulage richtet sich an alle steuerpflichtigen Unternehmen in Deutschland — unabhängig von Größe oder Branche. Sie brauchen kein Labor und keine Grundlagenforschung. Eigene Softwareentwicklung, technische Produktinnovationen oder neue Produktionsverfahren reichen aus.",
+    a: "Nein. Es muss kein High-Tech-Unternehmen und kein Großkonzern sein. Wenn Sie ein Produkt oder eine Lösung entwickeln, die es so noch nicht auf dem Markt gibt — Software, Produktinnovationen, neue Verfahren — sind Sie grundsätzlich förderfähig. Gerade mittelständische Unternehmen schließen sich hier oft selbst aus, obwohl sie genau diese Art von Arbeit leisten.",
   },
   {
     q: "Was genau zählt als förderfähige Forschung und Entwicklung?",
-    a: "Förderfähig ist jede systematische Entwicklung mit neuartigem Charakter — überall dort, wo technische Unsicherheiten überwunden und neue Lösungen erarbeitet werden. Das umfasst neue Produkte, verbesserte Verfahren, Softwareentwicklung und Prozessinnovationen.",
+    a: "Gefördert werden Projekte, bei denen technische Unsicherheiten überwunden und neue Lösungen erarbeitet werden. Das kann Softwareentwicklung betreffen, Produktinnovationen oder neue Verfahren im Produktionsprozess. Entscheidend ist der neuartige Charakter — keine Grundlagenforschung, keine Labore nötig.",
   },
   {
     q: "Was passiert, wenn ich den Antrag selbst stelle und er abgelehnt wird?",
-    a: "Projekte können bei der Bescheinigungsstelle nur einmal eingereicht werden. Ein abgelehnter Antrag bedeutet, dass die Förderung für dieses Projekt dauerhaft verloren ist. Deshalb ist eine professionelle, prüfungssichere Antragstellung entscheidend.",
+    a: "Man hat nur einmal die Möglichkeit, den Antrag zu stellen — ein klassischer One-Shot-Ansatz. Wird der Antrag abgelehnt, hat man keine weitere Möglichkeit, diese Projekte fördern zu lassen. Eigenanträge entsprechen oft nicht der Qualität, die für eine Bewilligung nötig ist. Deshalb übernehmen wir die komplette Antragstellung.",
   },
   {
     q: "Muss ich Geschäftsgeheimnisse oder vertrauliche Informationen offenlegen?",
-    a: "Nein. Wir erarbeiten die Antragsdokumentation so, dass Ihre Geschäftsgeheimnisse geschützt bleiben. Die technische Beschreibung fokussiert sich auf die förderfähigen Aspekte — nicht auf proprietäre Details Ihrer Entwicklung.",
+    a: "Viele Unternehmen haben Bedenken, dass sie Geschäftsgeheimnisse oder Trade Secrets preisgeben müssen. Wir erarbeiten die Antragsdokumentation so, dass Ihre vertraulichen Informationen geschützt bleiben. Die Beschreibung fokussiert sich auf die förderfähigen Aspekte — nicht auf proprietäre Details.",
   },
   {
     q: "Wie hoch ist der Aufwand für mein Unternehmen?",

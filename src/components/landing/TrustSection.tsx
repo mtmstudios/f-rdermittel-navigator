@@ -57,8 +57,9 @@ export default function TrustSection() {
               <span className="block text-white/50">Nicht nur Berater.</span>
             </h2>
             <p className="text-[15px] md:text-[17px] text-white/50 leading-[1.7]">
-              Wir verbinden steuerrechtliche Expertise mit technischem Projektverständnis —
-              und setzen jeden Antrag so auf, dass er einer Betriebsprüfung standhält.
+              Wir übernehmen die komplette Antragstellung — von der inhaltlichen Aufarbeitung
+              bis zur Einreichung. Und wir sagen Ihnen ehrlich, ob sich eine Prüfung lohnt —
+              oder ob Sie sich den Aufwand besser sparen.
             </p>
           </div>
 

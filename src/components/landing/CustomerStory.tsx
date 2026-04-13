@@ -24,14 +24,14 @@ export default function CustomerStory() {
 
               <div className="space-y-4 mb-6 md:mb-8">
                 <p className="body-text text-[15px]">
-                  Das Unternehmen stieß im Produktionsprozess an die Grenzen bestehender Verfahren.
-                  Neue Komponenten und Lösungen wurden systematisch entwickelt — für die Geschäftsführung
-                  war das normale Produktentwicklung, nicht Forschung.
+                  Das Unternehmen stand vor einer technischen Herausforderung im Produktionsprozess.
+                  Bestehende Verfahren stießen an ihre Grenzen — es mussten neue technologische
+                  Lösungsansätze entwickelt werden.
                 </p>
                 <p className="body-text text-[15px]">
-                  Unsere Wirtschaftsprüfer haben die Aktivitäten fachlich eingeordnet, die förderfähigen
-                  Aufwände bewertet und den gesamten Antragsprozess begleitet — von der Bescheinigungsstelle
-                  bis zum Finanzamt.
+                  Wir haben die Forschungsaktivitäten fachlich eingeordnet, die Förderfähigkeit
+                  bewertet und den gesamten Prozess begleitet — von der inhaltlichen Aufarbeitung
+                  bis zur Einreichung.
                 </p>
               </div>
 
