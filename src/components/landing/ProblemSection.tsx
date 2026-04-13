@@ -4,13 +4,13 @@ import { ArrowRight, AlertTriangle } from "lucide-react";
 const myths = [
   {
     num: "01",
-    title: "„Unsere Arbeit ist nicht forschungsnah genug."",
-    text: "Der häufigste Irrtum. Sie müssen kein High-Tech-Konzern sein. Wenn Sie ein Produkt oder eine Lösung entwickeln, die es so noch nicht auf dem Markt gibt — Software, Produktinnovationen, neue Verfahren — sind Sie grundsätzlich förderfähig.",
+    title: "\u201EUnsere Arbeit ist nicht forschungsnah genug.\u201C",
+    text: "Der h\u00E4ufigste Irrtum. Sie m\u00FCssen kein High-Tech-Konzern sein. Wenn Sie ein Produkt oder eine L\u00F6sung entwickeln, die es so noch nicht auf dem Markt gibt \u2014 Software, Produktinnovationen, neue Verfahren \u2014 sind Sie grunds\u00E4tzlich f\u00F6rderf\u00E4hig.",
   },
   {
     num: "02",
-    title: "„Das ist nur für Großkonzerne."",
-    text: "Falsch. Die Forschungszulage richtet sich gezielt an den Mittelstand. Gerade Unternehmen mit 10–250 Mitarbeitern profitieren überproportional — mit bis zu 35 % Förderquote.",
+    title: "\u201EDas ist nur f\u00FCr Gro\u00DFkonzerne.\u201C",
+    text: "Falsch. Die Forschungszulage richtet sich gezielt an den Mittelstand. Gerade Unternehmen mit 10\u2013250 Mitarbeitern profitieren \u00FCberproportional \u2014 mit bis zu 35 % F\u00F6rderquote.",
   },
 ];
 

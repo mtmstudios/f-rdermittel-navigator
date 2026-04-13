@@ -255,7 +255,7 @@ export default function CalculatorSection() {
                         <p className="text-center text-[11px] text-white/30 mt-3">Kostenlos · Antwort innerhalb von 24h</p>
                       </>
                     ) : (
-                      /* ── Form View (replaces result on desktop right card) ── */}
+                      /* ── Form View (replaces result on desktop right card) ── */
                       <div className="animate-fade-in">
                         {/* Compact result reminder */}
                         <div className="flex items-center justify-between mb-5">
