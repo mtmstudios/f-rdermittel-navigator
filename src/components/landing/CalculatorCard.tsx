@@ -63,7 +63,7 @@ export default function CalculatorSection() {
   /* Form state */
   const [view, setView] = useState<"calc" | "form">("calc");
   const [submitting, setSubmitting] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", telefon: "" });
+  const [form, setForm] = useState({ name: "", unternehmen: "", email: "", telefon: "" });
   const sectionRef = useRef<HTMLElement>(null);
 
   /* Calculation */
@@ -104,6 +104,7 @@ export default function CalculatorSection() {
     setSubmitting(true);
     const payload = {
       name: form.name,
+      unternehmen: form.unternehmen,
       email: form.email,
       telefon: form.telefon,
       mitarbeiter: String(mitarbeiter),
@@ -191,16 +192,25 @@ export default function CalculatorSection() {
                     Externe F&E-Aufträge hinzufügen
                   </button>
                 ) : (
-                  <SliderCard
-                    icon={<Building2 size={18} className="text-[#307abe]" />}
-                    label="Externe F&E"
-                    sublabel="(zu 60 % förderfähig)"
-                    value={kostenExtern}
-                    displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
-                    min={0} max={2000000} step={10000}
-                    onChange={setKostenExtern}
-                    minLabel="0 €" maxLabel="2 Mio. €"
-                  />
+                  <div>
+                    <SliderCard
+                      icon={<Building2 size={18} className="text-[#307abe]" />}
+                      label="Externe F&E"
+                      sublabel="(zu 60 % förderfähig)"
+                      value={kostenExtern}
+                      displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
+                      min={0} max={2000000} step={10000}
+                      onChange={setKostenExtern}
+                      minLabel="0 €" maxLabel="2 Mio. €"
+                    />
+                    <button
+                      onClick={() => { setShowExtern(false); setKostenExtern(0); }}
+                      className="flex items-center gap-1.5 text-[12px] text-muted-foreground hover:text-foreground transition-colors mt-2 pl-1 cursor-pointer"
+                    >
+                      <ChevronDown size={13} className="rotate-180" />
+                      Externe F&E entfernen
+                    </button>
+                  </div>
                 )}
               </div>
 
@@ -275,6 +285,9 @@ export default function CalculatorSection() {
                           <input required type="text" placeholder="Ihr Name" value={form.name}
                             onChange={e => update("name", e.target.value)}
                             className="calc-input" autoComplete="name" autoFocus />
+                          <input required type="text" placeholder="Unternehmen" value={form.unternehmen}
+                            onChange={e => update("unternehmen", e.target.value)}
+                            className="calc-input" autoComplete="organization" />
                           <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
                             onChange={e => update("telefon", e.target.value)}
                             className="calc-input" autoComplete="tel" />
@@ -369,16 +382,25 @@ export default function CalculatorSection() {
                       Externe F&E hinzufügen
                     </button>
                   ) : (
-                    <SliderCard
-                      icon={<Building2 size={16} className="text-[#307abe]" />}
-                      label="Externe F&E"
-                      sublabel="60 % förderfähig"
-                      value={kostenExtern}
-                      displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
-                      min={0} max={2000000} step={10000}
-                      onChange={setKostenExtern}
-                      compact
-                    />
+                    <div>
+                      <SliderCard
+                        icon={<Building2 size={16} className="text-[#307abe]" />}
+                        label="Externe F&E"
+                        sublabel="60 % förderfähig"
+                        value={kostenExtern}
+                        displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
+                        min={0} max={2000000} step={10000}
+                        onChange={setKostenExtern}
+                        compact
+                      />
+                      <button
+                        onClick={() => { setShowExtern(false); setKostenExtern(0); }}
+                        className="flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors mt-1.5 cursor-pointer"
+                      >
+                        <ChevronDown size={12} className="rotate-180" />
+                        Entfernen
+                      </button>
+                    </div>
                   )}
                 </div>
 
@@ -440,6 +462,9 @@ export default function CalculatorSection() {
                       <input required type="text" placeholder="Ihr Name" value={form.name}
                         onChange={e => update("name", e.target.value)}
                         className="calc-input" autoComplete="name" />
+                      <input required type="text" placeholder="Unternehmen" value={form.unternehmen}
+                        onChange={e => update("unternehmen", e.target.value)}
+                        className="calc-input" autoComplete="organization" />
                       <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
                         onChange={e => update("telefon", e.target.value)}
                         className="calc-input" autoComplete="tel" />
