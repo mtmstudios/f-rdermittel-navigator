@@ -1,49 +1,59 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import VideoPlayer from "./VideoPlayer";
 
+const chapters = [
+  { time: "0:00", title: "Mythos Forschungszulage" },
+  { time: "3:12", title: "Wer ist förderfähig?" },
+  { time: "6:30", title: "Aufwand & Bürokratie" },
+  { time: "9:45", title: "Warum Anträge scheitern" },
+  { time: "12:20", title: "Unsere Arbeitsweise" },
+  { time: "15:00", title: "Nächste Schritte" },
+];
+
 export default function PodcastSection() {
   const ref = useScrollAnimation();
 
   return (
-    <section className="section-padding">
-      <div className="container-main" ref={ref}>
+    <section
+      className="py-16 md:py-32 dark-section relative grain overflow-hidden"
+      style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)" }}
+    >
+      <div className="container-main relative" ref={ref}>
         <div className="fade-in-up">
-          <div className="text-center max-w-[600px] mx-auto mb-10 md:mb-14">
-            <p className="eyebrow">Deep Dive</p>
-            <h2 className="text-[24px] sm:text-[28px] md:text-[36px] font-bold leading-[1.1] mb-4 md:mb-5 tracking-[-0.02em]">
-              Alles zur Forschungszulage — ausführlich erklärt
+          {/* Header */}
+          <div className="text-center max-w-[540px] mx-auto mb-8 md:mb-12">
+            <p className="eyebrow-dark">Deep Dive</p>
+            <h2 className="text-[22px] sm:text-[26px] md:text-[34px] font-bold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
+              Forschungszulage — ausführlich erklärt
             </h2>
-            <p className="body-text">
-              Für alle, die es genauer wissen wollen: Im ausführlichen Gespräch erklären unsere Wirtschaftsprüfer die häufigsten Fragen, Mythen und den konkreten Ablauf.
+            <p className="text-[14px] md:text-[16px] text-white/40 leading-[1.7]">
+              Im Gespräch beantworten unsere Wirtschaftsprüfer die häufigsten Fragen zum Ablauf, den Voraussetzungen und typischen Fehlern.
             </p>
           </div>
 
-          <div className="max-w-[800px] mx-auto">
-            <VideoPlayer
-              /* TODO: Replace with YouTube/Vimeo URL after upload of "Podcast Video.mp4" */
-              label="Ausführliches Gespräch ansehen"
-              duration="17:47 Min."
-              variant="light"
-            />
+          {/* Video + Chapters Side by Side on Desktop */}
+          <div className="max-w-[900px] mx-auto grid md:grid-cols-[1fr,240px] gap-5 md:gap-6 items-start">
+            {/* Video */}
+            <div className="glow-blue">
+              <VideoPlayer
+                /* TODO: Replace with YouTube/Vimeo URL after upload of "Podcast Video.mp4" */
+                label="Gespräch ansehen"
+                duration="17:47 Min."
+                variant="dark"
+              />
+            </div>
 
-            {/* Chapter markers */}
-            <div className="mt-6 md:mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {[
-                { time: "0:00", title: "Mythos Forschungszulage" },
-                { time: "3:12", title: "Wer ist förderfähig?" },
-                { time: "6:30", title: "Aufwand & Bürokratie" },
-                { time: "9:45", title: "Warum Anträge scheitern" },
-                { time: "12:20", title: "Unsere Arbeitsweise" },
-                { time: "15:00", title: "Nächste Schritte" },
-              ].map((ch, i) => (
+            {/* Chapter List — scrollable on mobile, sidebar on desktop */}
+            <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0 scroll-fade-r md:[mask-image:none]">
+              {chapters.map((ch, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 bg-white rounded-xl border border-border px-4 py-3 text-left"
+                  className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.06] rounded-xl px-3.5 py-2.5 min-w-[150px] md:min-w-0 hover:bg-white/[0.07] transition-colors duration-200 cursor-pointer"
                 >
-                  <span className="text-[12px] font-mono text-[#307abe] font-semibold flex-shrink-0">
+                  <span className="text-[11px] font-mono text-[#57a7dd] font-semibold flex-shrink-0 w-8">
                     {ch.time}
                   </span>
-                  <span className="text-[13px] sm:text-[14px] text-foreground font-medium leading-tight">
+                  <span className="text-[12px] md:text-[13px] text-white/50 font-medium leading-tight whitespace-nowrap md:whitespace-normal">
                     {ch.title}
                   </span>
                 </div>
