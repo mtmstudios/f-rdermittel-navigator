@@ -64,7 +64,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom gradient fade — extended for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
     </section>
   );
 }
