@@ -270,7 +270,28 @@ input[type="range"]:focus-visible {
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.35s ease-out;
+}
+
+/* ─── Calculator Form Inputs ─── */
+.calc-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.calc-input::placeholder {
+  color: rgba(255,255,255,0.30);
+}
+.calc-input:focus {
+  outline: none;
+  border-color: rgba(48,122,190,0.5);
+  box-shadow: 0 0 0 3px rgba(48,122,190,0.15);
+  background: rgba(255,255,255,0.07);
 }
 
 /* ─── Focus & Input Transitions ─── */

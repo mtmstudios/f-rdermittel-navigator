@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useUtmParams } from "@/hooks/useUtmParams";
-import { ArrowRight, TrendingUp, Building2, Users, Coins, Lock } from "lucide-react";
+import { ArrowRight, ArrowLeft, TrendingUp, Users, Coins, Building2, Lock, ChevronDown, Check } from "lucide-react";
 
-/* ── Meta Pixel: fire once when result first becomes visible ── */
+/* ── Meta Pixel ── */
 const fbqTrackOnce = (() => {
   let fired = false;
   return () => {
@@ -42,7 +42,6 @@ function useCountUp(target: number, duration = 800) {
 function fmt(v: number) {
   return v.toLocaleString("de-DE") + " €";
 }
-
 function fmtShort(v: number) {
   if (v >= 1_000_000) return (v / 1_000_000).toFixed(1).replace(".", ",") + " Mio. €";
   if (v >= 1_000) return Math.round(v / 1_000) + "k €";
@@ -54,15 +53,20 @@ export default function CalculatorSection() {
   const navigate = useNavigate();
   const utm = useUtmParams();
 
+  /* Calculator state */
   const [mitarbeiter, setMitarbeiter] = useState(50);
   const [kostenPersonal, setKostenPersonal] = useState(400000);
   const [kostenExtern, setKostenExtern] = useState(0);
+  const [showExtern, setShowExtern] = useState(false);
   const [hasFired, setHasFired] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+
+  /* Form state */
+  const [view, setView] = useState<"calc" | "form">("calc");
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", telefon: "" });
-  const formRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
+  /* Calculation */
   const isKmu = mitarbeiter < 250;
   const rate = isKmu ? 0.35 : 0.25;
   const basis = Math.min(kostenPersonal + kostenExtern * 0.6, 4_000_000);
@@ -72,7 +76,7 @@ export default function CalculatorSection() {
   const animPerYear = useCountUp(perYear);
   const animTotal = useCountUp(total3y);
 
-  /* fire pixel once user has interacted */
+  /* Pixel */
   useEffect(() => {
     if (!hasFired && (mitarbeiter !== 50 || kostenPersonal !== 400000)) {
       setHasFired(true);
@@ -80,14 +84,20 @@ export default function CalculatorSection() {
     }
   }, [mitarbeiter, kostenPersonal, hasFired]);
 
-  /* scroll form into view when it opens */
-  useEffect(() => {
-    if (showForm && formRef.current) {
-      setTimeout(() => {
-        formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 100);
-    }
-  }, [showForm]);
+  /* Scroll to top of section on view switch */
+  const switchToForm = () => {
+    setView("form");
+    setTimeout(() => {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
+  const switchToCalc = () => {
+    setView("calc");
+    setTimeout(() => {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,305 +134,416 @@ export default function CalculatorSection() {
   const update = (field: string, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }));
 
-  const inputClass =
-    "w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3.5 text-[15px] text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#307abe]/30 focus:border-[#307abe]/50 transition-all duration-200";
-
   return (
-    <section id="rechner" className="relative py-20 md:py-28 overflow-hidden bg-[hsl(var(--background))]">
+    <section
+      id="rechner"
+      ref={sectionRef}
+      className="relative py-16 md:py-24 overflow-hidden bg-[hsl(var(--background))]"
+    >
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
           {/* Section Header */}
-          <div className="text-center mb-10 md:mb-14">
+          <div className="text-center mb-8 md:mb-12">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#307abe] mb-3">
               Förder-Rechner
             </p>
-            <h2 className="text-[24px] sm:text-[32px] md:text-[40px] font-extrabold tracking-[-0.02em] mb-3">
+            <h2 className="text-[22px] sm:text-[28px] md:text-[40px] font-extrabold tracking-[-0.02em] mb-2 md:mb-3">
               Berechnen Sie Ihr Förderpotenzial
             </h2>
-            <p className="text-[14px] sm:text-[16px] text-muted-foreground max-w-md mx-auto">
-              Ziehen Sie die Regler — Ihr Ergebnis aktualisiert sich sofort.
+            <p className="text-[13px] sm:text-[15px] text-muted-foreground max-w-md mx-auto">
+              Passen Sie die Werte an — Ihr Ergebnis aktualisiert sich sofort.
             </p>
           </div>
 
-          {/* Calculator Layout */}
-          <div className="max-w-[960px] mx-auto grid md:grid-cols-[1fr,340px] gap-6 md:gap-8 items-start">
-
-            {/* ─── Result Card: FIRST on mobile, RIGHT on desktop ─── */}
-            <div className="order-1 md:order-2 md:sticky md:top-24">
-              {/* Compact mobile bar */}
-              <div className="md:hidden sticky top-[72px] z-20">
-                <div
-                  className="rounded-2xl overflow-hidden shadow-lg mx-[-4px]"
-                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
-                >
-                  <div className="px-5 py-4 flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-0.5">Ihr Förderpotenzial / Jahr</p>
-                      <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-[10px] text-white/40 mb-0.5">3 Jahre</p>
-                      <p className="text-[16px] font-bold text-white">{fmtShort(animTotal)}</p>
-                      <p className="text-[10px] text-white/30 mt-0.5">{isKmu ? "35" : "25"} % Förderquote</p>
-                    </div>
-                  </div>
-                </div>
+          {/* ═══════════════════════════════════════════════
+              DESKTOP LAYOUT (md+)
+              ═══════════════════════════════════════════════ */}
+          <div className="hidden md:block">
+            <div className="max-w-[960px] mx-auto grid md:grid-cols-[1fr,360px] gap-8 items-start">
+              {/* Left: Sliders */}
+              <div className="space-y-4">
+                <SliderCard
+                  icon={<Users size={18} className="text-[#307abe]" />}
+                  label="Mitarbeiter"
+                  value={mitarbeiter}
+                  displayValue={String(mitarbeiter)}
+                  min={1} max={500} step={1}
+                  onChange={setMitarbeiter}
+                  badge={isKmu ? "KMU — 35 % Förderquote" : "Großunternehmen — 25 %"}
+                  badgeVariant={isKmu ? "green" : "gray"}
+                  minLabel="1" maxLabel="500+"
+                />
+                <SliderCard
+                  icon={<Coins size={18} className="text-[#307abe]" />}
+                  label="F&E Personalkosten / Jahr"
+                  value={kostenPersonal}
+                  displayValue={fmtShort(kostenPersonal)}
+                  min={50000} max={4000000} step={10000}
+                  onChange={setKostenPersonal}
+                  minLabel="50k €" maxLabel="4 Mio. €"
+                />
+                {!showExtern ? (
+                  <button
+                    onClick={() => setShowExtern(true)}
+                    className="flex items-center gap-2 text-[13px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors pl-1 cursor-pointer"
+                  >
+                    <ChevronDown size={14} />
+                    Externe F&E-Aufträge hinzufügen
+                  </button>
+                ) : (
+                  <SliderCard
+                    icon={<Building2 size={18} className="text-[#307abe]" />}
+                    label="Externe F&E"
+                    sublabel="(zu 60 % förderfähig)"
+                    value={kostenExtern}
+                    displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
+                    min={0} max={2000000} step={10000}
+                    onChange={setKostenExtern}
+                    minLabel="0 €" maxLabel="2 Mio. €"
+                  />
+                )}
               </div>
 
-              {/* Full result card — desktop only */}
-              <div className="hidden md:block">
+              {/* Right: Result Card (sticky) */}
+              <div className="sticky top-24">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
-                  />
-                  <div
-                    className="absolute top-0 right-0 w-40 h-40 opacity-20 pointer-events-none"
-                    style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }}
-                  />
-                  <div className="relative p-6 sm:p-8">
-                    <div className="mb-6">
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp size={14} className="text-[#57a7dd]" />
-                        <p className="text-[11px] sm:text-[12px] text-white/50 uppercase tracking-wider font-medium">Pro Jahr</p>
-                      </div>
-                      <p className="text-[36px] sm:text-[44px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}</p>
-                    </div>
-                    <div className="h-px bg-white/10 mb-5" />
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div>
-                        <p className="text-[11px] text-white/40 mb-1">3 Jahre gesamt</p>
-                        <p className="text-[18px] sm:text-[20px] font-bold text-white">{fmtShort(animTotal)}</p>
-                      </div>
-                      <div>
-                        <p className="text-[11px] text-white/40 mb-1">Förderquote</p>
-                        <p className="text-[18px] sm:text-[20px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
-                      </div>
-                    </div>
-                    <div className="bg-white/[0.06] rounded-xl px-4 py-3 mb-6 border border-white/[0.06]">
-                      <p className="text-[12px] text-white/60 leading-relaxed">
-                        <span className="text-[#57a7dd] font-semibold">Rückwirkend</span> bis 2020 beantragbar —
-                        bis zu <span className="text-white font-semibold">{fmtShort(perYear * 5)}</span> insgesamt möglich.
-                      </p>
-                    </div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a1628]" />
+                  <div className="absolute top-0 right-0 w-40 h-40 opacity-20 pointer-events-none"
+                    style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }} />
 
-                    {/* CTA or Inline Form */}
-                    {!showForm ? (
-                      <button
-                        onClick={() => setShowForm(true)}
-                        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[14px] sm:text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 cursor-pointer"
-                      >
-                        Erstgespräch vereinbaren
-                        <ArrowRight size={16} />
-                      </button>
-                    ) : (
-                      <form onSubmit={handleSubmit} className="space-y-3 animate-fade-in">
-                        <input
-                          required type="text" placeholder="Ihr Name" value={form.name}
-                          onChange={e => update("name", e.target.value)}
-                          className={inputClass} autoComplete="name" autoFocus
-                        />
-                        <input
-                          required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
-                          onChange={e => update("telefon", e.target.value)}
-                          className={inputClass} autoComplete="tel"
-                        />
-                        <input
-                          required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
-                          onChange={e => update("email", e.target.value)}
-                          className={inputClass} autoComplete="email"
-                        />
+                  <div className="relative p-7">
+                    {view === "calc" ? (
+                      <>
+                        {/* Result Display */}
+                        <div className="mb-6">
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp size={14} className="text-[#57a7dd]" />
+                            <p className="text-[11px] text-white/50 uppercase tracking-wider font-medium">Förderpotenzial pro Jahr</p>
+                          </div>
+                          <p className="text-[42px] font-extrabold text-white tracking-tight leading-none">
+                            {fmt(animPerYear)}
+                          </p>
+                        </div>
+
+                        <div className="h-px bg-white/10 mb-5" />
+
+                        <div className="grid grid-cols-2 gap-4 mb-6">
+                          <div>
+                            <p className="text-[11px] text-white/40 mb-1">3 Jahre gesamt</p>
+                            <p className="text-[20px] font-bold text-white">{fmtShort(animTotal)}</p>
+                          </div>
+                          <div>
+                            <p className="text-[11px] text-white/40 mb-1">Förderquote</p>
+                            <p className="text-[20px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-white/[0.06] rounded-xl px-4 py-3 mb-6 border border-white/[0.06]">
+                          <p className="text-[12px] text-white/60 leading-relaxed">
+                            <span className="text-[#57a7dd] font-semibold">Rückwirkend</span> bis 2020 —
+                            bis zu <span className="text-white font-semibold">{fmtShort(perYear * 5)}</span> möglich.
+                          </p>
+                        </div>
+
                         <button
-                          type="submit" disabled={submitting}
-                          className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 disabled:opacity-60 cursor-pointer"
+                          onClick={switchToForm}
+                          className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 cursor-pointer"
                         >
-                          {submitting ? "Wird gesendet..." : (
-                            <>
-                              Erstgespräch anfordern
-                              <ArrowRight size={16} />
-                            </>
-                          )}
+                          Erstgespräch vereinbaren
+                          <ArrowRight size={16} />
                         </button>
-                        <p className="flex items-center gap-1.5 text-[11px] text-white/30 justify-center">
+                        <p className="text-center text-[11px] text-white/30 mt-3">Kostenlos · Antwort innerhalb von 24h</p>
+                      </>
+                    ) : (
+                      /* ── Form View (replaces result on desktop right card) ── */}
+                      <div className="animate-fade-in">
+                        {/* Compact result reminder */}
+                        <div className="flex items-center justify-between mb-5">
+                          <div>
+                            <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-0.5">Ihr Förderpotenzial</p>
+                            <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}<span className="text-[14px] text-white/40 font-medium"> / Jahr</span></p>
+                          </div>
+                        </div>
+
+                        <div className="h-px bg-white/10 mb-5" />
+
+                        <p className="text-[14px] text-white/60 font-medium mb-4">
+                          Lassen Sie sich von einem Wirtschaftsprüfer beraten:
+                        </p>
+
+                        <form onSubmit={handleSubmit} className="space-y-3">
+                          <input required type="text" placeholder="Ihr Name" value={form.name}
+                            onChange={e => update("name", e.target.value)}
+                            className="calc-input" autoComplete="name" autoFocus />
+                          <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
+                            onChange={e => update("telefon", e.target.value)}
+                            className="calc-input" autoComplete="tel" />
+                          <input required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
+                            onChange={e => update("email", e.target.value)}
+                            className="calc-input" autoComplete="email" />
+                          <button type="submit" disabled={submitting}
+                            className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 disabled:opacity-60 cursor-pointer">
+                            {submitting ? "Wird gesendet..." : (
+                              <>Erstgespräch anfordern<ArrowRight size={16} /></>
+                            )}
+                          </button>
+                        </form>
+
+                        <p className="flex items-center gap-1.5 text-[11px] text-white/30 justify-center mt-3">
                           <Lock size={11} /> Kostenlos & unverbindlich
                         </p>
-                      </form>
-                    )}
-                    {!showForm && (
-                      <p className="text-center text-[11px] text-white/30 mt-3">Persönliches Gespräch innerhalb von 24h</p>
+
+                        <button onClick={switchToCalc}
+                          className="flex items-center gap-1.5 text-[12px] text-white/30 hover:text-white/50 transition-colors mt-4 mx-auto cursor-pointer">
+                          <ArrowLeft size={12} /> Zurück zum Rechner
+                        </button>
+                      </div>
                     )}
                   </div>
                 </div>
-                <p className="text-center text-[10px] text-muted-foreground/60 mt-4 leading-relaxed px-2">
+                <p className="text-center text-[10px] text-muted-foreground/60 mt-4 px-2">
                   Unverbindliche Erstschätzung. Keine Steuerberatung.
                 </p>
               </div>
             </div>
+          </div>
 
-            {/* ─── Sliders: SECOND on mobile, LEFT on desktop ─── */}
-            <div className="order-2 md:order-1 space-y-5">
-              {/* Mitarbeiter */}
-              <div className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 rounded-xl bg-[#307abe]/10 flex items-center justify-center flex-shrink-0">
-                    <Users size={18} className="text-[#307abe]" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[13px] sm:text-[14px] font-semibold text-foreground">Mitarbeiter</p>
-                  </div>
-                  <span className="text-[22px] sm:text-[26px] font-bold text-foreground tabular-nums">
-                    {mitarbeiter}
-                  </span>
-                </div>
-                <input
-                  type="range" min={1} max={500} value={mitarbeiter}
-                  onChange={e => setMitarbeiter(Number(e.target.value))}
-                  className="w-full accent-[#307abe]" aria-label="Mitarbeiterzahl"
-                />
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-[11px] text-muted-foreground">1</span>
-                  <span className={`text-[11px] sm:text-[12px] font-semibold px-2.5 py-0.5 rounded-full ${
-                    isKmu
-                      ? "bg-emerald-50 text-emerald-700"
-                      : "bg-gray-100 text-gray-600"
-                  }`}>
-                    {isKmu ? "KMU — 35 % Förderquote" : "Großunternehmen — 25 %"}
-                  </span>
-                  <span className="text-[11px] text-muted-foreground">500+</span>
-                </div>
-              </div>
-
-              {/* Personalkosten */}
-              <div className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 rounded-xl bg-[#307abe]/10 flex items-center justify-center flex-shrink-0">
-                    <Coins size={18} className="text-[#307abe]" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[13px] sm:text-[14px] font-semibold text-foreground">F&E Personalkosten / Jahr</p>
-                  </div>
-                  <span className="text-[17px] sm:text-[20px] font-bold text-foreground tabular-nums whitespace-nowrap">
-                    {fmtShort(kostenPersonal)}
-                  </span>
-                </div>
-                <input
-                  type="range" min={50000} max={4000000} step={10000}
-                  value={kostenPersonal}
-                  onChange={e => setKostenPersonal(Number(e.target.value))}
-                  className="w-full accent-[#307abe]" aria-label="Personalkosten F&E"
-                />
-                <div className="flex justify-between text-[11px] text-muted-foreground mt-2">
-                  <span>50k €</span>
-                  <span>4 Mio. €</span>
-                </div>
-              </div>
-
-              {/* Externe */}
-              <div className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 rounded-xl bg-[#307abe]/10 flex items-center justify-center flex-shrink-0">
-                    <Building2 size={18} className="text-[#307abe]" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[13px] sm:text-[14px] font-semibold text-foreground">
-                      Externe F&E <span className="text-muted-foreground font-normal">(optional)</span>
+          {/* ═══════════════════════════════════════════════
+              MOBILE LAYOUT
+              ═══════════════════════════════════════════════ */}
+          <div className="md:hidden max-w-[480px] mx-auto">
+            {view === "calc" ? (
+              <div className="animate-fade-in">
+                {/* ── Result Card (top, always visible) ── */}
+                <div
+                  className="rounded-2xl overflow-hidden shadow-lg mb-5"
+                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                >
+                  <div className="px-5 py-5">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <TrendingUp size={13} className="text-[#57a7dd]" />
+                      <p className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
+                    </div>
+                    <p className="text-[34px] font-extrabold text-white tracking-tight leading-none mb-3">
+                      {fmt(animPerYear)}
                     </p>
+                    <div className="flex items-center gap-4 text-[12px]">
+                      <span className="text-white/40">
+                        3 Jahre: <span className="text-white font-semibold">{fmtShort(animTotal)}</span>
+                      </span>
+                      <span className="text-white/40">
+                        Förderquote: <span className="text-white font-semibold">{isKmu ? "35" : "25"} %</span>
+                      </span>
+                    </div>
                   </div>
-                  <span className="text-[17px] sm:text-[20px] font-bold text-foreground tabular-nums whitespace-nowrap">
-                    {kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
-                  </span>
                 </div>
-                <input
-                  type="range" min={0} max={2000000} step={10000}
-                  value={kostenExtern}
-                  onChange={e => setKostenExtern(Number(e.target.value))}
-                  className="w-full accent-[#307abe]" aria-label="Externe F&E-Aufträge"
-                />
-                <div className="flex justify-between text-[11px] text-muted-foreground mt-2">
-                  <span>0 €</span>
-                  <span>2 Mio. €</span>
-                </div>
-                {kostenExtern > 0 && (
-                  <p className="text-[11px] text-muted-foreground mt-2.5 bg-blue-50/60 px-3 py-1.5 rounded-lg">
-                    Externe Aufträge sind zu 60 % förderfähig.
-                  </p>
-                )}
-              </div>
-            </div>
 
-            {/* ─── Mobile: Form below sliders ─── */}
-            <div className="order-3 md:hidden" ref={formRef}>
-              {!showForm ? (
-                <>
-                  <button
-                    onClick={() => setShowForm(true)}
-                    className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
-                  >
-                    Erstgespräch vereinbaren
-                    <ArrowRight size={16} />
-                  </button>
-                  <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
-                    Unverbindliche Erstschätzung · Gespräch innerhalb von 24h
-                  </p>
-                </>
-              ) : (
+                {/* ── Sliders ── */}
+                <div className="space-y-3 mb-5">
+                  <SliderCard
+                    icon={<Users size={16} className="text-[#307abe]" />}
+                    label="Mitarbeiter"
+                    value={mitarbeiter}
+                    displayValue={String(mitarbeiter)}
+                    min={1} max={500} step={1}
+                    onChange={setMitarbeiter}
+                    badge={isKmu ? "KMU · 35 %" : "25 %"}
+                    badgeVariant={isKmu ? "green" : "gray"}
+                    compact
+                  />
+                  <SliderCard
+                    icon={<Coins size={16} className="text-[#307abe]" />}
+                    label="F&E Personalkosten"
+                    value={kostenPersonal}
+                    displayValue={fmtShort(kostenPersonal)}
+                    min={50000} max={4000000} step={10000}
+                    onChange={setKostenPersonal}
+                    compact
+                  />
+                  {!showExtern ? (
+                    <button
+                      onClick={() => setShowExtern(true)}
+                      className="flex items-center gap-1.5 text-[12px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors cursor-pointer"
+                    >
+                      <ChevronDown size={13} />
+                      Externe F&E hinzufügen
+                    </button>
+                  ) : (
+                    <SliderCard
+                      icon={<Building2 size={16} className="text-[#307abe]" />}
+                      label="Externe F&E"
+                      sublabel="60 % förderfähig"
+                      value={kostenExtern}
+                      displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
+                      min={0} max={2000000} step={10000}
+                      onChange={setKostenExtern}
+                      compact
+                    />
+                  )}
+                </div>
+
+                {/* ── CTA ── */}
+                <button
+                  onClick={switchToForm}
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
+                >
+                  Erstgespräch vereinbaren
+                  <ArrowRight size={16} />
+                </button>
+                <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
+                  Kostenlos · Antwort innerhalb von 24h
+                </p>
+              </div>
+            ) : (
+              /* ══ FORM VIEW — replaces calculator on mobile ══ */
+              <div className="animate-fade-in">
                 <div
                   className="rounded-2xl overflow-hidden shadow-xl"
                   style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
                 >
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-5">
-                      <div>
-                        <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-0.5">Ihr Förderpotenzial / Jahr</p>
-                        <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}</p>
+                  <div className="absolute top-0 right-0 w-40 h-40 opacity-15 pointer-events-none"
+                    style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }} />
+
+                  <div className="relative p-6">
+                    {/* Big result */}
+                    <div className="text-center mb-6">
+                      <p className="text-[11px] text-white/40 uppercase tracking-wider font-medium mb-2">Ihr Förderpotenzial</p>
+                      <p className="text-[40px] font-extrabold text-white tracking-tight leading-none mb-2">
+                        {fmt(animPerYear)}
+                      </p>
+                      <p className="text-[13px] text-white/40">pro Jahr</p>
+                    </div>
+
+                    {/* Stats row */}
+                    <div className="grid grid-cols-3 gap-3 mb-6">
+                      <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
+                        <p className="text-[16px] font-bold text-white">{fmtShort(animTotal)}</p>
+                        <p className="text-[10px] text-white/35 mt-0.5">3 Jahre</p>
                       </div>
-                      <div className="text-right">
-                        <p className="text-[10px] text-white/40 mb-0.5">3 Jahre</p>
-                        <p className="text-[18px] font-bold text-white">{fmtShort(animTotal)}</p>
+                      <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
+                        <p className="text-[16px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
+                        <p className="text-[10px] text-white/35 mt-0.5">Förderquote</p>
+                      </div>
+                      <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
+                        <p className="text-[16px] font-bold text-[#57a7dd]">2020</p>
+                        <p className="text-[10px] text-white/35 mt-0.5">Rückwirkend</p>
                       </div>
                     </div>
+
                     <div className="h-px bg-white/10 mb-5" />
-                    <p className="text-[14px] text-white/60 font-medium mb-4">
-                      Lassen Sie sich Ihr Ergebnis von einem Wirtschaftsprüfer bestätigen:
+
+                    <p className="text-[14px] text-white/60 font-medium mb-4 text-center">
+                      Persönliche Einschätzung durch einen Wirtschaftsprüfer:
                     </p>
+
                     <form onSubmit={handleSubmit} className="space-y-3">
-                      <input
-                        required type="text" placeholder="Ihr Name" value={form.name}
+                      <input required type="text" placeholder="Ihr Name" value={form.name}
                         onChange={e => update("name", e.target.value)}
-                        className={inputClass} autoComplete="name"
-                      />
-                      <input
-                        required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
+                        className="calc-input" autoComplete="name" />
+                      <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
                         onChange={e => update("telefon", e.target.value)}
-                        className={inputClass} autoComplete="tel"
-                      />
-                      <input
-                        required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
+                        className="calc-input" autoComplete="tel" />
+                      <input required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
                         onChange={e => update("email", e.target.value)}
-                        className={inputClass} autoComplete="email"
-                      />
-                      <button
-                        type="submit" disabled={submitting}
-                        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer"
-                      >
+                        className="calc-input" autoComplete="email" />
+                      <button type="submit" disabled={submitting}
+                        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer">
                         {submitting ? "Wird gesendet..." : (
-                          <>
-                            Erstgespräch anfordern
-                            <ArrowRight size={16} />
-                          </>
+                          <>Erstgespräch anfordern<ArrowRight size={16} /></>
                         )}
                       </button>
-                      <p className="flex items-center gap-1.5 text-[11px] text-white/30 justify-center">
-                        <Lock size={11} /> Kostenlos & unverbindlich
-                      </p>
                     </form>
+
+                    <div className="flex items-center justify-center gap-4 mt-4">
+                      <p className="flex items-center gap-1.5 text-[11px] text-white/30">
+                        <Lock size={10} /> Vertraulich
+                      </p>
+                      <p className="flex items-center gap-1.5 text-[11px] text-white/30">
+                        <Check size={10} /> Kostenlos
+                      </p>
+                    </div>
+
+                    <button onClick={switchToCalc}
+                      className="flex items-center gap-1.5 text-[12px] text-white/25 hover:text-white/40 transition-colors mt-5 mx-auto cursor-pointer">
+                      <ArrowLeft size={12} /> Werte anpassen
+                    </button>
                   </div>
                 </div>
-              )}
-            </div>
+
+                <p className="text-center text-[10px] text-muted-foreground/50 mt-4">
+                  Unverbindliche Erstschätzung. Keine Steuerberatung.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDER CARD COMPONENT
+   ═══════════════════════════════════════════════ */
+interface SliderCardProps {
+  icon: React.ReactNode;
+  label: string;
+  sublabel?: string;
+  value: number;
+  displayValue: string;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (v: number) => void;
+  badge?: string;
+  badgeVariant?: "green" | "gray";
+  minLabel?: string;
+  maxLabel?: string;
+  compact?: boolean;
+}
+
+function SliderCard({
+  icon, label, sublabel, value, displayValue, min, max, step, onChange,
+  badge, badgeVariant = "green", minLabel, maxLabel, compact,
+}: SliderCardProps) {
+  const padding = compact ? "p-4" : "p-5 sm:p-6";
+
+  return (
+    <div className={`bg-white rounded-2xl border border-border/60 ${padding} shadow-sm hover:shadow-md transition-shadow duration-300`}>
+      <div className="flex items-center gap-3 mb-3">
+        <div className={`${compact ? "w-8 h-8" : "w-9 h-9"} rounded-xl bg-[#307abe]/10 flex items-center justify-center flex-shrink-0`}>
+          {icon}
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className={`${compact ? "text-[13px]" : "text-[13px] sm:text-[14px]"} font-semibold text-foreground leading-tight`}>
+            {label}
+            {sublabel && <span className="text-muted-foreground font-normal text-[11px] ml-1.5">{sublabel}</span>}
+          </p>
+        </div>
+        <span className={`${compact ? "text-[20px]" : "text-[22px] sm:text-[26px]"} font-bold text-foreground tabular-nums whitespace-nowrap`}>
+          {displayValue}
+        </span>
+      </div>
+      <input
+        type="range" min={min} max={max} step={step} value={value}
+        onChange={e => onChange(Number(e.target.value))}
+        className="w-full accent-[#307abe]" aria-label={label}
+      />
+      {(minLabel || maxLabel || badge) && (
+        <div className="flex justify-between items-center mt-1.5">
+          <span className="text-[10px] text-muted-foreground">{minLabel}</span>
+          {badge && (
+            <span className={`text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-full ${
+              badgeVariant === "green"
+                ? "bg-emerald-50 text-emerald-700"
+                : "bg-gray-100 text-gray-600"
+            }`}>
+              {badge}
+            </span>
+          )}
+          <span className="text-[10px] text-muted-foreground">{maxLabel}</span>
+        </div>
+      )}
+    </div>
   );
 }
