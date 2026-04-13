@@ -23,7 +23,7 @@ export default function Hero() {
               PCA Partners &middot; Wirtschaftsprüfungsgesellschaft
             </p>
 
-            <h1 className="text-[30px] sm:text-[42px] md:text-[60px] font-extrabold leading-[1.08] mb-5 md:mb-7 text-white tracking-[-0.03em]">
+            <h1 className="text-[27px] sm:text-[42px] md:text-[60px] font-extrabold leading-[1.08] mb-5 md:mb-7 text-white tracking-[-0.03em]">
               Bis zu 35 % Ihrer
               <br />
               Entwicklungskosten
@@ -45,7 +45,7 @@ export default function Hero() {
             </div>
 
             {/* Trust Signals — prominent */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-8 text-[12px] sm:text-[13px] text-white/60 font-medium">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-x-8 text-[12px] sm:text-[13px] text-white/60 font-medium">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 98 % Bewilligungsquote

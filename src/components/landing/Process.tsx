@@ -51,7 +51,7 @@ export default function Process() {
           <div className="text-center mt-12 md:mt-16">
             <a
               href="#rechner"
-              className="btn-cta text-[14px] md:text-[15px] !py-4 !px-8"
+              className="btn-cta text-[13px] sm:text-[14px] md:text-[15px] !py-4 !px-8"
             >
               Starten Sie mit Schritt 1
               <ArrowRight size={16} className="ml-2" />

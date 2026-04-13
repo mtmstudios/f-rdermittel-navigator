@@ -36,17 +36,17 @@ export default function CustomerStory() {
               </div>
 
               {/* Key Figures */}
-              <div className="flex justify-center md:justify-start gap-6 sm:gap-8 pt-5 border-t border-border mb-6 md:mb-0">
+              <div className="flex flex-wrap justify-center md:justify-start gap-6 sm:gap-8 pt-5 border-t border-border mb-6 md:mb-0">
                 <div>
-                  <p className="text-[22px] sm:text-[26px] font-bold text-foreground tracking-tight">250.000+ €</p>
+                  <p className="text-[18px] sm:text-[22px] font-bold text-foreground tracking-tight">250.000+ €</p>
                   <p className="text-[12px] text-muted-foreground mt-1">Forschungszulage</p>
                 </div>
                 <div>
-                  <p className="text-[22px] sm:text-[26px] font-bold text-foreground tracking-tight">98 %</p>
+                  <p className="text-[18px] sm:text-[22px] font-bold text-foreground tracking-tight">98 %</p>
                   <p className="text-[12px] text-muted-foreground mt-1">Bewilligungsquote</p>
                 </div>
                 <div>
-                  <p className="text-[22px] sm:text-[26px] font-bold text-foreground tracking-tight">0 €</p>
+                  <p className="text-[18px] sm:text-[22px] font-bold text-foreground tracking-tight">0 €</p>
                   <p className="text-[12px] text-muted-foreground mt-1">Vorabkosten</p>
                 </div>
               </div>

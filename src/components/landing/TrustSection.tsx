@@ -73,8 +73,8 @@ export default function TrustSection() {
                   <span className="text-[18px] font-bold text-[#57a7dd]">EvdL</span>
                 </div>
                 <div>
-                  <p className="text-[15px] font-semibold text-white">Elias von der Linden</p>
-                  <p className="text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
+                  <p className="text-[14px] font-semibold text-white">Elias von der Linden</p>
+                  <p className="text-[11px] text-white/40">Forschungs- & Entwicklungszulage</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -82,8 +82,8 @@ export default function TrustSection() {
                   <span className="text-[18px] font-bold text-[#57a7dd]">AB</span>
                 </div>
                 <div>
-                  <p className="text-[15px] font-semibold text-white">Alexander Bernauer</p>
-                  <p className="text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
+                  <p className="text-[14px] font-semibold text-white">Alexander Bernauer</p>
+                  <p className="text-[11px] text-white/40">Geschäftsführender Gesellschafter</p>
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function TrustSection() {
             <div className="grid grid-cols-3 gap-4 mb-10 md:mb-12">
               {stats.map((s, i) => (
                 <div key={i} className="text-center bg-white/[0.04] border border-white/[0.06] rounded-xl py-4 px-3">
-                  <p className="text-[22px] md:text-[28px] font-bold text-white tracking-tight">{s.value}</p>
+                  <p className="text-[18px] sm:text-[22px] md:text-[28px] font-bold text-white tracking-tight">{s.value}</p>
                   <p className="text-[11px] md:text-[12px] text-white/40 mt-1">{s.label}</p>
                 </div>
               ))}

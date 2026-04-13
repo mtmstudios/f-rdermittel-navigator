@@ -64,7 +64,7 @@ export default function ProblemSection() {
               <div className="w-10 h-10 rounded-xl bg-red-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <AlertTriangle size={20} className="text-red-400" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="text-[16px] md:text-[18px] font-bold text-white mb-2 tracking-[-0.01em]">
                   Ein Antrag — eine Chance.
                 </h3>

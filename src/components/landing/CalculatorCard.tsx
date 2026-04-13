@@ -337,7 +337,7 @@ export default function CalculatorSection() {
                       <TrendingUp size={13} className="text-[#57a7dd]" />
                       <p className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
                     </div>
-                    <p className="text-[34px] font-extrabold text-white tracking-tight leading-none mb-3">
+                    <p className="text-[28px] sm:text-[34px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
                       {fmt(animPerYear)}
                     </p>
                     <div className="flex items-center gap-4 text-[12px]">
@@ -420,7 +420,7 @@ export default function CalculatorSection() {
               /* ══ FORM VIEW — replaces calculator on mobile ══ */
               <div className="animate-fade-in">
                 <div
-                  className="rounded-2xl overflow-hidden shadow-xl"
+                  className="relative rounded-2xl overflow-hidden shadow-xl"
                   style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
                 >
                   <div className="absolute top-0 right-0 w-40 h-40 opacity-15 pointer-events-none"
@@ -430,7 +430,7 @@ export default function CalculatorSection() {
                     {/* Big result */}
                     <div className="text-center mb-6">
                       <p className="text-[11px] text-white/40 uppercase tracking-wider font-medium mb-2">Ihr Förderpotenzial</p>
-                      <p className="text-[40px] font-extrabold text-white tracking-tight leading-none mb-2">
+                      <p className="text-[32px] sm:text-[40px] font-extrabold text-white tracking-tight leading-none mb-2">
                         {fmt(animPerYear)}
                       </p>
                       <p className="text-[13px] text-white/40">pro Jahr</p>
@@ -439,15 +439,15 @@ export default function CalculatorSection() {
                     {/* Stats row */}
                     <div className="grid grid-cols-3 gap-3 mb-6">
                       <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
-                        <p className="text-[16px] font-bold text-white">{fmtShort(animTotal)}</p>
+                        <p className="text-[14px] sm:text-[16px] font-bold text-white">{fmtShort(animTotal)}</p>
                         <p className="text-[10px] text-white/35 mt-0.5">3 Jahre</p>
                       </div>
                       <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
-                        <p className="text-[16px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
+                        <p className="text-[14px] sm:text-[16px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
                         <p className="text-[10px] text-white/35 mt-0.5">Förderquote</p>
                       </div>
                       <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
-                        <p className="text-[16px] font-bold text-[#57a7dd]">2020</p>
+                        <p className="text-[14px] sm:text-[16px] font-bold text-[#57a7dd]">2020</p>
                         <p className="text-[10px] text-white/35 mt-0.5">Rückwirkend</p>
                       </div>
                     </div>
@@ -540,12 +540,12 @@ function SliderCard({
           {icon}
         </div>
         <div className="flex-1 min-w-0">
-          <p className={`${compact ? "text-[13px]" : "text-[13px] sm:text-[14px]"} font-semibold text-foreground leading-tight`}>
+          <p className={`${compact ? "text-[12px]" : "text-[13px] sm:text-[14px]"} font-semibold text-foreground leading-tight`}>
             {label}
             {sublabel && <span className="text-muted-foreground font-normal text-[11px] ml-1.5">{sublabel}</span>}
           </p>
         </div>
-        <span className={`${compact ? "text-[20px]" : "text-[22px] sm:text-[26px]"} font-bold text-foreground tabular-nums whitespace-nowrap`}>
+        <span className={`${compact ? "text-[17px]" : "text-[20px] sm:text-[26px]"} font-bold text-foreground tabular-nums whitespace-nowrap`}>
           {displayValue}
         </span>
       </div>
