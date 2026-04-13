@@ -19,7 +19,7 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent shadow-none"
       }`}
     >
-      <div className="container-main flex items-center justify-between h-[72px]">
+      <div className="container-main flex items-center justify-center md:justify-between h-[72px]">
         <a href="/" className="flex items-center gap-3">
           <img
             src={PCA_LOGO}
@@ -32,7 +32,7 @@ export default function Navbar() {
             Forschungszulage
           </span>
         </a>
-        <div className="flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8">
           <a
             href="#rechner"
             className={`hidden md:inline nav-link text-[13px] font-medium transition-colors duration-300 ${
