@@ -4,12 +4,8 @@ function useCountUp(target: number, duration = 1800, start = false) {
   const [value, setValue] = useState(0);
   useEffect(() => {
     if (!start) return;
-    // Skip animation if user prefers reduced motion
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
-      setValue(target);
-      return;
-    }
+    if (prefersReduced) { setValue(target); return; }
     const t0 = performance.now();
     function tick(now: number) {
       const p = Math.min((now - t0) / duration, 1);
@@ -34,7 +30,6 @@ export default function SocialProof() {
       { threshold: 0.3 }
     );
     observer.observe(el);
-    // Fallback
     const t = setTimeout(() => setVisible(true), 2500);
     return () => { observer.disconnect(); clearTimeout(t); };
   }, []);
@@ -51,21 +46,21 @@ export default function SocialProof() {
   ];
 
   return (
-    <section className="py-14 border-b border-border" ref={ref}>
+    <section className="py-16 md:py-20" ref={ref}>
       <div className="container-main">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-0 md:divide-x divide-border">
           {stats.map((s, i) => (
             <div
               key={i}
-              className="motion-safe:transition-all motion-safe:duration-700"
+              className="text-center md:px-8 motion-safe:transition-all motion-safe:duration-700"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(12px)",
-                transitionDelay: `${i * 150}ms`,
+                transitionDelay: `${i * 120}ms`,
               }}
             >
-              <p className="text-2xl md:text-3xl font-bold text-foreground mb-1">{s.value}</p>
-              <p className="text-[13px] text-muted-foreground">{s.label}</p>
+              <p className="text-[26px] md:text-[32px] font-bold text-foreground mb-1 tracking-[-0.02em]">{s.value}</p>
+              <p className="text-[13px] text-muted-foreground font-medium">{s.label}</p>
             </div>
           ))}
         </div>

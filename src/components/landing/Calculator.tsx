@@ -69,22 +69,28 @@ export default function Calculator() {
   return (
     <section
       id="rechner"
-      className="section-padding dark-section"
-      style={{ background: "#0a0909" }}
+      className="section-padding dark-section relative grain overflow-hidden"
+      style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)" }}
     >
-      <div className="container-main" ref={ref}>
+      {/* Subtle glow behind card */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.06] pointer-events-none"
+        style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }}
+      />
+
+      <div className="container-main relative" ref={ref}>
         <div className="fade-in-up">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <p className="eyebrow-dark">Förder-Rechner</p>
-            <h2 className="text-2xl md:text-[36px] font-bold text-white leading-tight mb-3">
+            <h2 className="text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
               Unverbindliche Erstschätzung
             </h2>
-            <p className="text-[16px] text-white/60 max-w-md mx-auto">
+            <p className="text-[17px] text-white/50 max-w-md mx-auto leading-[1.7]">
               Berechnen Sie in wenigen Schritten Ihr mögliches Förderpotenzial.
             </p>
           </div>
 
-          <div className="max-w-[700px] mx-auto bg-white rounded-lg shadow-xl">
+          <div className="max-w-[700px] mx-auto bg-white rounded-2xl shadow-2xl">
             {/* Progress */}
             <div className="px-8 pt-8 pb-0">
               <div className="flex gap-2 mb-8">
@@ -251,7 +257,7 @@ export default function Calculator() {
             </div>
           </div>
 
-          <p className="text-center text-[11px] text-white/40 mt-6 max-w-md mx-auto">
+          <p className="text-center text-[11px] text-white/30 mt-8 max-w-md mx-auto leading-relaxed">
             Unverbindliche Erstschätzung. Keine Steuerberatung. Das tatsächliche Förderpotenzial hängt von der individuellen Prüfung ab.
           </p>
         </div>

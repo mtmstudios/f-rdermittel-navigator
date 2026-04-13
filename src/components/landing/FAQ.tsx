@@ -16,39 +16,39 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="section-padding">
+    <section className="section-padding section-alt">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <div className="max-w-[600px] mb-12">
+          <div className="text-center max-w-[600px] mx-auto mb-14">
             <p className="eyebrow">Häufige Fragen</p>
-            <h2 className="text-2xl md:text-[36px] font-bold leading-tight">
+            <h2 className="text-[28px] md:text-[38px] font-bold leading-[1.1] tracking-[-0.02em]">
               Was Sie wissen sollten
             </h2>
           </div>
 
-          <div className="max-w-[740px]">
+          <div className="max-w-[740px] mx-auto">
             {faqs.map((f, i) => (
-              <div key={i} className="border-b border-border">
+              <div key={i} className={`border-b border-border ${i === 0 ? "border-t" : ""}`}>
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe] focus-visible:ring-offset-2 rounded-sm"
+                  className="w-full flex items-center justify-between py-6 text-left gap-6 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe] focus-visible:ring-offset-2 rounded-sm"
                   aria-expanded={open === i}
                   aria-controls={`faq-answer-${i}`}
                 >
-                  <span className="text-[15px] font-semibold">{f.q}</span>
+                  <span className="text-[16px] font-semibold tracking-[-0.01em]">{f.q}</span>
                   <ChevronDown
                     size={18}
-                    className={`text-muted-foreground flex-shrink-0 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`}
+                    className={`text-muted-foreground flex-shrink-0 transition-transform duration-300 ${open === i ? "rotate-180" : ""}`}
                     aria-hidden="true"
                   />
                 </button>
                 <div
                   id={`faq-answer-${i}`}
                   role="region"
-                  className="overflow-hidden transition-all duration-200"
+                  className="overflow-hidden transition-all duration-300"
                   style={{ maxHeight: open === i ? "300px" : "0" }}
                 >
-                  <p className="text-[15px] text-muted-foreground leading-relaxed pb-5">{f.a}</p>
+                  <p className="text-[15px] text-muted-foreground leading-[1.7] pb-6">{f.a}</p>
                 </div>
               </div>
             ))}
