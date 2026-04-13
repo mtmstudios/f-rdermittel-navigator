@@ -90,8 +90,83 @@ export default function CalculatorSection() {
 
           {/* Calculator Layout */}
           <div className="max-w-[960px] mx-auto grid md:grid-cols-[1fr,340px] gap-6 md:gap-8 items-start">
-            {/* ─── Left: Sliders ─── */}
-            <div className="space-y-5">
+
+            {/* ─── Result Card: FIRST on mobile (order-1), RIGHT on desktop (order-2) ─── */}
+            <div className="order-1 md:order-2 md:sticky md:top-24">
+              {/* Compact mobile bar */}
+              <div className="md:hidden sticky top-[72px] z-20">
+                <div
+                  className="rounded-2xl overflow-hidden shadow-lg mx-[-4px]"
+                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                >
+                  <div className="px-5 py-4 flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-0.5">Ihr Förderpotenzial / Jahr</p>
+                      <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-[10px] text-white/40 mb-0.5">3 Jahre</p>
+                      <p className="text-[16px] font-bold text-white">{fmtShort(animTotal)}</p>
+                      <p className="text-[10px] text-white/30 mt-0.5">{isKmu ? "35" : "25"} % Förderquote</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Full result card — desktop only */}
+              <div className="hidden md:block">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                  />
+                  <div
+                    className="absolute top-0 right-0 w-40 h-40 opacity-20 pointer-events-none"
+                    style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }}
+                  />
+                  <div className="relative p-6 sm:p-8">
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-2">
+                        <TrendingUp size={14} className="text-[#57a7dd]" />
+                        <p className="text-[11px] sm:text-[12px] text-white/50 uppercase tracking-wider font-medium">Pro Jahr</p>
+                      </div>
+                      <p className="text-[36px] sm:text-[44px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}</p>
+                    </div>
+                    <div className="h-px bg-white/10 mb-5" />
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div>
+                        <p className="text-[11px] text-white/40 mb-1">3 Jahre gesamt</p>
+                        <p className="text-[18px] sm:text-[20px] font-bold text-white">{fmtShort(animTotal)}</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-white/40 mb-1">Förderquote</p>
+                        <p className="text-[18px] sm:text-[20px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
+                      </div>
+                    </div>
+                    <div className="bg-white/[0.06] rounded-xl px-4 py-3 mb-6 border border-white/[0.06]">
+                      <p className="text-[12px] text-white/60 leading-relaxed">
+                        <span className="text-[#57a7dd] font-semibold">Rückwirkend</span> bis 2020 beantragbar —
+                        bis zu <span className="text-white font-semibold">{fmtShort(perYear * 5)}</span> insgesamt möglich.
+                      </p>
+                    </div>
+                    <a
+                      href="#kontakt"
+                      className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[14px] sm:text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20"
+                    >
+                      Ersteinschätzung anfragen
+                      <ArrowRight size={16} />
+                    </a>
+                    <p className="text-center text-[11px] text-white/30 mt-3">Persönliches Gespräch innerhalb von 24h</p>
+                  </div>
+                </div>
+                <p className="text-center text-[10px] text-muted-foreground/60 mt-4 leading-relaxed px-2">
+                  Unverbindliche Erstschätzung. Keine Steuerberatung.
+                </p>
+              </div>
+            </div>
+
+            {/* ─── Sliders: SECOND on mobile (order-2), LEFT on desktop (order-1) ─── */}
+            <div className="order-2 md:order-1 space-y-5">
               {/* Mitarbeiter */}
               <div className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-4">
@@ -181,76 +256,17 @@ export default function CalculatorSection() {
               </div>
             </div>
 
-            {/* ─── Right: Result Card (sticky on desktop) ─── */}
-            <div className="md:sticky md:top-24">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                {/* Dark gradient background */}
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
-                />
-                {/* Subtle glow */}
-                <div
-                  className="absolute top-0 right-0 w-40 h-40 opacity-20 pointer-events-none"
-                  style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }}
-                />
-
-                <div className="relative p-6 sm:p-8">
-                  {/* Per Year */}
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp size={14} className="text-[#57a7dd]" />
-                      <p className="text-[11px] sm:text-[12px] text-white/50 uppercase tracking-wider font-medium">
-                        Pro Jahr
-                      </p>
-                    </div>
-                    <p className="text-[36px] sm:text-[44px] font-extrabold text-white tracking-tight leading-none">
-                      {fmt(animPerYear)}
-                    </p>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="h-px bg-white/10 mb-5" />
-
-                  {/* 3 Year + Rate */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div>
-                      <p className="text-[11px] text-white/40 mb-1">3 Jahre gesamt</p>
-                      <p className="text-[18px] sm:text-[20px] font-bold text-white">{fmtShort(animTotal)}</p>
-                    </div>
-                    <div>
-                      <p className="text-[11px] text-white/40 mb-1">Förderquote</p>
-                      <p className="text-[18px] sm:text-[20px] font-bold text-white">
-                        {isKmu ? "35" : "25"} %
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Rückwirkend Hint */}
-                  <div className="bg-white/[0.06] rounded-xl px-4 py-3 mb-6 border border-white/[0.06]">
-                    <p className="text-[12px] text-white/60 leading-relaxed">
-                      <span className="text-[#57a7dd] font-semibold">Rückwirkend</span> bis 2020 beantragbar —
-                      bis zu <span className="text-white font-semibold">{fmtShort(perYear * 5)}</span> insgesamt möglich.
-                    </p>
-                  </div>
-
-                  {/* CTA */}
-                  <a
-                    href="#kontakt"
-                    className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[14px] sm:text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20"
-                  >
-                    Ersteinschätzung anfragen
-                    <ArrowRight size={16} />
-                  </a>
-                  <p className="text-center text-[11px] text-white/30 mt-3">
-                    Persönliches Gespräch innerhalb von 24h
-                  </p>
-                </div>
-              </div>
-
-              {/* Disclaimer */}
-              <p className="text-center text-[10px] text-muted-foreground/60 mt-4 leading-relaxed px-2">
-                Unverbindliche Erstschätzung. Keine Steuerberatung.
+            {/* ─── Mobile CTA (below sliders) ─── */}
+            <div className="order-3 md:hidden">
+              <a
+                href="#kontakt"
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg"
+              >
+                Ersteinschätzung anfragen
+                <ArrowRight size={16} />
+              </a>
+              <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
+                Unverbindliche Erstschätzung · Gespräch innerhalb von 24h
               </p>
             </div>
           </div>
