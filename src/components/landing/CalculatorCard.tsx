@@ -149,15 +149,15 @@ export default function CalculatorSection() {
     >
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          {/* Section Header */}
-          <div className="text-center mb-8 md:mb-12">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#307abe] mb-3">
+          {/* Section Header — compact on mobile */}
+          <div className="text-center mb-6 md:mb-12">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#307abe] mb-2 md:mb-3">
               Förder-Rechner
             </p>
-            <h2 className="text-[22px] sm:text-[28px] md:text-[40px] font-extrabold tracking-[-0.02em] mb-2 md:mb-3">
+            <h2 className="text-[20px] sm:text-[28px] md:text-[40px] font-extrabold tracking-[-0.02em] mb-1.5 md:mb-3">
               Berechnen Sie Ihr Förderpotenzial
             </h2>
-            <p className="text-[13px] sm:text-[15px] text-muted-foreground max-w-md mx-auto">
+            <p className="text-[12px] sm:text-[15px] text-muted-foreground max-w-md mx-auto">
               Passen Sie die Werte an — Ihr Ergebnis aktualisiert sich sofort.
             </p>
           </div>
@@ -338,21 +338,26 @@ export default function CalculatorSection() {
                   className="rounded-2xl overflow-hidden pulse-glow mb-5"
                   style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
                 >
-                  <div className="px-5 py-6 text-center">
+                  <div className="px-5 py-5 text-center">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <TrendingUp size={13} className="text-[#57a7dd]" />
                       <p className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
                     </div>
-                    <p className="text-[32px] sm:text-[38px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
+                    <p className="text-[34px] sm:text-[40px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
                       {fmt(animPerYear)}
                     </p>
-                    <div className="flex items-center justify-center gap-4 text-[12px]">
+                    <div className="flex items-center justify-center gap-4 text-[12px] mb-3">
                       <span className="text-white/40">
                         3 Jahre: <span className="text-white font-semibold">{fmtShort(animTotal)}</span>
                       </span>
                       <span className="text-white/40">
                         Quote: <span className="text-white font-semibold">{isKmu ? "35" : "25"} %</span>
                       </span>
+                    </div>
+                    <div className="bg-white/[0.06] rounded-lg px-3 py-2 border border-white/[0.06]">
+                      <p className="text-[11px] text-white/50 leading-relaxed">
+                        <span className="text-[#57a7dd] font-semibold">Bis zu 4 Jahre rückwirkend</span> — bis zu <span className="text-white font-semibold">{fmtShort(perYear * 4)}</span> möglich
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -410,6 +415,18 @@ export default function CalculatorSection() {
                   )}
                 </div>
 
+                {/* Trust signals */}
+                <div className="flex items-center justify-center gap-4 mb-4 text-[11px] text-muted-foreground/70">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    98 % Bewilligung
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    500+ Projekte
+                  </span>
+                </div>
+
                 <button
                   onClick={switchToForm}
                   className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
@@ -423,54 +440,61 @@ export default function CalculatorSection() {
               </div>
             ) : (
               <div className="animate-fade-in" key="form">
-                <div
-                  className="rounded-2xl overflow-hidden shadow-xl"
-                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
-                >
-                  <div className="p-5">
-                    {/* Compact result — one line */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        <TrendingUp size={14} className="text-[#57a7dd]" />
-                        <span className="text-[11px] text-white/40 uppercase tracking-wider font-medium">Förderpotenzial</span>
+                {/* Glow wrapper */}
+                <div className="rounded-2xl p-px bg-gradient-to-b from-[#307abe]/30 via-[#307abe]/10 to-transparent">
+                  <div
+                    className="rounded-2xl overflow-hidden shadow-2xl"
+                    style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                  >
+                    <div className="p-5">
+                      {/* Result reminder — prominent */}
+                      <div className="text-center mb-4">
+                        <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-1">Ihr Förderpotenzial</p>
+                        <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">
+                          {fmt(animPerYear)}<span className="text-[13px] text-white/30 font-medium"> / Jahr</span>
+                        </p>
                       </div>
-                      <p className="text-[24px] font-extrabold text-white tracking-tight leading-none">
-                        {fmt(animPerYear)}<span className="text-[12px] text-white/30 font-medium"> /Jahr</span>
+
+                      <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-4" />
+
+                      <p className="text-[12px] text-white/45 text-center mb-4 font-medium">
+                        Lassen Sie sich von einem Wirtschaftsprüfer beraten:
                       </p>
-                    </div>
 
-                    <div className="h-px bg-white/10 mb-4" />
+                      <form onSubmit={handleSubmit} className="space-y-2.5">
+                        <div className="grid grid-cols-2 gap-2.5">
+                          <input required type="text" placeholder="Name" value={form.name}
+                            onChange={e => update("name", e.target.value)}
+                            className="calc-input !py-3 !text-[14px]" autoComplete="name" />
+                          <input required type="text" placeholder="Firma" value={form.unternehmen}
+                            onChange={e => update("unternehmen", e.target.value)}
+                            className="calc-input !py-3 !text-[14px]" autoComplete="organization" />
+                        </div>
+                        <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
+                          onChange={e => update("telefon", e.target.value)}
+                          className="calc-input !py-3 !text-[14px]" autoComplete="tel" />
+                        <input required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
+                          onChange={e => update("email", e.target.value)}
+                          className="calc-input !py-3 !text-[14px]" autoComplete="email" />
+                        <button type="submit" disabled={submitting}
+                          className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer">
+                          {submitting ? "Wird gesendet..." : (
+                            <>Erstgespräch anfordern<ArrowRight size={16} /></>
+                          )}
+                        </button>
+                      </form>
 
-                    <form onSubmit={handleSubmit} className="space-y-2.5">
-                      <div className="grid grid-cols-2 gap-2.5">
-                        <input required type="text" placeholder="Name" value={form.name}
-                          onChange={e => update("name", e.target.value)}
-                          className="calc-input !py-3 !text-[14px]" autoComplete="name" />
-                        <input required type="text" placeholder="Firma" value={form.unternehmen}
-                          onChange={e => update("unternehmen", e.target.value)}
-                          className="calc-input !py-3 !text-[14px]" autoComplete="organization" />
+                      <div className="flex items-center justify-center gap-5 mt-3.5">
+                        <span className="flex items-center gap-1.5 text-[10px] text-white/35 font-medium">
+                          <Lock size={10} className="text-white/25" /> Vertraulich
+                        </span>
+                        <span className="flex items-center gap-1.5 text-[10px] text-white/35 font-medium">
+                          <Check size={10} className="text-emerald-400/50" /> Kostenlos
+                        </span>
+                        <span className="flex items-center gap-1.5 text-[10px] text-white/35 font-medium">
+                          <Check size={10} className="text-emerald-400/50" /> Unverbindlich
+                        </span>
                       </div>
-                      <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
-                        onChange={e => update("telefon", e.target.value)}
-                        className="calc-input !py-3 !text-[14px]" autoComplete="tel" />
-                      <input required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
-                        onChange={e => update("email", e.target.value)}
-                        className="calc-input !py-3 !text-[14px]" autoComplete="email" />
-                      <button type="submit" disabled={submitting}
-                        className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer">
-                        {submitting ? "Wird gesendet..." : (
-                          <>Erstgespräch anfordern<ArrowRight size={16} /></>
-                        )}
-                      </button>
-                    </form>
-
-                    <div className="flex items-center justify-center gap-4 mt-3">
-                      <p className="flex items-center gap-1.5 text-[10px] text-white/25">
-                        <Lock size={9} /> Vertraulich
-                      </p>
-                      <p className="flex items-center gap-1.5 text-[10px] text-white/25">
-                        <Check size={9} /> Kostenlos
-                      </p>
                     </div>
                   </div>
                 </div>
