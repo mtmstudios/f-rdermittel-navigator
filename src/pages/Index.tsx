@@ -1,5 +1,6 @@
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
+import CalculatorSection from "@/components/landing/CalculatorCard";
 import SocialProof from "@/components/landing/SocialProof";
 import ProblemSection from "@/components/landing/ProblemSection";
 import CustomerStory from "@/components/landing/CustomerStory";
@@ -17,6 +18,7 @@ export default function Index() {
     <>
       <Navbar />
       <Hero />
+      <CalculatorSection />
       <SocialProof />
       <ProblemSection />
       <CustomerStory />
