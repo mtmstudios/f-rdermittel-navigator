@@ -28,10 +28,10 @@ export default function StickyCTA() {
     >
       <div className="bg-white/95 backdrop-blur-xl border-t border-black/[0.06] px-4 py-3 safe-area-pb">
         <a
-          href="#kontakt"
+          href="#rechner"
           className="btn-cta w-full text-center block !py-3.5 !text-[15px] !rounded-xl"
         >
-          Kostenlose Ersteinschätzung
+          Förderpotenzial berechnen
         </a>
       </div>
     </div>

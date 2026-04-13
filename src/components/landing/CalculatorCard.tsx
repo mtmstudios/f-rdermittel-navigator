@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ArrowRight, TrendingUp, Building2, Users, Coins } from "lucide-react";
+import { useUtmParams } from "@/hooks/useUtmParams";
+import { ArrowRight, TrendingUp, Building2, Users, Coins, Lock } from "lucide-react";
 
 /* ── Meta Pixel: fire once when result first becomes visible ── */
 const fbqTrackOnce = (() => {
@@ -49,10 +51,17 @@ function fmtShort(v: number) {
 
 export default function CalculatorSection() {
   const ref = useScrollAnimation();
+  const navigate = useNavigate();
+  const utm = useUtmParams();
+
   const [mitarbeiter, setMitarbeiter] = useState(50);
   const [kostenPersonal, setKostenPersonal] = useState(400000);
   const [kostenExtern, setKostenExtern] = useState(0);
   const [hasFired, setHasFired] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", telefon: "" });
+  const formRef = useRef<HTMLDivElement>(null);
 
   const isKmu = mitarbeiter < 250;
   const rate = isKmu ? 0.35 : 0.25;
@@ -70,6 +79,53 @@ export default function CalculatorSection() {
       fbqTrackOnce();
     }
   }, [mitarbeiter, kostenPersonal, hasFired]);
+
+  /* scroll form into view when it opens */
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    }
+  }, [showForm]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const payload = {
+      name: form.name,
+      email: form.email,
+      telefon: form.telefon,
+      mitarbeiter: String(mitarbeiter),
+      kostenPersonal: String(kostenPersonal),
+      kostenExtern: String(kostenExtern),
+      foerderpotenzial: String(perYear),
+      ...utm,
+    };
+    try {
+      const res = await fetch("https://mtmstudios.app.n8n.cloud/webhook/factonet-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Webhook error");
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", {
+          content_name: "Forschungszulage Ersteinschätzung",
+          content_category: "calculator_form",
+        });
+      }
+      navigate("/danke");
+    } catch {
+      navigate("/danke");
+    }
+  };
+
+  const update = (field: string, value: string) =>
+    setForm((prev) => ({ ...prev, [field]: value }));
+
+  const inputClass =
+    "w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3.5 text-[15px] text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#307abe]/30 focus:border-[#307abe]/50 transition-all duration-200";
 
   return (
     <section id="rechner" className="relative py-20 md:py-28 overflow-hidden bg-[hsl(var(--background))]">
@@ -91,7 +147,7 @@ export default function CalculatorSection() {
           {/* Calculator Layout */}
           <div className="max-w-[960px] mx-auto grid md:grid-cols-[1fr,340px] gap-6 md:gap-8 items-start">
 
-            {/* ─── Result Card: FIRST on mobile (order-1), RIGHT on desktop (order-2) ─── */}
+            {/* ─── Result Card: FIRST on mobile, RIGHT on desktop ─── */}
             <div className="order-1 md:order-2 md:sticky md:top-24">
               {/* Compact mobile bar */}
               <div className="md:hidden sticky top-[72px] z-20">
@@ -149,14 +205,52 @@ export default function CalculatorSection() {
                         bis zu <span className="text-white font-semibold">{fmtShort(perYear * 5)}</span> insgesamt möglich.
                       </p>
                     </div>
-                    <a
-                      href="#kontakt"
-                      className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[14px] sm:text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20"
-                    >
-                      Ersteinschätzung anfragen
-                      <ArrowRight size={16} />
-                    </a>
-                    <p className="text-center text-[11px] text-white/30 mt-3">Persönliches Gespräch innerhalb von 24h</p>
+
+                    {/* CTA or Inline Form */}
+                    {!showForm ? (
+                      <button
+                        onClick={() => setShowForm(true)}
+                        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[14px] sm:text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 cursor-pointer"
+                      >
+                        Erstgespräch vereinbaren
+                        <ArrowRight size={16} />
+                      </button>
+                    ) : (
+                      <form onSubmit={handleSubmit} className="space-y-3 animate-fade-in">
+                        <input
+                          required type="text" placeholder="Ihr Name" value={form.name}
+                          onChange={e => update("name", e.target.value)}
+                          className={inputClass} autoComplete="name" autoFocus
+                        />
+                        <input
+                          required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
+                          onChange={e => update("telefon", e.target.value)}
+                          className={inputClass} autoComplete="tel"
+                        />
+                        <input
+                          required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
+                          onChange={e => update("email", e.target.value)}
+                          className={inputClass} autoComplete="email"
+                        />
+                        <button
+                          type="submit" disabled={submitting}
+                          className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 disabled:opacity-60 cursor-pointer"
+                        >
+                          {submitting ? "Wird gesendet..." : (
+                            <>
+                              Erstgespräch anfordern
+                              <ArrowRight size={16} />
+                            </>
+                          )}
+                        </button>
+                        <p className="flex items-center gap-1.5 text-[11px] text-white/30 justify-center">
+                          <Lock size={11} /> Kostenlos & unverbindlich
+                        </p>
+                      </form>
+                    )}
+                    {!showForm && (
+                      <p className="text-center text-[11px] text-white/30 mt-3">Persönliches Gespräch innerhalb von 24h</p>
+                    )}
                   </div>
                 </div>
                 <p className="text-center text-[10px] text-muted-foreground/60 mt-4 leading-relaxed px-2">
@@ -165,7 +259,7 @@ export default function CalculatorSection() {
               </div>
             </div>
 
-            {/* ─── Sliders: SECOND on mobile (order-2), LEFT on desktop (order-1) ─── */}
+            {/* ─── Sliders: SECOND on mobile, LEFT on desktop ─── */}
             <div className="order-2 md:order-1 space-y-5">
               {/* Mitarbeiter */}
               <div className="bg-white rounded-2xl border border-border/60 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -256,18 +350,75 @@ export default function CalculatorSection() {
               </div>
             </div>
 
-            {/* ─── Mobile CTA (below sliders) ─── */}
-            <div className="order-3 md:hidden">
-              <a
-                href="#kontakt"
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg"
-              >
-                Ersteinschätzung anfragen
-                <ArrowRight size={16} />
-              </a>
-              <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
-                Unverbindliche Erstschätzung · Gespräch innerhalb von 24h
-              </p>
+            {/* ─── Mobile: Form below sliders ─── */}
+            <div className="order-3 md:hidden" ref={formRef}>
+              {!showForm ? (
+                <>
+                  <button
+                    onClick={() => setShowForm(true)}
+                    className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
+                  >
+                    Erstgespräch vereinbaren
+                    <ArrowRight size={16} />
+                  </button>
+                  <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
+                    Unverbindliche Erstschätzung · Gespräch innerhalb von 24h
+                  </p>
+                </>
+              ) : (
+                <div
+                  className="rounded-2xl overflow-hidden shadow-xl"
+                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                >
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-5">
+                      <div>
+                        <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-0.5">Ihr Förderpotenzial / Jahr</p>
+                        <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-[10px] text-white/40 mb-0.5">3 Jahre</p>
+                        <p className="text-[18px] font-bold text-white">{fmtShort(animTotal)}</p>
+                      </div>
+                    </div>
+                    <div className="h-px bg-white/10 mb-5" />
+                    <p className="text-[14px] text-white/60 font-medium mb-4">
+                      Lassen Sie sich Ihr Ergebnis von einem Wirtschaftsprüfer bestätigen:
+                    </p>
+                    <form onSubmit={handleSubmit} className="space-y-3">
+                      <input
+                        required type="text" placeholder="Ihr Name" value={form.name}
+                        onChange={e => update("name", e.target.value)}
+                        className={inputClass} autoComplete="name"
+                      />
+                      <input
+                        required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
+                        onChange={e => update("telefon", e.target.value)}
+                        className={inputClass} autoComplete="tel"
+                      />
+                      <input
+                        required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
+                        onChange={e => update("email", e.target.value)}
+                        className={inputClass} autoComplete="email"
+                      />
+                      <button
+                        type="submit" disabled={submitting}
+                        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer"
+                      >
+                        {submitting ? "Wird gesendet..." : (
+                          <>
+                            Erstgespräch anfordern
+                            <ArrowRight size={16} />
+                          </>
+                        )}
+                      </button>
+                      <p className="flex items-center gap-1.5 text-[11px] text-white/30 justify-center">
+                        <Lock size={11} /> Kostenlos & unverbindlich
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

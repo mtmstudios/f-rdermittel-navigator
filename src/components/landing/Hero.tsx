@@ -38,10 +38,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-14 px-4 sm:px-0">
-              <a href="#kontakt" className="btn-cta w-full sm:w-auto text-[15px] sm:text-[16px] !py-4 sm:!py-[18px] !px-8 sm:!px-10">
-                Kostenlose Ersteinschätzung
-              </a>
-              <a href="#rechner" className="btn-outline-light w-full sm:w-auto !py-4">
+              <a href="#rechner" className="btn-cta w-full sm:w-auto text-[15px] sm:text-[16px] !py-4 sm:!py-[18px] !px-8 sm:!px-10">
                 Förderpotenzial berechnen
               </a>
             </div>
