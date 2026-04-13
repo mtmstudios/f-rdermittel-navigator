@@ -22,12 +22,6 @@ const credentials = [
   },
 ];
 
-const stats = [
-  { value: "500+", label: "geprüfte Projekte" },
-  { value: "98 %", label: "Bewilligungsquote" },
-  { value: "95k €", label: "Ø Förderpotenzial" },
-];
-
 export default function TrustSection() {
   const ref = useScrollAnimation();
 
@@ -93,14 +87,22 @@ export default function TrustSection() {
               Standorte: München & Passau
             </p>
 
-            {/* Stats row (integrated Social Proof) */}
-            <div className="grid grid-cols-3 gap-4 mb-10 md:mb-12">
-              {stats.map((s, i) => (
-                <div key={i} className="text-center bg-white/[0.04] border border-white/[0.06] rounded-xl py-4 px-3">
-                  <p className="text-[18px] sm:text-[22px] md:text-[28px] font-bold text-white tracking-tight">{s.value}</p>
-                  <p className="text-[11px] md:text-[12px] text-white/40 mt-1">{s.label}</p>
-                </div>
-              ))}
+            {/* Stats row — clean horizontal layout */}
+            <div className="flex items-center justify-center gap-3 sm:gap-6 mb-10 md:mb-12 flex-wrap">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight">500+</span>
+                <span className="text-[11px] sm:text-[12px] text-white/40">Projekte</span>
+              </div>
+              <div className="w-px h-6 bg-white/10 hidden sm:block" />
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight">98 %</span>
+                <span className="text-[11px] sm:text-[12px] text-white/40">Bewilligung</span>
+              </div>
+              <div className="w-px h-6 bg-white/10 hidden sm:block" />
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight">95.000 €</span>
+                <span className="text-[11px] sm:text-[12px] text-white/40">Ø Förderung</span>
+              </div>
             </div>
 
             {/* Video + Credentials Grid */}

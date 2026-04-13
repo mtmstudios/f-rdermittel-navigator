@@ -334,13 +334,20 @@ nav {
   -webkit-mask-image: linear-gradient(to right, black 85%, transparent);
 }
 
-/* ─── Subtle Pulse Glow ─── */
+/* ─── Pulse Glow (result card) ─── */
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(48,122,190,0.08), 0 4px 20px rgba(0,0,0,0.1); }
-  50% { box-shadow: 0 0 30px rgba(48,122,190,0.18), 0 4px 24px rgba(0,0,0,0.12); }
+  0%, 100% {
+    box-shadow: 0 0 24px rgba(48,122,190,0.12), 0 0 60px rgba(48,122,190,0.06);
+    border-color: rgba(48,122,190,0.15);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(48,122,190,0.28), 0 0 80px rgba(48,122,190,0.12);
+    border-color: rgba(48,122,190,0.35);
+  }
 }
 .pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
+  animation: pulseGlow 2.5s ease-in-out infinite;
+  border: 1px solid rgba(48,122,190,0.15);
 }
 
 /* ─── Safe Area for Sticky CTA (iPhone notch) ─── */

@@ -55,42 +55,30 @@ export default function ProblemSection() {
           </div>
 
           {/* One-Shot Warning — high-impact visual */}
-          <div className="relative rounded-2xl overflow-hidden mb-8 md:mb-10">
-            {/* Full dark background with red accent */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f0a0a] to-[#0a0a0a]" />
-            <div
-              className="absolute -top-20 -left-20 w-60 h-60 opacity-[0.08] pointer-events-none"
-              style={{ background: "radial-gradient(circle, #dc2626 0%, transparent 70%)" }}
-            />
-            <div
-              className="absolute -bottom-10 -right-10 w-40 h-40 opacity-[0.05] pointer-events-none"
-              style={{ background: "radial-gradient(circle, #dc2626 0%, transparent 70%)" }}
-            />
+          <div className="relative rounded-2xl overflow-hidden mb-8 md:mb-10 border border-red-500/10">
+            <div className="absolute inset-0 bg-[#0a0a0a]" />
 
-            <div className="relative px-6 py-8 md:px-10 md:py-10">
-              {/* Warning badge */}
-              <div className="flex items-center justify-center mb-5">
-                <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5">
-                  <AlertTriangle size={14} className="text-red-400" />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-red-400">Wichtiger Hinweis</span>
+            <div className="relative px-6 py-10 md:px-10 md:py-12">
+              {/* Warning icon */}
+              <div className="flex justify-center mb-5">
+                <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/15 flex items-center justify-center">
+                  <AlertTriangle size={22} className="text-red-400" />
                 </div>
               </div>
 
-              {/* Big headline centered */}
-              <h3 className="text-[22px] sm:text-[26px] md:text-[32px] font-extrabold text-white text-center mb-4 tracking-[-0.02em] leading-[1.15]">
-                Ein Antrag.<br />
-                <span className="text-red-400">Eine Chance.</span>
+              {/* Headline */}
+              <h3 className="text-[24px] sm:text-[28px] md:text-[34px] font-extrabold text-white text-center mb-5 tracking-[-0.02em] leading-[1.15]">
+                Ein Antrag. <span className="text-red-400">Eine Chance.</span>
               </h3>
 
-              <p className="text-[14px] md:text-[16px] text-white/50 leading-[1.8] text-center max-w-[560px] mx-auto mb-6">
+              <p className="text-[14px] md:text-[16px] text-white/50 leading-[1.8] text-center max-w-[520px] mx-auto mb-6">
                 Man hat nur <span className="text-white font-semibold">einmal die Möglichkeit</span>, den Antrag zu stellen.
                 Wird er abgelehnt, gibt es <span className="text-white font-semibold">keine zweite Chance</span> für diese Projekte.
               </p>
 
-              {/* Visual separator */}
-              <div className="w-12 h-px bg-red-500/30 mx-auto mb-6" />
+              <div className="w-10 h-px bg-white/10 mx-auto mb-6" />
 
-              <p className="text-[13px] md:text-[14px] text-white/35 text-center max-w-[480px] mx-auto">
+              <p className="text-[13px] md:text-[14px] text-white/30 text-center max-w-[460px] mx-auto">
                 Eigenanträge entsprechen oft nicht der nötigen Qualität.
                 Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
               </p>

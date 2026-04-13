@@ -84,19 +84,29 @@ export default function CalculatorSection() {
     }
   }, [mitarbeiter, kostenPersonal, hasFired]);
 
-  /* Scroll to top of section on view switch */
+  const formCardRef = useRef<HTMLDivElement>(null);
+
+  /* On mobile: scroll form card into view (not section top). On desktop: scroll section. */
   const switchToForm = () => {
     setView("form");
     setTimeout(() => {
-      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
+      if (window.innerWidth < 768 && formCardRef.current) {
+        formCardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 80);
   };
 
   const switchToCalc = () => {
     setView("calc");
     setTimeout(() => {
-      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
+      if (window.innerWidth < 768 && sectionRef.current) {
+        sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 80);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -139,7 +149,7 @@ export default function CalculatorSection() {
     <section
       id="rechner"
       ref={sectionRef}
-      className="relative pt-4 pb-16 md:pt-8 md:pb-24 overflow-hidden bg-[hsl(var(--background))]"
+      className="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden bg-[hsl(var(--background))]"
     >
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
@@ -418,7 +428,7 @@ export default function CalculatorSection() {
               </div>
             ) : (
               /* ══ FORM VIEW — replaces calculator on mobile ══ */
-              <div className="animate-fade-in">
+              <div className="animate-fade-in" ref={formCardRef}>
                 <div
                   className="relative rounded-2xl overflow-hidden shadow-xl"
                   style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
