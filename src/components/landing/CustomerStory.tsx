@@ -8,12 +8,12 @@ export default function CustomerStory() {
     <section className="section-padding">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <p className="eyebrow">Praxisbeispiel</p>
+          <p className="eyebrow text-center">Praxisbeispiel</p>
 
           {/* Mobile: Video first, then text. Desktop: Side by side */}
           <div className="grid md:grid-cols-[1fr,1.1fr] gap-8 md:gap-14 items-center">
             {/* Text — shows second on mobile */}
-            <div className="order-2 md:order-1">
+            <div className="order-2 md:order-1 text-center md:text-left">
               <h2 className="text-[24px] sm:text-[28px] md:text-[36px] font-bold leading-[1.1] mb-4 md:mb-6 tracking-[-0.02em]">
                 174.000 € Forschungszulage
                 <span className="block text-[17px] sm:text-[20px] md:text-[26px] font-semibold text-muted-foreground mt-2">
@@ -31,7 +31,7 @@ export default function CustomerStory() {
               </div>
 
               {/* Key Figures */}
-              <div className="flex gap-6 sm:gap-8 pt-5 border-t border-border">
+              <div className="flex justify-center md:justify-start gap-6 sm:gap-8 pt-5 border-t border-border">
                 <div>
                   <p className="text-[22px] sm:text-[26px] font-bold text-foreground tracking-tight">174.000 €</p>
                   <p className="text-[12px] text-muted-foreground mt-1">Forschungszulage</p>
@@ -55,7 +55,7 @@ export default function CustomerStory() {
               </div>
 
               {/* Quote below video */}
-              <blockquote className="mt-5 md:mt-8 pl-4 border-l-2 border-[#307abe]/40">
+              <blockquote className="mt-5 md:mt-8 text-center md:text-left md:pl-4 md:border-l-2 md:border-[#307abe]/40">
                 <p className="text-[13px] sm:text-[14px] text-muted-foreground leading-relaxed italic">
                   „Viele Unternehmen schließen sich selbst aus — obwohl sie genau die Art von Entwicklungsarbeit leisten, die förderfähig ist."
                 </p>

@@ -40,7 +40,7 @@ export default function WhyUs() {
 
       <div className="container-main relative" ref={ref}>
         <div className="fade-in-up">
-          <div className="max-w-[600px] mb-16">
+          <div className="text-center max-w-[600px] mx-auto mb-16">
             <p className="eyebrow-dark">Warum PCA Partners</p>
             <h2 className="text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-5 tracking-[-0.02em]">
               Wirtschaftsprüfer.
@@ -53,8 +53,8 @@ export default function WhyUs() {
 
           <div className="grid sm:grid-cols-2 gap-5">
             {points.map((p, i) => (
-              <div key={i} className="glass-card group">
-                <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center mb-5 group-hover:bg-[#307abe]/15 transition-colors duration-300">
+              <div key={i} className="glass-card group text-center sm:text-left">
+                <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center mb-5 mx-auto sm:mx-0 group-hover:bg-[#307abe]/15 transition-colors duration-300">
                   <p.icon size={20} className="text-[#57a7dd]" />
                 </div>
                 <h3 className="text-[17px] font-bold text-white mb-3 tracking-[-0.01em]">{p.title}</h3>

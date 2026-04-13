@@ -25,7 +25,7 @@ export default function ProblemSection() {
     <section className="section-padding">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <div className="max-w-[680px] mb-10 md:mb-16">
+          <div className="text-center max-w-[680px] mx-auto mb-10 md:mb-16">
             <p className="eyebrow">Das Problem</p>
             <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold leading-[1.1] mb-4 md:mb-5 tracking-[-0.02em]">
               Die meisten Unternehmen verschenken Fördergeld.
@@ -44,7 +44,7 @@ export default function ProblemSection() {
                 <span className="text-[40px] md:text-[48px] font-black text-[#307abe]/[0.06] absolute top-4 right-5 leading-none select-none">
                   {c.num}
                 </span>
-                <div className="relative">
+                <div className="relative text-center sm:text-left">
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#307abe] mb-3 md:mb-4 block">
                     {c.num}
                   </span>

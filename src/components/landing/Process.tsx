@@ -26,14 +26,14 @@ export default function Process() {
 
           <div className="grid md:grid-cols-4 gap-0">
             {steps.map((s, i) => (
-              <div key={i} className="relative px-6 pb-10 md:pb-0">
+              <div key={i} className="relative px-6 pb-10 md:pb-0 text-center md:text-left">
                 {/* Connector line */}
                 {i < steps.length - 1 && (
                   <div className="hidden md:block absolute top-[18px] left-[calc(50%+20px)] right-0 h-px bg-border" />
                 )}
 
                 {/* Step number circle */}
-                <div className="w-9 h-9 rounded-full bg-white border-2 border-[#307abe] flex items-center justify-center mb-5 relative z-10">
+                <div className="w-9 h-9 rounded-full bg-white border-2 border-[#307abe] flex items-center justify-center mb-5 relative z-10 mx-auto md:mx-0">
                   <span className="text-[12px] font-bold text-[#307abe]">{s.num}</span>
                 </div>
 
