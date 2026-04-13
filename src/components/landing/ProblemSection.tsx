@@ -54,26 +54,46 @@ export default function ProblemSection() {
             ))}
           </div>
 
-          {/* One-Shot Warning — prominent callout */}
-          <div className="relative bg-[#0a1628] rounded-2xl p-6 md:p-8 overflow-hidden mb-8 md:mb-10">
+          {/* One-Shot Warning — high-impact visual */}
+          <div className="relative rounded-2xl overflow-hidden mb-8 md:mb-10">
+            {/* Full dark background with red accent */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f0a0a] to-[#0a0a0a]" />
             <div
-              className="absolute top-0 right-0 w-40 h-40 opacity-10 pointer-events-none"
+              className="absolute -top-20 -left-20 w-60 h-60 opacity-[0.08] pointer-events-none"
               style={{ background: "radial-gradient(circle, #dc2626 0%, transparent 70%)" }}
             />
-            <div className="relative flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-red-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <AlertTriangle size={20} className="text-red-400" />
+            <div
+              className="absolute -bottom-10 -right-10 w-40 h-40 opacity-[0.05] pointer-events-none"
+              style={{ background: "radial-gradient(circle, #dc2626 0%, transparent 70%)" }}
+            />
+
+            <div className="relative px-6 py-8 md:px-10 md:py-10">
+              {/* Warning badge */}
+              <div className="flex items-center justify-center mb-5">
+                <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5">
+                  <AlertTriangle size={14} className="text-red-400" />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-red-400">Wichtiger Hinweis</span>
+                </div>
               </div>
-              <div className="min-w-0">
-                <h3 className="text-[16px] md:text-[18px] font-bold text-white mb-2 tracking-[-0.01em]">
-                  Ein Antrag — eine Chance.
-                </h3>
-                <p className="text-[14px] md:text-[15px] text-white/55 leading-[1.7]">
-                  Man hat nur <span className="text-white font-semibold">einmal die Möglichkeit</span>, den Antrag zu stellen — ein klassischer One-Shot-Ansatz.
-                  Wenn der Antrag abgelehnt wird, hat man <span className="text-white font-semibold">keine weitere Möglichkeit</span>, diese Projekte fördern zu lassen.
-                  Eigenanträge entsprechen oft nicht der nötigen Qualität. Deshalb übernehmen wir die komplette Antragstellung.
-                </p>
-              </div>
+
+              {/* Big headline centered */}
+              <h3 className="text-[22px] sm:text-[26px] md:text-[32px] font-extrabold text-white text-center mb-4 tracking-[-0.02em] leading-[1.15]">
+                Ein Antrag.<br />
+                <span className="text-red-400">Eine Chance.</span>
+              </h3>
+
+              <p className="text-[14px] md:text-[16px] text-white/50 leading-[1.8] text-center max-w-[560px] mx-auto mb-6">
+                Man hat nur <span className="text-white font-semibold">einmal die Möglichkeit</span>, den Antrag zu stellen.
+                Wird er abgelehnt, gibt es <span className="text-white font-semibold">keine zweite Chance</span> für diese Projekte.
+              </p>
+
+              {/* Visual separator */}
+              <div className="w-12 h-px bg-red-500/30 mx-auto mb-6" />
+
+              <p className="text-[13px] md:text-[14px] text-white/35 text-center max-w-[480px] mx-auto">
+                Eigenanträge entsprechen oft nicht der nötigen Qualität.
+                Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
+              </p>
             </div>
           </div>
 

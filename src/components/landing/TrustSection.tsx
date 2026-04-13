@@ -25,7 +25,7 @@ const credentials = [
 const stats = [
   { value: "500+", label: "geprüfte Projekte" },
   { value: "98 %", label: "Bewilligungsquote" },
-  { value: "95.000 €", label: "Ø Förderpotenzial" },
+  { value: "95k €", label: "Ø Förderpotenzial" },
 ];
 
 export default function TrustSection() {
@@ -87,6 +87,11 @@ export default function TrustSection() {
                 </div>
               </div>
             </div>
+
+            {/* Location */}
+            <p className="text-center text-[12px] text-white/30 mb-8 md:mb-10 font-medium tracking-wide">
+              Standorte: München & Passau
+            </p>
 
             {/* Stats row (integrated Social Proof) */}
             <div className="grid grid-cols-3 gap-4 mb-10 md:mb-12">

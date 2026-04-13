@@ -334,6 +334,15 @@ nav {
   -webkit-mask-image: linear-gradient(to right, black 85%, transparent);
 }
 
+/* ─── Subtle Pulse Glow ─── */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(48,122,190,0.08), 0 4px 20px rgba(0,0,0,0.1); }
+  50% { box-shadow: 0 0 30px rgba(48,122,190,0.18), 0 4px 24px rgba(0,0,0,0.12); }
+}
+.pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
 /* ─── Safe Area for Sticky CTA (iPhone notch) ─── */
 .safe-area-pb {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));

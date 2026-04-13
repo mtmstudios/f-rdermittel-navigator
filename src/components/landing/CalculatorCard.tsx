@@ -139,7 +139,7 @@ export default function CalculatorSection() {
     <section
       id="rechner"
       ref={sectionRef}
-      className="relative py-16 md:py-24 overflow-hidden bg-[hsl(var(--background))]"
+      className="relative pt-4 pb-16 md:pt-8 md:pb-24 overflow-hidden bg-[hsl(var(--background))]"
     >
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
@@ -176,7 +176,7 @@ export default function CalculatorSection() {
                 />
                 <SliderCard
                   icon={<Coins size={18} className="text-[#307abe]" />}
-                  label="F&E Personalkosten / Jahr"
+                  label="Personalkosten Entwicklung / Jahr"
                   value={kostenPersonal}
                   displayValue={fmtShort(kostenPersonal)}
                   min={50000} max={4000000} step={10000}
@@ -189,13 +189,13 @@ export default function CalculatorSection() {
                     className="flex items-center gap-2 text-[13px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors pl-1 cursor-pointer"
                   >
                     <ChevronDown size={14} />
-                    Externe F&E-Aufträge hinzufügen
+                    Externe Entwicklungsaufträge hinzufügen
                   </button>
                 ) : (
                   <div>
                     <SliderCard
                       icon={<Building2 size={18} className="text-[#307abe]" />}
-                      label="Externe F&E"
+                      label="Externe Aufträge"
                       sublabel="(zu 60 % förderfähig)"
                       value={kostenExtern}
                       displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
@@ -208,7 +208,7 @@ export default function CalculatorSection() {
                       className="flex items-center gap-1.5 text-[12px] text-muted-foreground hover:text-foreground transition-colors mt-2 pl-1 cursor-pointer"
                     >
                       <ChevronDown size={13} className="rotate-180" />
-                      Externe F&E entfernen
+                      Externe Aufträge entfernen
                     </button>
                   </div>
                 )}
@@ -225,10 +225,10 @@ export default function CalculatorSection() {
                     {view === "calc" ? (
                       <>
                         {/* Result Display */}
-                        <div className="mb-6">
-                          <div className="flex items-center gap-2 mb-2">
+                        <div className="mb-6 text-center">
+                          <div className="flex items-center justify-center gap-2 mb-2">
                             <TrendingUp size={14} className="text-[#57a7dd]" />
-                            <p className="text-[11px] text-white/50 uppercase tracking-wider font-medium">Förderpotenzial pro Jahr</p>
+                            <p className="text-[11px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
                           </div>
                           <p className="text-[42px] font-extrabold text-white tracking-tight leading-none">
                             {fmt(animPerYear)}
@@ -329,23 +329,23 @@ export default function CalculatorSection() {
               <div className="animate-fade-in">
                 {/* ── Result Card (top, always visible) ── */}
                 <div
-                  className="rounded-2xl overflow-hidden shadow-lg mb-5"
+                  className="rounded-2xl overflow-hidden pulse-glow mb-5"
                   style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
                 >
-                  <div className="px-5 py-5">
-                    <div className="flex items-center gap-2 mb-1.5">
+                  <div className="px-5 py-6 text-center">
+                    <div className="flex items-center justify-center gap-2 mb-2">
                       <TrendingUp size={13} className="text-[#57a7dd]" />
                       <p className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
                     </div>
-                    <p className="text-[28px] sm:text-[34px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
+                    <p className="text-[32px] sm:text-[38px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
                       {fmt(animPerYear)}
                     </p>
-                    <div className="flex items-center gap-4 text-[12px]">
+                    <div className="flex items-center justify-center gap-4 text-[12px]">
                       <span className="text-white/40">
                         3 Jahre: <span className="text-white font-semibold">{fmtShort(animTotal)}</span>
                       </span>
                       <span className="text-white/40">
-                        Förderquote: <span className="text-white font-semibold">{isKmu ? "35" : "25"} %</span>
+                        Quote: <span className="text-white font-semibold">{isKmu ? "35" : "25"} %</span>
                       </span>
                     </div>
                   </div>
@@ -366,7 +366,7 @@ export default function CalculatorSection() {
                   />
                   <SliderCard
                     icon={<Coins size={16} className="text-[#307abe]" />}
-                    label="F&E Personalkosten"
+                    label="Personalkosten Entwicklung"
                     value={kostenPersonal}
                     displayValue={fmtShort(kostenPersonal)}
                     min={50000} max={4000000} step={10000}
@@ -379,13 +379,13 @@ export default function CalculatorSection() {
                       className="flex items-center gap-1.5 text-[12px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors cursor-pointer"
                     >
                       <ChevronDown size={13} />
-                      Externe F&E hinzufügen
+                      Externe Aufträge hinzufügen
                     </button>
                   ) : (
                     <div>
                       <SliderCard
                         icon={<Building2 size={16} className="text-[#307abe]" />}
-                        label="Externe F&E"
+                        label="Externe Aufträge"
                         sublabel="60 % förderfähig"
                         value={kostenExtern}
                         displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
@@ -398,7 +398,7 @@ export default function CalculatorSection() {
                         className="flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors mt-1.5 cursor-pointer"
                       >
                         <ChevronDown size={12} className="rotate-180" />
-                        Entfernen
+                        Externe entfernen
                       </button>
                     </div>
                   )}
