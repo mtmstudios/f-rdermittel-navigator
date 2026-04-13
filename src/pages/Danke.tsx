@@ -87,86 +87,106 @@ export default function Danke() {
         <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-[hsl(var(--background))] via-[hsl(var(--background)/0.6)] to-transparent" />
       </section>
 
-      {/* ═══ NEXT STEPS + EMAIL INFO ═══ */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
-          backgroundSize: "32px 32px",
-        }} />
-
-        <div className="max-w-[800px] mx-auto px-6 md:px-8 relative">
-          {/* Email + Termin — two cards side by side */}
-          <div className="grid sm:grid-cols-2 gap-4 mb-14 md:mb-18">
-            {/* Email notification */}
-            <div className="rounded-2xl p-px bg-gradient-to-b from-[#307abe]/20 to-transparent">
-              <div className="bg-white rounded-2xl p-5 md:p-6 h-full">
-                <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center mb-4">
-                  <Mail size={18} className="text-[#307abe]" />
-                </div>
-                <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1.5">
-                  Informationsflyer per E-Mail
-                </p>
-                <p className="text-[13px] text-muted-foreground leading-[1.7]">
-                  Sie erhalten in wenigen Minuten unseren ausführlichen Flyer — inklusive Rechenbeispiele und Checkliste.
-                </p>
-              </div>
-            </div>
-
-            {/* Termin buchen */}
-            <div className="rounded-2xl p-px bg-gradient-to-b from-[#307abe]/20 to-transparent">
-              <div className="bg-white rounded-2xl p-5 md:p-6 h-full flex flex-col">
-                <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center mb-4">
-                  <Calendar size={18} className="text-[#307abe]" />
-                </div>
-                <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1.5">
-                  Sie möchten nicht warten?
-                </p>
-                <p className="text-[13px] text-muted-foreground leading-[1.7] mb-4">
-                  Buchen Sie direkt einen Termin für Ihre kostenlose Ersteinschätzung.
-                </p>
-                <a
-                  href="#termin"
-                  className="mt-auto inline-flex items-center gap-2 text-[13px] font-semibold text-[#307abe] hover:text-[#2968a3] transition-colors"
-                >
-                  Termin vereinbaren
-                  <ArrowRight size={14} />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* How it continues */}
-          <div className="text-center mb-10 md:mb-12">
+      {/* ═══ WHAT HAPPENS NOW ═══ */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-[640px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-10 md:mb-14">
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#307abe] mb-3">
-              So geht es weiter
+              Was jetzt passiert
             </p>
             <h2 className="text-[24px] sm:text-[28px] md:text-[34px] font-bold tracking-[-0.02em]">
               Die nächsten Schritte
             </h2>
           </div>
 
-          {/* Steps as cards */}
-          <div className="grid sm:grid-cols-3 gap-4 md:gap-5">
-            {steps.map((s, i) => (
-              <div key={i} className="relative bg-white rounded-2xl border border-border/60 p-5 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                {/* Step number watermark */}
-                <span className="absolute top-3 right-4 text-[36px] font-black text-[#307abe]/[0.05] leading-none select-none">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-
-                <div className="w-10 h-10 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center mb-4"
-                  style={{ boxShadow: "0 0 16px rgba(48,122,190,0.08)" }}>
-                  <s.icon size={17} className="text-[#307abe]" />
+          {/* Timeline — clean vertical flow */}
+          <div className="space-y-0">
+            {/* Step 1: Email */}
+            <div className="flex gap-5">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                  <Mail size={16} className="text-emerald-500" />
                 </div>
-
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1.5 block">
-                  Schritt {i + 1}
-                </span>
-                <h3 className="text-[15px] md:text-[16px] font-bold mb-2 tracking-[-0.01em]">{s.title}</h3>
-                <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">{s.text}</p>
+                <div className="w-px flex-1 bg-gradient-to-b from-emerald-500/15 to-border my-2" />
               </div>
-            ))}
+              <div className="pb-8">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600/60 mb-1 block">Sofort</span>
+                <h3 className="text-[16px] md:text-[17px] font-bold mb-1.5 tracking-[-0.01em]">Informationsflyer per E-Mail</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.7]">
+                  Sie erhalten in wenigen Minuten unseren ausführlichen Flyer zur Forschungszulage — inklusive Rechenbeispiele und Checkliste.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2: Rückmeldung */}
+            <div className="flex gap-5">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center flex-shrink-0"
+                  style={{ boxShadow: "0 0 16px rgba(48,122,190,0.08)" }}>
+                  <Clock size={16} className="text-[#307abe]" />
+                </div>
+                <div className="w-px flex-1 bg-gradient-to-b from-[#307abe]/15 to-border my-2" />
+              </div>
+              <div className="pb-8">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1 block">Innerhalb von 48h</span>
+                <h3 className="text-[16px] md:text-[17px] font-bold mb-1.5 tracking-[-0.01em]">Wir melden uns bei Ihnen</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.7]">
+                  Wir prüfen Ihre Angaben und kontaktieren Sie telefonisch oder per E-Mail für eine erste Einschätzung.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3: Ersteinschätzung */}
+            <div className="flex gap-5">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center flex-shrink-0"
+                  style={{ boxShadow: "0 0 16px rgba(48,122,190,0.08)" }}>
+                  <FileSearch size={16} className="text-[#307abe]" />
+                </div>
+                <div className="w-px flex-1 bg-gradient-to-b from-[#307abe]/15 to-border my-2" />
+              </div>
+              <div className="pb-8">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1 block">30 Minuten</span>
+                <h3 className="text-[16px] md:text-[17px] font-bold mb-1.5 tracking-[-0.01em]">Kostenlose Ersteinschätzung</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.7]">
+                  Gemeinsam klären wir, ob und in welchem Umfang Ihr Unternehmen förderfähig ist.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4: Antrag */}
+            <div className="flex gap-5">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center flex-shrink-0"
+                  style={{ boxShadow: "0 0 16px rgba(48,122,190,0.08)" }}>
+                  <Send size={16} className="text-[#307abe]" />
+                </div>
+              </div>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1 block">Danach</span>
+                <h3 className="text-[16px] md:text-[17px] font-bold mb-1.5 tracking-[-0.01em]">Antragstellung & Auszahlung</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.7]">
+                  Wir übernehmen den gesamten Prozess — von der Dokumentation bis zur Auszahlung. Erfolgsbasiert.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Termin — integrated, not separate */}
+          <div className="mt-10 md:mt-14 pt-8 border-t border-border text-center">
+            <p className="text-[15px] md:text-[17px] font-semibold text-foreground mb-2">
+              Sie möchten direkt loslegen?
+            </p>
+            <p className="text-[13px] text-muted-foreground mb-5">
+              Buchen Sie einen Termin — wir melden uns zum vereinbarten Zeitpunkt.
+            </p>
+            <a
+              href="#termin"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[14px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20"
+            >
+              <Calendar size={16} />
+              Termin vereinbaren
+            </a>
           </div>
         </div>
       </section>
