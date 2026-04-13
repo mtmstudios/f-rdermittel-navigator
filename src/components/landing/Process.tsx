@@ -1,11 +1,11 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone, FileSearch, Send, BadgeEuro } from "lucide-react";
 
 const steps = [
-  { num: "01", title: "Ersteinschätzung", text: "In einem kurzen Gespräch klären wir, ob Ihr Unternehmen grundsätzlich förderfähig ist.", time: "30 Min." },
-  { num: "02", title: "Projektanalyse", text: "Wir identifizieren alle förderfähigen Projekte und bereiten die Dokumentation prüfungssicher auf.", time: "2–4 Wochen" },
-  { num: "03", title: "Antragstellung", text: "Wir übernehmen den gesamten Antragsprozess — von der Bescheinigungsstelle bis zum Finanzamt.", time: "4–8 Wochen" },
-  { num: "04", title: "Auszahlung", text: "Die Forschungszulage wird mit Ihrer Steuerschuld verrechnet oder direkt ausgezahlt.", time: "Ergebnis" },
+  { icon: Phone, title: "Ersteinschätzung", text: "In einem kurzen Gespräch klären wir, ob Ihr Unternehmen grundsätzlich förderfähig ist.", time: "30 Min." },
+  { icon: FileSearch, title: "Projektanalyse", text: "Wir identifizieren alle förderfähigen Projekte und bereiten die Dokumentation prüfungssicher auf.", time: "2–4 Wochen" },
+  { icon: Send, title: "Antragstellung", text: "Wir übernehmen den gesamten Antragsprozess — von der Bescheinigungsstelle bis zum Finanzamt.", time: "4–8 Wochen" },
+  { icon: BadgeEuro, title: "Auszahlung", text: "Die Forschungszulage wird mit Ihrer Steuerschuld verrechnet oder direkt ausgezahlt.", time: "Ergebnis" },
 ];
 
 export default function Process() {
@@ -27,17 +27,21 @@ export default function Process() {
 
           <div className="grid md:grid-cols-4 gap-0">
             {steps.map((s, i) => (
-              <div key={i} className="relative px-6 pb-10 md:pb-0 text-center md:text-left">
+              <div key={i} className="relative px-5 md:px-6 pb-10 md:pb-0 text-center md:text-left">
                 {/* Connector line */}
                 {i < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-[18px] left-[calc(50%+20px)] right-0 h-px bg-border" />
+                  <div className="hidden md:block absolute top-[22px] left-[calc(50%+24px)] right-0 h-px bg-gradient-to-r from-[#307abe]/20 to-border" />
                 )}
 
-                {/* Step number circle */}
-                <div className="w-9 h-9 rounded-full bg-white border-2 border-[#307abe] flex items-center justify-center mb-5 relative z-10 mx-auto md:mx-0">
-                  <span className="text-[12px] font-bold text-[#307abe]">{s.num}</span>
+                {/* Step icon circle */}
+                <div className="w-11 h-11 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center mb-5 relative z-10 mx-auto md:mx-0"
+                  style={{ boxShadow: "0 0 20px rgba(48,122,190,0.08)" }}>
+                  <s.icon size={18} className="text-[#307abe]" />
                 </div>
 
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-2 block">
+                  Schritt {String(i + 1).padStart(2, "0")}
+                </span>
                 <h3 className="text-[17px] font-bold mb-2 tracking-[-0.01em]">{s.title}</h3>
                 <p className="text-[14px] text-muted-foreground leading-[1.7] mb-3">{s.text}</p>
                 <span className="inline-block text-[12px] font-semibold text-[#307abe] bg-[#307abe]/[0.06] px-3 py-1 rounded-full">

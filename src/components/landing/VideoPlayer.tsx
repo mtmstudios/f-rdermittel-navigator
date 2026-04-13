@@ -97,14 +97,6 @@ export default function VideoPlayer({
             )}
           </div>
 
-          {/* Subtle hint — no URL yet */}
-          {!embedUrl && (
-            <div className={`absolute bottom-2.5 left-0 right-0 text-center text-[9px] tracking-wider uppercase ${
-              isDark ? "text-white/[0.08]" : "text-muted-foreground/20"
-            }`}>
-              Video wird geladen
-            </div>
-          )}
         </div>
       </div>
     </button>

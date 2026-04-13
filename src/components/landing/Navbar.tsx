@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
 
@@ -19,7 +20,7 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent shadow-none"
       }`}
     >
-      <div className="container-main flex items-center justify-center md:justify-between h-[72px]">
+      <div className="container-main flex items-center justify-between h-[72px]">
         <a href="/" className="flex items-center gap-3">
           <img
             src={PCA_LOGO}
@@ -29,13 +30,15 @@ export default function Navbar() {
           <span className={`hidden sm:inline text-[12px] font-medium tracking-wide transition-colors duration-500 border-l pl-3 ${
             scrolled ? "text-muted-foreground border-black/[0.06]" : "text-white/35 border-white/10"
           }`}>
-            Forschungszulage
+            Förderberatung
           </span>
         </a>
+
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           <a
             href="#rechner"
-            className={`hidden md:inline nav-link text-[13px] font-medium transition-colors duration-300 ${
+            className={`nav-link text-[13px] font-medium transition-colors duration-300 ${
               scrolled ? "text-foreground/60 hover:text-foreground" : "text-white/40 hover:text-white/80"
             }`}
           >
@@ -43,13 +46,26 @@ export default function Navbar() {
           </a>
           <a
             href="#prozess"
-            className={`hidden md:inline nav-link text-[13px] font-medium transition-colors duration-300 ${
+            className={`nav-link text-[13px] font-medium transition-colors duration-300 ${
               scrolled ? "text-foreground/60 hover:text-foreground" : "text-white/40 hover:text-white/80"
             }`}
           >
             Ablauf
           </a>
         </div>
+
+        {/* Mobile CTA — always visible */}
+        <a
+          href="#rechner"
+          className={`md:hidden flex items-center gap-1.5 text-[12px] font-semibold px-4 py-2 rounded-lg transition-all duration-300 ${
+            scrolled
+              ? "bg-[#307abe] text-white shadow-sm"
+              : "bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm"
+          }`}
+        >
+          Berechnen
+          <ArrowRight size={13} />
+        </a>
       </div>
     </nav>
   );

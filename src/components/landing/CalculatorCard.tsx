@@ -158,7 +158,7 @@ export default function CalculatorSection() {
               Berechnen Sie Ihr Förderpotenzial
             </h2>
             <p className="text-[12px] sm:text-[15px] text-muted-foreground max-w-md mx-auto">
-              Passen Sie die Werte an — Ihr Ergebnis aktualisiert sich sofort.
+              Erfahren Sie in 30 Sekunden, wie viel Förderung Ihnen zusteht.
             </p>
           </div>
 

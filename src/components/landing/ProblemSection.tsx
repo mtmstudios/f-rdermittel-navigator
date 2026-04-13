@@ -38,17 +38,19 @@ export default function ProblemSection() {
             {myths.map((c, i) => (
               <div
                 key={i}
-                className="group relative bg-white rounded-2xl border border-border p-6 md:p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className="group relative rounded-2xl p-px bg-gradient-to-b from-border to-transparent hover:from-[#307abe]/30 hover:to-[#307abe]/5 transition-all duration-500"
               >
-                <span className="text-[40px] md:text-[48px] font-black text-[#307abe]/[0.06] absolute top-4 right-5 leading-none select-none">
-                  {c.num}
-                </span>
-                <div className="relative">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#307abe] mb-3 md:mb-4 block">
-                    Mythos {c.num}
+                <div className="relative bg-white rounded-2xl p-6 md:p-8 h-full transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1">
+                  <span className="text-[40px] md:text-[48px] font-black text-[#307abe]/[0.06] absolute top-4 right-5 leading-none select-none">
+                    {c.num}
                   </span>
-                  <h3 className="text-[16px] md:text-[18px] font-bold mb-2 md:mb-3 tracking-[-0.01em]">{c.title}</h3>
-                  <p className="text-[14px] md:text-[15px] text-muted-foreground leading-[1.7]">{c.text}</p>
+                  <div className="relative">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#307abe] mb-3 md:mb-4 block">
+                      Mythos {c.num}
+                    </span>
+                    <h3 className="text-[16px] md:text-[18px] font-bold mb-2 md:mb-3 tracking-[-0.01em]">{c.title}</h3>
+                    <p className="text-[14px] md:text-[15px] text-muted-foreground leading-[1.7]">{c.text}</p>
+                  </div>
                 </div>
               </div>
             ))}

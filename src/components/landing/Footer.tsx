@@ -27,10 +27,10 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col items-center gap-3 text-center">
           <p className="text-[11px] text-white/25 leading-relaxed">
-            © 2026 PCA Partners Steuerberatungs- und Wirtschaftsprüfungsgesellschaft. Alle Rechte vorbehalten.
+            © 2026 PCA Audit & Tax GmbH WPG StBG. Alle Rechte vorbehalten.
           </p>
           <p className="text-[10px] text-white/15 max-w-[400px]">
-            Die Inhalte dieser Seite stellen keine Steuerberatung dar. Diese Seite wird von der PCA Partners Wirtschaftsprüfungsgesellschaft betrieben.
+            Die Inhalte dieser Seite stellen keine Steuerberatung dar. Betrieben von der PCA Audit & Tax GmbH Wirtschaftsprüfungsgesellschaft Steuerberatungsgesellschaft.
           </p>
         </div>
       </div>

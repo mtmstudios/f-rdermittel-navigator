@@ -16,7 +16,7 @@ export default function Hero() {
         style={{ background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)" }}
       />
 
-      <div className="relative pt-28 pb-48 md:pt-44 md:pb-56">
+      <div className="relative pt-28 pb-56 md:pt-44 md:pb-64">
         <div className="container-main" ref={ref}>
           <div className="fade-in-up max-w-[800px] mx-auto text-center">
             <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] text-white/50 mb-6 md:mb-10">
@@ -34,7 +34,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[560px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
-              Die Forschungszulage — ein gesetzlich verankertes Förderinstrument.
+              Staatliche Förderung für Ihre Entwicklungsarbeit — gesetzlich verankert.
               <span className="block mt-1">Bis zu 4 Jahre rückwirkend. Keine Labore nötig. Kostenlose Ersteinschätzung.</span>
             </p>
 
@@ -64,7 +64,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom gradient fade — extended for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 md:h-64 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
     </section>
   );
 }
