@@ -16,7 +16,7 @@ export default function Hero() {
         style={{ background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)" }}
       />
 
-      <div className="relative pt-28 pb-14 md:pt-44 md:pb-24">
+      <div className="relative pt-28 pb-24 md:pt-44 md:pb-32">
         <div className="container-main" ref={ref}>
           <div className="fade-in-up max-w-[800px] mx-auto text-center">
             <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] text-white/50 mb-6 md:mb-10">

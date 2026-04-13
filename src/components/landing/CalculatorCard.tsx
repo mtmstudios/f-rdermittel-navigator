@@ -86,27 +86,23 @@ export default function CalculatorSection() {
 
   const formCardRef = useRef<HTMLDivElement>(null);
 
-  /* On mobile: scroll form card into view (not section top). On desktop: scroll section. */
+  /* On mobile: flip in-place (no scroll). On desktop: scroll to section top. */
   const switchToForm = () => {
     setView("form");
-    setTimeout(() => {
-      if (window.innerWidth < 768 && formCardRef.current) {
-        formCardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
-      } else {
+    if (window.innerWidth >= 768) {
+      setTimeout(() => {
         sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 80);
+      }, 80);
+    }
   };
 
   const switchToCalc = () => {
     setView("calc");
-    setTimeout(() => {
-      if (window.innerWidth < 768 && sectionRef.current) {
-        sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
+    if (window.innerWidth >= 768) {
+      setTimeout(() => {
         sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 80);
+      }, 80);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -332,184 +328,171 @@ export default function CalculatorSection() {
           </div>
 
           {/* ═══════════════════════════════════════════════
-              MOBILE LAYOUT
+              MOBILE LAYOUT — Flip Card
               ═══════════════════════════════════════════════ */}
-          <div className="md:hidden max-w-[480px] mx-auto">
-            {view === "calc" ? (
-              <div className="animate-fade-in">
-                {/* ── Result Card (top, always visible) ── */}
-                <div
-                  className="rounded-2xl overflow-hidden pulse-glow mb-5"
-                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
-                >
-                  <div className="px-5 py-6 text-center">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <TrendingUp size={13} className="text-[#57a7dd]" />
-                      <p className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
-                    </div>
-                    <p className="text-[32px] sm:text-[38px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
-                      {fmt(animPerYear)}
-                    </p>
-                    <div className="flex items-center justify-center gap-4 text-[12px]">
-                      <span className="text-white/40">
-                        3 Jahre: <span className="text-white font-semibold">{fmtShort(animTotal)}</span>
-                      </span>
-                      <span className="text-white/40">
-                        Quote: <span className="text-white font-semibold">{isKmu ? "35" : "25"} %</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
+          <div className="md:hidden max-w-[480px] mx-auto" ref={formCardRef}>
+            {/* Flip container */}
+            <div className="flip-container">
+              <div className={`flip-inner ${view === "form" ? "flipped" : ""}`}
+                style={{ minHeight: view === "form" ? "auto" : undefined }}>
 
-                {/* ── Sliders ── */}
-                <div className="space-y-3 mb-5">
-                  <SliderCard
-                    icon={<Users size={16} className="text-[#307abe]" />}
-                    label="Mitarbeiter"
-                    value={mitarbeiter}
-                    displayValue={String(mitarbeiter)}
-                    min={1} max={500} step={1}
-                    onChange={setMitarbeiter}
-                    badge={isKmu ? "KMU · 35 %" : "25 %"}
-                    badgeVariant={isKmu ? "green" : "gray"}
-                    compact
-                  />
-                  <SliderCard
-                    icon={<Coins size={16} className="text-[#307abe]" />}
-                    label="Personalkosten Entwicklung"
-                    value={kostenPersonal}
-                    displayValue={fmtShort(kostenPersonal)}
-                    min={50000} max={4000000} step={10000}
-                    onChange={setKostenPersonal}
-                    compact
-                  />
-                  {!showExtern ? (
-                    <button
-                      onClick={() => setShowExtern(true)}
-                      className="flex items-center gap-1.5 text-[12px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors cursor-pointer"
-                    >
-                      <ChevronDown size={13} />
-                      Externe Aufträge hinzufügen
-                    </button>
-                  ) : (
-                    <div>
-                      <SliderCard
-                        icon={<Building2 size={16} className="text-[#307abe]" />}
-                        label="Externe Aufträge"
-                        sublabel="60 % förderfähig"
-                        value={kostenExtern}
-                        displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
-                        min={0} max={2000000} step={10000}
-                        onChange={setKostenExtern}
-                        compact
-                      />
-                      <button
-                        onClick={() => { setShowExtern(false); setKostenExtern(0); }}
-                        className="flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors mt-1.5 cursor-pointer"
-                      >
-                        <ChevronDown size={12} className="rotate-180" />
-                        Externe entfernen
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                {/* ── CTA ── */}
-                <button
-                  onClick={switchToForm}
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
-                >
-                  Erstgespräch vereinbaren
-                  <ArrowRight size={16} />
-                </button>
-                <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
-                  Kostenlos · Antwort innerhalb von 24h
-                </p>
-              </div>
-            ) : (
-              /* ══ FORM VIEW — replaces calculator on mobile ══ */
-              <div className="animate-fade-in" ref={formCardRef}>
-                <div
-                  className="relative rounded-2xl overflow-hidden shadow-xl"
-                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
-                >
-                  <div className="absolute top-0 right-0 w-40 h-40 opacity-15 pointer-events-none"
-                    style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }} />
-
-                  <div className="relative p-6">
-                    {/* Big result */}
-                    <div className="text-center mb-6">
-                      <p className="text-[11px] text-white/40 uppercase tracking-wider font-medium mb-2">Ihr Förderpotenzial</p>
-                      <p className="text-[32px] sm:text-[40px] font-extrabold text-white tracking-tight leading-none mb-2">
+                {/* ═══ FRONT: Calculator ═══ */}
+                <div className={`flip-front ${view === "form" ? "invisible" : ""}`}>
+                  {/* Result Card */}
+                  <div
+                    className="rounded-2xl overflow-hidden pulse-glow mb-5"
+                    style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                  >
+                    <div className="px-5 py-6 text-center">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <TrendingUp size={13} className="text-[#57a7dd]" />
+                        <p className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
+                      </div>
+                      <p className="text-[32px] sm:text-[38px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
                         {fmt(animPerYear)}
                       </p>
-                      <p className="text-[13px] text-white/40">pro Jahr</p>
-                    </div>
-
-                    {/* Stats row */}
-                    <div className="grid grid-cols-3 gap-3 mb-6">
-                      <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
-                        <p className="text-[14px] sm:text-[16px] font-bold text-white">{fmtShort(animTotal)}</p>
-                        <p className="text-[10px] text-white/35 mt-0.5">3 Jahre</p>
-                      </div>
-                      <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
-                        <p className="text-[14px] sm:text-[16px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
-                        <p className="text-[10px] text-white/35 mt-0.5">Förderquote</p>
-                      </div>
-                      <div className="text-center bg-white/[0.05] rounded-xl py-3 px-2 border border-white/[0.06]">
-                        <p className="text-[14px] sm:text-[16px] font-bold text-[#57a7dd]">2020</p>
-                        <p className="text-[10px] text-white/35 mt-0.5">Rückwirkend</p>
+                      <div className="flex items-center justify-center gap-4 text-[12px]">
+                        <span className="text-white/40">
+                          3 Jahre: <span className="text-white font-semibold">{fmtShort(animTotal)}</span>
+                        </span>
+                        <span className="text-white/40">
+                          Quote: <span className="text-white font-semibold">{isKmu ? "35" : "25"} %</span>
+                        </span>
                       </div>
                     </div>
-
-                    <div className="h-px bg-white/10 mb-5" />
-
-                    <p className="text-[14px] text-white/60 font-medium mb-4 text-center">
-                      Persönliche Einschätzung durch einen Wirtschaftsprüfer:
-                    </p>
-
-                    <form onSubmit={handleSubmit} className="space-y-3">
-                      <input required type="text" placeholder="Ihr Name" value={form.name}
-                        onChange={e => update("name", e.target.value)}
-                        className="calc-input" autoComplete="name" />
-                      <input required type="text" placeholder="Unternehmen" value={form.unternehmen}
-                        onChange={e => update("unternehmen", e.target.value)}
-                        className="calc-input" autoComplete="organization" />
-                      <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
-                        onChange={e => update("telefon", e.target.value)}
-                        className="calc-input" autoComplete="tel" />
-                      <input required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
-                        onChange={e => update("email", e.target.value)}
-                        className="calc-input" autoComplete="email" />
-                      <button type="submit" disabled={submitting}
-                        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer">
-                        {submitting ? "Wird gesendet..." : (
-                          <>Erstgespräch anfordern<ArrowRight size={16} /></>
-                        )}
-                      </button>
-                    </form>
-
-                    <div className="flex items-center justify-center gap-4 mt-4">
-                      <p className="flex items-center gap-1.5 text-[11px] text-white/30">
-                        <Lock size={10} /> Vertraulich
-                      </p>
-                      <p className="flex items-center gap-1.5 text-[11px] text-white/30">
-                        <Check size={10} /> Kostenlos
-                      </p>
-                    </div>
-
-                    <button onClick={switchToCalc}
-                      className="flex items-center gap-1.5 text-[12px] text-white/25 hover:text-white/40 transition-colors mt-5 mx-auto cursor-pointer">
-                      <ArrowLeft size={12} /> Werte anpassen
-                    </button>
                   </div>
+
+                  {/* Sliders */}
+                  <div className="space-y-3 mb-5">
+                    <SliderCard
+                      icon={<Users size={16} className="text-[#307abe]" />}
+                      label="Mitarbeiter"
+                      value={mitarbeiter}
+                      displayValue={String(mitarbeiter)}
+                      min={1} max={500} step={1}
+                      onChange={setMitarbeiter}
+                      badge={isKmu ? "KMU · 35 %" : "25 %"}
+                      badgeVariant={isKmu ? "green" : "gray"}
+                      compact
+                    />
+                    <SliderCard
+                      icon={<Coins size={16} className="text-[#307abe]" />}
+                      label="Personalkosten Entwicklung"
+                      value={kostenPersonal}
+                      displayValue={fmtShort(kostenPersonal)}
+                      min={50000} max={4000000} step={10000}
+                      onChange={setKostenPersonal}
+                      compact
+                    />
+                    {!showExtern ? (
+                      <button
+                        onClick={() => setShowExtern(true)}
+                        className="flex items-center gap-1.5 text-[12px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors cursor-pointer"
+                      >
+                        <ChevronDown size={13} />
+                        Externe Aufträge hinzufügen
+                      </button>
+                    ) : (
+                      <div>
+                        <SliderCard
+                          icon={<Building2 size={16} className="text-[#307abe]" />}
+                          label="Externe Aufträge"
+                          sublabel="60 % förderfähig"
+                          value={kostenExtern}
+                          displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
+                          min={0} max={2000000} step={10000}
+                          onChange={setKostenExtern}
+                          compact
+                        />
+                        <button
+                          onClick={() => { setShowExtern(false); setKostenExtern(0); }}
+                          className="flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors mt-1.5 cursor-pointer"
+                        >
+                          <ChevronDown size={12} className="rotate-180" />
+                          Externe entfernen
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={switchToForm}
+                    className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
+                  >
+                    Erstgespräch vereinbaren
+                    <ArrowRight size={16} />
+                  </button>
+                  <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
+                    Kostenlos · Antwort innerhalb von 24h
+                  </p>
                 </div>
 
-                <p className="text-center text-[10px] text-muted-foreground/50 mt-4">
-                  Unverbindliche Erstschätzung. Keine Steuerberatung.
-                </p>
+                {/* ═══ BACK: Compact Form (fits one screen) ═══ */}
+                <div className={`flip-back ${view === "calc" ? "invisible" : ""}`}
+                  style={{ position: view === "form" ? "relative" : "absolute" }}>
+                  <div
+                    className="rounded-2xl overflow-hidden shadow-xl"
+                    style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                  >
+                    <div className="p-5">
+                      {/* Compact result — one line */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          <TrendingUp size={14} className="text-[#57a7dd]" />
+                          <span className="text-[11px] text-white/40 uppercase tracking-wider font-medium">Förderpotenzial</span>
+                        </div>
+                        <p className="text-[24px] font-extrabold text-white tracking-tight leading-none">
+                          {fmt(animPerYear)}<span className="text-[12px] text-white/30 font-medium"> /Jahr</span>
+                        </p>
+                      </div>
+
+                      <div className="h-px bg-white/10 mb-4" />
+
+                      <form onSubmit={handleSubmit} className="space-y-2.5">
+                        <div className="grid grid-cols-2 gap-2.5">
+                          <input required type="text" placeholder="Name" value={form.name}
+                            onChange={e => update("name", e.target.value)}
+                            className="calc-input !py-3 !text-[14px]" autoComplete="name" />
+                          <input required type="text" placeholder="Firma" value={form.unternehmen}
+                            onChange={e => update("unternehmen", e.target.value)}
+                            className="calc-input !py-3 !text-[14px]" autoComplete="organization" />
+                        </div>
+                        <input required type="tel" inputMode="tel" placeholder="Telefonnummer" value={form.telefon}
+                          onChange={e => update("telefon", e.target.value)}
+                          className="calc-input !py-3 !text-[14px]" autoComplete="tel" />
+                        <input required type="email" inputMode="email" placeholder="E-Mail-Adresse" value={form.email}
+                          onChange={e => update("email", e.target.value)}
+                          className="calc-input !py-3 !text-[14px]" autoComplete="email" />
+                        <button type="submit" disabled={submitting}
+                          className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer">
+                          {submitting ? "Wird gesendet..." : (
+                            <>Erstgespräch anfordern<ArrowRight size={16} /></>
+                          )}
+                        </button>
+                      </form>
+
+                      <div className="flex items-center justify-center gap-4 mt-3">
+                        <p className="flex items-center gap-1.5 text-[10px] text-white/25">
+                          <Lock size={9} /> Vertraulich
+                        </p>
+                        <p className="flex items-center gap-1.5 text-[10px] text-white/25">
+                          <Check size={9} /> Kostenlos
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button onClick={switchToCalc}
+                    className="flex items-center gap-1.5 text-[12px] text-muted-foreground hover:text-foreground transition-colors mt-4 mx-auto cursor-pointer">
+                    <ArrowLeft size={12} /> Werte anpassen
+                  </button>
+                </div>
               </div>
-            )}
+            </div>
+
+            <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
+              Unverbindliche Erstschätzung. Keine Steuerberatung.
+            </p>
           </div>
         </div>
       </div>

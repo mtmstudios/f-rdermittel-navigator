@@ -54,33 +54,16 @@ export default function ProblemSection() {
             ))}
           </div>
 
-          {/* One-Shot Warning — high-impact visual */}
-          <div className="relative rounded-2xl overflow-hidden mb-8 md:mb-10 border border-red-500/10">
-            <div className="absolute inset-0 bg-[#0a0a0a]" />
-
-            <div className="relative px-6 py-10 md:px-10 md:py-12">
-              {/* Warning icon */}
-              <div className="flex justify-center mb-5">
-                <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/15 flex items-center justify-center">
-                  <AlertTriangle size={22} className="text-red-400" />
-                </div>
-              </div>
-
-              {/* Headline */}
-              <h3 className="text-[24px] sm:text-[28px] md:text-[34px] font-extrabold text-white text-center mb-5 tracking-[-0.02em] leading-[1.15]">
-                Ein Antrag. <span className="text-red-400">Eine Chance.</span>
-              </h3>
-
-              <p className="text-[14px] md:text-[16px] text-white/50 leading-[1.8] text-center max-w-[520px] mx-auto mb-6">
-                Man hat nur <span className="text-white font-semibold">einmal die Möglichkeit</span>, den Antrag zu stellen.
-                Wird er abgelehnt, gibt es <span className="text-white font-semibold">keine zweite Chance</span> für diese Projekte.
+          {/* One-Shot Hinweis — dezent aber klar */}
+          <div className="flex items-start gap-3 bg-amber-50 border border-amber-200/60 rounded-xl p-5 md:p-6 mb-8 md:mb-10">
+            <AlertTriangle size={18} className="text-amber-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1">
+                Wichtig: Ein Antrag — eine Chance.
               </p>
-
-              <div className="w-10 h-px bg-white/10 mx-auto mb-6" />
-
-              <p className="text-[13px] md:text-[14px] text-white/30 text-center max-w-[460px] mx-auto">
-                Eigenanträge entsprechen oft nicht der nötigen Qualität.
-                Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
+              <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
+                Man hat nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine
+                zweite Chance für diese Projekte. Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
               </p>
             </div>
           </div>
