@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { ArrowRight } from "lucide-react";
 
 const steps = [
   { num: "01", title: "Ersteinschätzung", text: "In einem kurzen Gespräch klären wir, ob Ihr Unternehmen grundsätzlich förderfähig ist.", time: "30 Min." },
@@ -14,7 +15,7 @@ export default function Process() {
     <section id="prozess" className="section-padding section-alt">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <div className="text-center max-w-[600px] mx-auto mb-16">
+          <div className="text-center max-w-[600px] mx-auto mb-12 md:mb-16">
             <p className="eyebrow">Ablauf</p>
             <h2 className="text-[28px] md:text-[38px] font-bold leading-[1.1] mb-5 tracking-[-0.02em]">
               Von der Ersteinschätzung bis zur Auszahlung
@@ -44,6 +45,18 @@ export default function Process() {
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12 md:mt-16">
+            <a
+              href="#rechner"
+              className="btn-cta text-[14px] md:text-[15px] !py-4 !px-8"
+            >
+              Starten Sie mit Schritt 1
+              <ArrowRight size={16} className="ml-2" />
+            </a>
+            <p className="text-[12px] text-muted-foreground mt-3">30 Minuten · kostenlos · unverbindlich</p>
           </div>
         </div>
       </div>

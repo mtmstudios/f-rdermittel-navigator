@@ -2,7 +2,6 @@ import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import CalculatorSection from "@/components/landing/CalculatorCard";
 import TrustSection from "@/components/landing/TrustSection";
-import SocialProof from "@/components/landing/SocialProof";
 import ProblemSection from "@/components/landing/ProblemSection";
 import CustomerStory from "@/components/landing/CustomerStory";
 import Process from "@/components/landing/Process";
@@ -18,7 +17,6 @@ export default function Index() {
       <Hero />
       <CalculatorSection />
       <TrustSection />
-      <SocialProof />
       <ProblemSection />
       <CustomerStory />
       <Process />
