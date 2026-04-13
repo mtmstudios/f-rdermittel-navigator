@@ -84,7 +84,7 @@ export default function Danke() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-[hsl(var(--background))] via-[hsl(var(--background)/0.6)] to-transparent" />
       </section>
 
       {/* ═══ NEXT STEPS + EMAIL INFO ═══ */}
