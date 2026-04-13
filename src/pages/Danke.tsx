@@ -47,7 +47,7 @@ export default function Danke() {
           style={{ background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)" }}
         />
 
-        <div className="relative pt-20 pb-44 md:pt-28 md:pb-52">
+        <div className="relative pt-20 pb-36 md:pt-28 md:pb-44">
           <div className="max-w-[700px] mx-auto px-6 md:px-8">
             {/* Logo */}
             <div className="flex justify-center mb-10 md:mb-14">
