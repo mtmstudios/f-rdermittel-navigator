@@ -49,9 +49,6 @@ export default function Navbar() {
           >
             Ablauf
           </a>
-          <a href="#kontakt" className="btn-primary !py-2.5 !px-6 !text-[13px] !rounded-lg">
-            Ersteinschätzung
-          </a>
         </div>
       </div>
     </nav>

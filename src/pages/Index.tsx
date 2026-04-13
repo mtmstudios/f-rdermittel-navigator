@@ -25,9 +25,9 @@ export default function Index() {
       <TargetGroups />
       <Process />
       <WhyUs />
+      <PodcastSection />
       <ContactForm />
       <FAQ />
-      <PodcastSection />
       <Footer />
       <StickyCTA />
     </>
