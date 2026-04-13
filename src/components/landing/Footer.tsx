@@ -5,13 +5,8 @@ export default function Footer() {
     <footer style={{ background: "#050505" }} className="dark-section py-14">
       <div className="container-main">
         {/* Top */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
-          <div className="flex items-center gap-4">
-            <img src={PCA_LOGO} alt="PCA Partners" className="h-6 brightness-0 invert opacity-50" />
-            <span className="text-[12px] text-white/30 border-l border-white/8 pl-4 font-medium tracking-wide">
-              Forschungszulage
-            </span>
-          </div>
+        <div className="flex flex-col items-center gap-8 mb-8">
+          <img src={PCA_LOGO} alt="PCA Partners" className="h-6 brightness-0 invert opacity-50" />
           <div className="flex gap-8 text-[13px]">
             <a href="/impressum" className="text-white/40 hover:text-white/70 transition-colors duration-300">Impressum</a>
             <a href="/datenschutz" className="text-white/40 hover:text-white/70 transition-colors duration-300">Datenschutz</a>
