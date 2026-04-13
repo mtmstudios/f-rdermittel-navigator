@@ -8,7 +8,6 @@ import Process from "@/components/landing/Process";
 import FAQ from "@/components/landing/FAQ";
 import PodcastSection from "@/components/landing/PodcastSection";
 import Footer from "@/components/landing/Footer";
-import StickyCTA from "@/components/landing/StickyCTA";
 
 export default function Index() {
   return (
@@ -20,10 +19,9 @@ export default function Index() {
       <ProblemSection />
       <CustomerStory />
       <Process />
-      <FAQ />
       <PodcastSection />
+      <FAQ />
       <Footer />
-      <StickyCTA />
     </>
   );
 }

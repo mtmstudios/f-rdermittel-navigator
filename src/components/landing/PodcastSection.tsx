@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { ArrowRight } from "lucide-react";
 import VideoPlayer from "./VideoPlayer";
 
 const chapters = [
@@ -59,6 +60,17 @@ export default function PodcastSection() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-10 md:mt-14">
+            <a
+              href="#rechner"
+              className="inline-flex items-center gap-2 text-[14px] md:text-[15px] font-semibold text-[#57a7dd] hover:text-[#7bbce8] transition-colors"
+            >
+              Jetzt Förderpotenzial berechnen
+              <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </div>

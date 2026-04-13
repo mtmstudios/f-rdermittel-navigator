@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Kann ich die Forschungszulage rückwirkend beantragen?",
-    a: "Ja. Projekte der letzten drei Geschäftsjahre können in der Regel noch berücksichtigt werden — rückwirkend bis 2020.",
+    a: "Ja. Projekte der letzten vier Geschäftsjahre können in der Regel noch berücksichtigt werden — bis zu vier Jahre rückwirkend.",
   },
 ];
 
@@ -76,19 +76,6 @@ export default function FAQ() {
             ))}
           </div>
 
-          {/* CTA after FAQ — objections handled, time to convert */}
-          <div className="text-center mt-12 md:mt-16">
-            <p className="text-[15px] md:text-[17px] text-muted-foreground mb-5">
-              Noch unsicher? Lassen Sie sich unverbindlich beraten.
-            </p>
-            <a
-              href="#rechner"
-              className="btn-cta text-[14px] md:text-[15px] !py-4 !px-8"
-            >
-              Förderpotenzial berechnen
-              <ArrowRight size={16} className="ml-2" />
-            </a>
-          </div>
         </div>
       </div>
     </section>

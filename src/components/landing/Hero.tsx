@@ -35,7 +35,7 @@ export default function Hero() {
 
             <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[560px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
               Die Forschungszulage — ein gesetzlich verankertes Förderinstrument.
-              <span className="block mt-1">Rückwirkend bis 2020. Keine Labore nötig. Kostenlose Ersteinschätzung.</span>
+              <span className="block mt-1">Bis zu 4 Jahre rückwirkend. Keine Labore nötig. Kostenlose Ersteinschätzung.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-14 px-4 sm:px-0">

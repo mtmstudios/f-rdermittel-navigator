@@ -256,8 +256,8 @@ export default function CalculatorSection() {
 
                         <div className="bg-white/[0.06] rounded-xl px-4 py-3 mb-6 border border-white/[0.06]">
                           <p className="text-[12px] text-white/60 leading-relaxed">
-                            <span className="text-[#57a7dd] font-semibold">Rückwirkend</span> bis 2020 —
-                            bis zu <span className="text-white font-semibold">{fmtShort(perYear * 5)}</span> möglich.
+                            <span className="text-[#57a7dd] font-semibold">Bis zu 4 Jahre rückwirkend</span> —
+                            bis zu <span className="text-white font-semibold">{fmtShort(perYear * 4)}</span> möglich.
                           </p>
                         </div>
 
