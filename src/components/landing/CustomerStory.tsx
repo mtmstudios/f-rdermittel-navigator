@@ -56,7 +56,7 @@ export default function CustomerStory() {
             <div className="order-1 md:order-2">
               <div className="glow-blue">
                 <VideoPlayer
-                  label="Elias von der Linden erklärt den Case"
+                  label="Alexander Bernauer erklärt den Case"
                   duration="1:45 Min."
                   variant="dark"
                 />
