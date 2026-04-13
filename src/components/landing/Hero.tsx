@@ -16,7 +16,7 @@ export default function Hero() {
         style={{ background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)" }}
       />
 
-      <div className="relative pt-28 pb-24 md:pt-44 md:pb-32">
+      <div className="relative pt-28 pb-36 md:pt-44 md:pb-44">
         <div className="container-main" ref={ref}>
           <div className="fade-in-up max-w-[800px] mx-auto text-center">
             <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] text-white/50 mb-6 md:mb-10">
@@ -64,7 +64,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom gradient fade — extended for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 md:h-36 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-36 md:h-48 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
     </section>
   );
 }
