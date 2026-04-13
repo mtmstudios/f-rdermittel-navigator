@@ -24,7 +24,7 @@ export default function PodcastSection() {
           <div className="text-center max-w-[540px] mx-auto mb-8 md:mb-12">
             <p className="eyebrow-dark">Deep Dive</p>
             <h2 className="text-[22px] sm:text-[26px] md:text-[34px] font-bold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
-              Forschungszulage — ausführlich erklärt
+              Forschungszulage — <br /> ausführlich erklärt
             </h2>
             <p className="text-[14px] md:text-[16px] text-white/40 leading-[1.7]">
               Im Gespräch beantworten unsere Wirtschaftsprüfer die häufigsten Fragen zum Ablauf, den Voraussetzungen und typischen Fehlern.
