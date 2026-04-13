@@ -33,7 +33,7 @@ export default function PodcastSection() {
           </div>
 
           {/* Video + Chapters Side by Side on Desktop */}
-          <div className="max-w-[900px] mx-auto grid md:grid-cols-[1fr,240px] gap-5 md:gap-6 items-start">
+          <div className="max-w-[960px] mx-auto grid md:grid-cols-[1fr,260px] gap-5 md:gap-8 items-start">
             {/* Video */}
             <div className="glow-blue">
               <VideoPlayer

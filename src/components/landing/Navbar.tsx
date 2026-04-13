@@ -21,20 +21,15 @@ export default function Navbar() {
       }`}
     >
       <div className="container-main flex items-center justify-between h-[72px]">
-        <a href="/" className="flex items-center gap-3">
+        <a href="/" className="flex items-center">
           <img
             src={PCA_LOGO}
             alt="PCA Partners"
             className={`h-7 transition-all duration-500 ${scrolled ? "" : "brightness-0 invert"}`}
           />
-          <span className={`hidden sm:inline text-[12px] font-medium tracking-wide transition-colors duration-500 border-l pl-3 ${
-            scrolled ? "text-muted-foreground border-black/[0.06]" : "text-white/35 border-white/10"
-          }`}>
-            Förderberatung
-          </span>
         </a>
 
-        {/* Desktop nav */}
+        {/* Desktop nav + CTA */}
         <div className="hidden md:flex items-center gap-8">
           <a
             href="#rechner"
@@ -52,9 +47,20 @@ export default function Navbar() {
           >
             Ablauf
           </a>
+          <a
+            href="#rechner"
+            className={`flex items-center gap-1.5 text-[13px] font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 ${
+              scrolled
+                ? "bg-[#307abe] text-white shadow-sm hover:bg-[#2968a3]"
+                : "bg-white/10 text-white/90 border border-white/15 backdrop-blur-sm hover:bg-white/15"
+            }`}
+          >
+            Erstgespräch vereinbaren
+            <ArrowRight size={14} />
+          </a>
         </div>
 
-        {/* Mobile CTA — always visible */}
+        {/* Mobile CTA */}
         <a
           href="#rechner"
           className={`md:hidden flex items-center gap-1.5 text-[12px] font-semibold px-4 py-2 rounded-lg transition-all duration-300 ${

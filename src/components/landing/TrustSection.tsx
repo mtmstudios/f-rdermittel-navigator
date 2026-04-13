@@ -61,23 +61,23 @@ export default function TrustSection() {
           <div className="max-w-[960px] mx-auto">
 
             {/* Team */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mb-10 md:mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 mb-10 md:mb-12">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
-                  <span className="text-[18px] font-bold text-[#57a7dd]">AB</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[18px] md:text-[20px] font-bold text-[#57a7dd]">AB</span>
                 </div>
                 <div>
-                  <p className="text-[14px] font-semibold text-white">Alexander Bernauer</p>
-                  <p className="text-[11px] text-white/40">Geschäftsführender Gesellschafter</p>
+                  <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
+                  <p className="text-[11px] md:text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
-                  <span className="text-[18px] font-bold text-[#57a7dd]">EvdL</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[18px] md:text-[20px] font-bold text-[#57a7dd]">EvdL</span>
                 </div>
                 <div>
-                  <p className="text-[14px] font-semibold text-white">Elias von der Linden</p>
-                  <p className="text-[11px] text-white/40">Forschungs- & Entwicklungszulage</p>
+                  <p className="text-[14px] md:text-[15px] font-semibold text-white">Elias von der Linden</p>
+                  <p className="text-[11px] md:text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
                 </div>
               </div>
             </div>

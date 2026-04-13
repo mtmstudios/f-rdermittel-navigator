@@ -2,7 +2,7 @@ const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_ho
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#050505" }} className="dark-section py-14">
+    <footer style={{ background: "#050505" }} className="dark-section py-14 md:py-20">
       <div className="container-main">
         {/* Top */}
         <div className="flex flex-col items-center gap-6 mb-8">
