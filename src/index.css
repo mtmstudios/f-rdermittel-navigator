@@ -290,3 +290,8 @@ nav {
   mask-image: linear-gradient(to right, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, black 85%, transparent);
 }
+
+/* ─── Safe Area for Sticky CTA (iPhone notch) ─── */
+.safe-area-pb {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}

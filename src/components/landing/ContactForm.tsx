@@ -4,6 +4,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useUtmParams } from "@/hooks/useUtmParams";
 import { Lock, Check, ArrowRight } from "lucide-react";
 import CustomSelect from "./CustomSelect";
+import VideoPlayer from "./VideoPlayer";
 
 export default function ContactForm() {
   const ref = useScrollAnimation();
@@ -54,85 +55,35 @@ export default function ContactForm() {
   return (
     <section
       id="kontakt"
-      className="section-padding dark-section relative grain overflow-hidden"
+      className="py-16 md:py-32 dark-section relative grain overflow-hidden"
       style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)" }}
     >
       {/* Glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.04] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] opacity-[0.04] pointer-events-none"
         style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }}
       />
 
       <div className="container-main relative" ref={ref}>
         <div className="fade-in-up">
           {/* Header */}
-          <div className="text-center max-w-[600px] mx-auto mb-14">
+          <div className="text-center max-w-[600px] mx-auto mb-8 md:mb-14">
             <p className="eyebrow-dark">Kontakt</p>
-            <h2 className="text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-5 tracking-[-0.02em]">
+            <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-4 md:mb-5 tracking-[-0.02em]">
               Kostenlose Ersteinschätzung
             </h2>
-            <p className="text-[17px] text-white/50 leading-[1.7]">
-              In einem kurzen Gespräch prüfen wir, ob und in welchem Umfang die Forschungszulage für Ihr Unternehmen relevant ist.
+            <p className="text-[15px] md:text-[17px] text-white/50 leading-[1.7]">
+              In einem kurzen Gespräch prüfen wir, ob die Forschungszulage für Ihr Unternehmen relevant ist.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-[1.1fr,1fr] gap-12 items-start max-w-[1000px] mx-auto">
-            {/* Left — Video + Trust */}
-            <div>
-              {/* VSL Video Placeholder */}
-              <div className="rounded-2xl overflow-hidden mb-8 glow-blue">
-                <div className="bg-gradient-to-br from-[#0a0a0e] to-[#14141e] aspect-video flex items-center justify-center group cursor-pointer relative border border-white/5">
-                  <div className="absolute inset-0 opacity-5" style={{
-                    backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-                    backgroundSize: "24px 24px"
-                  }} />
-                  <div className="text-center relative z-10">
-                    <div className="w-[72px] h-[72px] rounded-full bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-white/15 group-hover:scale-105 transition-all duration-300">
-                      <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                        <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
-                      </svg>
-                    </div>
-                    <p className="text-[14px] text-white/40 font-medium">Erklärvideo ansehen</p>
-                    <p className="text-[12px] text-white/25 mt-1">ca. 7 Min.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Trust Signals */}
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#307abe]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check size={12} className="text-[#57a7dd]" />
-                  </div>
-                  <p className="text-[14px] text-white/50 leading-relaxed">
-                    <span className="text-white/70 font-medium">Antwort innerhalb von 24 Stunden</span> — persönlich, kein Autoresponder
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#307abe]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check size={12} className="text-[#57a7dd]" />
-                  </div>
-                  <p className="text-[14px] text-white/50 leading-relaxed">
-                    <span className="text-white/70 font-medium">Gespräch mit einem Wirtschaftsprüfer</span> — keine Vertriebler
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#307abe]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check size={12} className="text-[#57a7dd]" />
-                  </div>
-                  <p className="text-[14px] text-white/50 leading-relaxed">
-                    <span className="text-white/70 font-medium">Vollständig kostenlos und unverbindlich</span> — keine versteckten Kosten
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right — Form */}
+          <div className="grid md:grid-cols-[1.1fr,1fr] gap-8 md:gap-12 items-start max-w-[1000px] mx-auto">
+            {/* Form — shows first on mobile */}
             <form
               onSubmit={handleSubmit}
-              className="bg-white rounded-2xl p-8 shadow-2xl"
+              className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl order-1 md:order-2"
             >
-              <h3 className="font-bold text-[18px] mb-6 tracking-[-0.01em]">Ihre Kontaktdaten</h3>
+              <h3 className="font-bold text-[17px] sm:text-[18px] mb-5 md:mb-6 tracking-[-0.01em]">Ihre Kontaktdaten</h3>
 
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <div>
@@ -186,7 +137,7 @@ export default function ContactForm() {
               </div>
 
               <button type="submit" disabled={submitting}
-                className="btn-cta w-full text-center disabled:opacity-60 !text-[15px] group !py-[16px]">
+                className="btn-cta w-full text-center disabled:opacity-60 !text-[15px] group !py-4">
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {submitting ? "Wird gesendet..." : (
                     <>
@@ -197,10 +148,41 @@ export default function ContactForm() {
                 </span>
               </button>
 
-              <p className="flex items-center gap-1.5 text-[11px] text-muted-foreground mt-4 justify-center">
+              <p className="flex items-center gap-1.5 text-[11px] text-muted-foreground mt-3 sm:mt-4 justify-center">
                 <Lock size={11} /> Ihre Daten werden vertraulich behandelt.
               </p>
             </form>
+
+            {/* Video + Trust — shows second on mobile */}
+            <div className="order-2 md:order-1">
+              {/* VSL Video */}
+              <div className="mb-6 md:mb-8">
+                <VideoPlayer
+                  /* TODO: Replace with YouTube/Vimeo URL after upload of "Long Version ohne Logo.mp4" */
+                  label="Erklärvideo ansehen"
+                  duration="1:15 Min."
+                  variant="dark"
+                />
+              </div>
+
+              {/* Trust Signals */}
+              <div className="space-y-3 md:space-y-4">
+                {[
+                  { bold: "Antwort innerhalb von 24 Stunden", sub: "— persönlich, kein Autoresponder" },
+                  { bold: "Gespräch mit einem Wirtschaftsprüfer", sub: "— keine Vertriebler" },
+                  { bold: "Vollständig kostenlos und unverbindlich", sub: "— keine versteckten Kosten" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-[#307abe]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check size={12} className="text-[#57a7dd]" />
+                    </div>
+                    <p className="text-[13px] sm:text-[14px] text-white/50 leading-relaxed">
+                      <span className="text-white/70 font-medium">{item.bold}</span> {item.sub}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -80,27 +80,27 @@ export default function Calculator() {
 
       <div className="container-main relative" ref={ref}>
         <div className="fade-in-up">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 md:mb-14">
             <p className="eyebrow-dark">Förder-Rechner</p>
-            <h2 className="text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
+            <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-3 md:mb-4 tracking-[-0.02em]">
               Unverbindliche Erstschätzung
             </h2>
-            <p className="text-[17px] text-white/50 max-w-md mx-auto leading-[1.7]">
+            <p className="text-[15px] md:text-[17px] text-white/50 max-w-md mx-auto leading-[1.7]">
               Berechnen Sie in wenigen Schritten Ihr mögliches Förderpotenzial.
             </p>
           </div>
 
           <div className="max-w-[700px] mx-auto bg-white rounded-2xl shadow-2xl">
             {/* Progress */}
-            <div className="px-8 pt-8 pb-0">
-              <div className="flex gap-2 mb-8">
+            <div className="px-5 sm:px-8 pt-6 sm:pt-8 pb-0">
+              <div className="flex gap-2 mb-6 sm:mb-8">
                 {[0, 1, 2].map(i => (
                   <div key={i} className={`h-1 flex-1 rounded-full transition-colors ${i <= step ? "bg-[hsl(222,47%,16%)]" : "bg-gray-100"}`} />
                 ))}
               </div>
             </div>
 
-            <div className="px-8 pb-8">
+            <div className="px-5 sm:px-8 pb-6 sm:pb-8">
               {/* Step 1 */}
               {step === 0 && (
                 <div>
@@ -111,7 +111,7 @@ export default function Calculator() {
                       <button
                         key={b}
                         onClick={() => { setBranche(b); setStep(1); }}
-                        className={`rounded-lg border px-4 py-3 text-[14px] font-medium text-left transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe] ${
+                        className={`rounded-xl border px-4 py-3.5 sm:py-3 text-[14px] font-medium text-left transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#307abe] ${
                           branche === b
                             ? "border-[#307abe] bg-[#307abe]/5 text-foreground"
                             : "border-gray-100 text-muted-foreground hover:border-gray-200 hover:bg-gray-50"
