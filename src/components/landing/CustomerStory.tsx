@@ -8,7 +8,7 @@ export default function CustomerStory() {
     <section className="section-padding">
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          <p className="eyebrow">Praxisbeispiel</p>
+          <p className="eyebrow text-center">Praxisbeispiel</p>
 
           {/* Mobile: Video first, then text. Desktop: Side by side */}
           <div className="grid md:grid-cols-[1fr,1.1fr] gap-8 md:gap-14 items-center">
