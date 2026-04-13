@@ -88,20 +88,51 @@ export default function Danke() {
       </section>
 
       {/* ═══ NEXT STEPS + EMAIL INFO ═══ */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[800px] mx-auto px-6 md:px-8">
-          {/* Email notification */}
-          <div className="flex items-start gap-4 bg-[#307abe]/[0.04] border border-[#307abe]/10 rounded-2xl p-5 md:p-6 mb-12 md:mb-16">
-            <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <Mail size={18} className="text-[#307abe]" />
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{
+          backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+          backgroundSize: "32px 32px",
+        }} />
+
+        <div className="max-w-[800px] mx-auto px-6 md:px-8 relative">
+          {/* Email + Termin — two cards side by side */}
+          <div className="grid sm:grid-cols-2 gap-4 mb-14 md:mb-18">
+            {/* Email notification */}
+            <div className="rounded-2xl p-px bg-gradient-to-b from-[#307abe]/20 to-transparent">
+              <div className="bg-white rounded-2xl p-5 md:p-6 h-full">
+                <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center mb-4">
+                  <Mail size={18} className="text-[#307abe]" />
+                </div>
+                <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1.5">
+                  Informationsflyer per E-Mail
+                </p>
+                <p className="text-[13px] text-muted-foreground leading-[1.7]">
+                  Sie erhalten in wenigen Minuten unseren ausführlichen Flyer — inklusive Rechenbeispiele und Checkliste.
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1">
-                Informationsflyer per E-Mail
-              </p>
-              <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
-                Sie erhalten in wenigen Minuten eine E-Mail mit unserem ausführlichen Informationsflyer zur Forschungszulage — inklusive Rechenbeispiele und Checkliste.
-              </p>
+
+            {/* Termin buchen */}
+            <div className="rounded-2xl p-px bg-gradient-to-b from-[#307abe]/20 to-transparent">
+              <div className="bg-white rounded-2xl p-5 md:p-6 h-full flex flex-col">
+                <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center mb-4">
+                  <Calendar size={18} className="text-[#307abe]" />
+                </div>
+                <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1.5">
+                  Sie möchten nicht warten?
+                </p>
+                <p className="text-[13px] text-muted-foreground leading-[1.7] mb-4">
+                  Buchen Sie direkt einen Termin für Ihre kostenlose Ersteinschätzung.
+                </p>
+                <a
+                  href="#termin"
+                  className="mt-auto inline-flex items-center gap-2 text-[13px] font-semibold text-[#307abe] hover:text-[#2968a3] transition-colors"
+                >
+                  Termin vereinbaren
+                  <ArrowRight size={14} />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -115,45 +146,27 @@ export default function Danke() {
             </h2>
           </div>
 
-          <div className="space-y-0 mb-10 md:mb-14">
+          {/* Steps as cards */}
+          <div className="grid sm:grid-cols-3 gap-4 md:gap-5">
             {steps.map((s, i) => (
-              <div key={i} className="flex gap-5 md:gap-6">
-                {/* Timeline */}
-                <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center flex-shrink-0"
-                    style={{ boxShadow: "0 0 16px rgba(48,122,190,0.08)" }}>
-                    <s.icon size={17} className="text-[#307abe]" />
-                  </div>
-                  {i < steps.length - 1 && (
-                    <div className="w-px flex-1 bg-gradient-to-b from-[#307abe]/15 to-border my-2" />
-                  )}
+              <div key={i} className="relative bg-white rounded-2xl border border-border/60 p-5 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                {/* Step number watermark */}
+                <span className="absolute top-3 right-4 text-[36px] font-black text-[#307abe]/[0.05] leading-none select-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <div className="w-10 h-10 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center mb-4"
+                  style={{ boxShadow: "0 0 16px rgba(48,122,190,0.08)" }}>
+                  <s.icon size={17} className="text-[#307abe]" />
                 </div>
 
-                {/* Content */}
-                <div className={`${i === steps.length - 1 ? "pb-0" : "pb-8"}`}>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1 block">
-                    Schritt {i + 1}
-                  </span>
-                  <h3 className="text-[16px] md:text-[17px] font-bold mb-1.5 tracking-[-0.01em]">{s.title}</h3>
-                  <p className="text-[14px] text-muted-foreground leading-[1.7]">{s.text}</p>
-                </div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1.5 block">
+                  Schritt {i + 1}
+                </span>
+                <h3 className="text-[15px] md:text-[16px] font-bold mb-2 tracking-[-0.01em]">{s.title}</h3>
+                <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">{s.text}</p>
               </div>
             ))}
-          </div>
-
-          {/* Termin buchen — secondary */}
-          <div className="text-center">
-            <p className="text-[14px] text-muted-foreground mb-4">
-              Sie möchten nicht warten?
-            </p>
-            <a
-              href="#termin"
-              className="inline-flex items-center gap-2 text-[14px] md:text-[15px] font-semibold text-[#307abe] hover:text-[#2968a3] transition-colors"
-            >
-              <Calendar size={16} />
-              Direkt einen Termin vereinbaren
-              <ArrowRight size={15} />
-            </a>
           </div>
         </div>
       </section>
