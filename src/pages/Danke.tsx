@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CheckCircle, Phone, FileSearch, Send, BadgeEuro, Mail, Clock, ArrowRight } from "lucide-react";
+import { CheckCircle, Clock, FileSearch, Send, Mail, ArrowRight, Calendar } from "lucide-react";
 import VideoPlayer from "@/components/landing/VideoPlayer";
 
 const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
@@ -7,23 +7,18 @@ const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_ho
 const steps = [
   {
     icon: Clock,
-    title: "Rückmeldung innerhalb von 24h",
-    text: "Einer unserer Wirtschaftsprüfer wird sich persönlich bei Ihnen melden.",
+    title: "Rückmeldung innerhalb von 48 Stunden",
+    text: "Wir prüfen Ihre Angaben und melden uns telefonisch oder per E-Mail bei Ihnen.",
   },
   {
-    icon: Phone,
+    icon: FileSearch,
     title: "Kostenlose Ersteinschätzung",
     text: "In ca. 30 Minuten klären wir gemeinsam, ob und in welchem Umfang Ihr Unternehmen förderfähig ist.",
   },
   {
-    icon: FileSearch,
-    title: "Projektanalyse & Dokumentation",
-    text: "Wir identifizieren alle förderfähigen Projekte und bereiten die Unterlagen prüfungssicher auf.",
-  },
-  {
     icon: Send,
     title: "Antragstellung & Begleitung",
-    text: "Wir übernehmen den gesamten Prozess — bis zur Auszahlung. Erfolgsbasiert.",
+    text: "Wir übernehmen den gesamten Prozess — von der Dokumentation bis zur Auszahlung. Erfolgsbasiert.",
   },
 ];
 
@@ -37,7 +32,6 @@ const chapters = [
 ];
 
 export default function Danke() {
-  /* Scroll to top on mount */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -53,7 +47,7 @@ export default function Danke() {
           style={{ background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)" }}
         />
 
-        <div className="relative pt-20 pb-20 md:pt-28 md:pb-28">
+        <div className="relative pt-20 pb-44 md:pt-28 md:pb-52">
           <div className="max-w-[700px] mx-auto px-6 md:px-8">
             {/* Logo */}
             <div className="flex justify-center mb-10 md:mb-14">
@@ -71,14 +65,26 @@ export default function Danke() {
                 Ihre Anfrage ist eingegangen.
               </h1>
 
-              <p className="text-[15px] sm:text-[17px] md:text-[19px] text-white/50 max-w-[520px] mx-auto leading-[1.7] font-light">
-                Vielen Dank für Ihr Interesse. Wir prüfen Ihre Angaben und melden uns persönlich bei Ihnen.
+              <p className="text-[15px] sm:text-[17px] md:text-[19px] text-white/50 max-w-[520px] mx-auto leading-[1.7] font-light mb-8 md:mb-10">
+                Vielen Dank für Ihr Interesse. Wir prüfen Ihre Angaben und melden uns innerhalb von 48 Stunden bei Ihnen.
+              </p>
+
+              {/* Termin buchen CTA */}
+              <a
+                href="#termin"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20"
+              >
+                <Calendar size={17} />
+                Jetzt Termin buchen
+              </a>
+              <p className="text-[12px] text-white/25 mt-3">
+                Oder wir melden uns bei Ihnen — Sie müssen nichts weiter tun.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 bg-gradient-to-t from-[hsl(var(--background))] to-transparent" />
       </section>
 
       {/* ═══ NEXT STEPS + EMAIL INFO ═══ */}
@@ -94,7 +100,7 @@ export default function Danke() {
                 Informationsflyer per E-Mail
               </p>
               <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
-                Sie erhalten in wenigen Minuten eine E-Mail mit unserem ausführlichen Informationsflyer zur Forschungszulage — inklusive Rechenbeispiele und Checkliste für Ihr Erstgespräch.
+                Sie erhalten in wenigen Minuten eine E-Mail mit unserem ausführlichen Informationsflyer zur Forschungszulage — inklusive Rechenbeispiele und Checkliste.
               </p>
             </div>
           </div>
@@ -109,7 +115,7 @@ export default function Danke() {
             </h2>
           </div>
 
-          <div className="space-y-0">
+          <div className="space-y-0 mb-10 md:mb-14">
             {steps.map((s, i) => (
               <div key={i} className="flex gap-5 md:gap-6">
                 {/* Timeline */}
@@ -124,9 +130,9 @@ export default function Danke() {
                 </div>
 
                 {/* Content */}
-                <div className={`pb-8 ${i === steps.length - 1 ? "pb-0" : ""}`}>
+                <div className={`${i === steps.length - 1 ? "pb-0" : "pb-8"}`}>
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1 block">
-                    {i === 0 ? "Jetzt" : `Schritt ${i}`}
+                    Schritt {i + 1}
                   </span>
                   <h3 className="text-[16px] md:text-[17px] font-bold mb-1.5 tracking-[-0.01em]">{s.title}</h3>
                   <p className="text-[14px] text-muted-foreground leading-[1.7]">{s.text}</p>
@@ -134,128 +140,127 @@ export default function Danke() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ═══ TEAM: Your contacts ═══ */}
-      <section className="py-14 md:py-20 section-alt">
-        <div className="max-w-[700px] mx-auto px-6 md:px-8">
-          <div className="text-center mb-8 md:mb-10">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#307abe] mb-3">
-              Ihre Ansprechpartner
+          {/* Termin buchen — secondary */}
+          <div className="text-center">
+            <p className="text-[14px] text-muted-foreground mb-4">
+              Sie möchten nicht warten?
             </p>
-            <h2 className="text-[22px] sm:text-[26px] md:text-[30px] font-bold tracking-[-0.02em]">
-              Wer sich bei Ihnen meldet
-            </h2>
+            <a
+              href="#termin"
+              className="inline-flex items-center gap-2 text-[14px] md:text-[15px] font-semibold text-[#307abe] hover:text-[#2968a3] transition-colors"
+            >
+              <Calendar size={16} />
+              Direkt einen Termin vereinbaren
+              <ArrowRight size={15} />
+            </a>
           </div>
-
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
-            {/* Alexander Bernauer */}
-            <div className="bg-white rounded-2xl border border-border p-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 rounded-full bg-[#307abe]/10 flex items-center justify-center border border-[#307abe]/15 mx-auto mb-4">
-                <span className="text-[20px] font-bold text-[#307abe]">AB</span>
-              </div>
-              <p className="text-[16px] font-bold text-foreground mb-1">Alexander Bernauer</p>
-              <p className="text-[12px] text-[#307abe] font-semibold mb-2">Geschäftsführender Gesellschafter</p>
-              <p className="text-[13px] text-muted-foreground leading-[1.7]">
-                Verantwortet die strategische Beratung und Qualitätssicherung aller Anträge.
-              </p>
-            </div>
-
-            {/* Elias von der Linden */}
-            <div className="bg-white rounded-2xl border border-border p-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 rounded-full bg-[#307abe]/10 flex items-center justify-center border border-[#307abe]/15 mx-auto mb-4">
-                <span className="text-[20px] font-bold text-[#307abe]">EvdL</span>
-              </div>
-              <p className="text-[16px] font-bold text-foreground mb-1">Elias von der Linden</p>
-              <p className="text-[12px] text-[#307abe] font-semibold mb-2">Forschungs- & Entwicklungszulage</p>
-              <p className="text-[13px] text-muted-foreground leading-[1.7]">
-                Spezialisiert auf die fachliche Einordnung und Dokumentation förderfähiger Projekte.
-              </p>
-            </div>
-          </div>
-
-          <p className="text-center text-[12px] text-muted-foreground/60 mt-5 font-medium tracking-wide">
-            PCA Partners · München & Passau
-          </p>
         </div>
       </section>
 
-      {/* ═══ DEEP DIVE VIDEO ═══ */}
+      {/* ═══ TEAM + DEEP DIVE — combined dark section into footer ═══ */}
       <section
-        className="py-16 md:py-24 dark-section relative grain overflow-hidden"
-        style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)" }}
+        className="dark-section relative grain overflow-hidden"
+        style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 30%, #0f1118 60%, #050505 100%)" }}
       >
-        <div className="max-w-[900px] mx-auto px-6 md:px-8">
-          <div className="text-center max-w-[540px] mx-auto mb-8 md:mb-12">
-            <p className="eyebrow-dark">Vorbereitung für Ihr Erstgespräch</p>
-            <h2 className="text-[22px] sm:text-[26px] md:text-[32px] font-bold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
-              Erfahren Sie vorab, wie die Forschungszulage funktioniert
-            </h2>
-            <p className="text-[14px] md:text-[15px] text-white/40 leading-[1.7]">
-              In 17 Minuten erklären unsere Wirtschaftsprüfer alles, was Sie für das Erstgespräch wissen sollten.
+        {/* Team */}
+        <div className="pt-16 md:pt-24 pb-14 md:pb-20">
+          <div className="max-w-[700px] mx-auto px-6 md:px-8">
+            <div className="text-center mb-8 md:mb-10">
+              <p className="eyebrow-dark">PCA Partners</p>
+              <h2 className="text-[22px] sm:text-[26px] md:text-[30px] font-bold text-white tracking-[-0.02em]">
+                Ihre Ansprechpartner
+              </h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+              {/* Alexander Bernauer */}
+              <div className="glass-card text-center">
+                <div className="w-16 h-16 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10 mx-auto mb-4">
+                  <span className="text-[20px] font-bold text-[#57a7dd]">AB</span>
+                </div>
+                <p className="text-[16px] font-bold text-white mb-1">Alexander Bernauer</p>
+                <p className="text-[12px] text-[#57a7dd] font-semibold mb-2">Geschäftsführender Gesellschafter</p>
+                <p className="text-[13px] text-white/40 leading-[1.7]">
+                  Verantwortet die strategische Beratung und Qualitätssicherung aller Anträge.
+                </p>
+              </div>
+
+              {/* Elias von der Linden */}
+              <div className="glass-card text-center">
+                <div className="w-16 h-16 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10 mx-auto mb-4">
+                  <span className="text-[20px] font-bold text-[#57a7dd]">EvdL</span>
+                </div>
+                <p className="text-[16px] font-bold text-white mb-1">Elias von der Linden</p>
+                <p className="text-[12px] text-[#57a7dd] font-semibold mb-2">Forschungs- & Entwicklungszulage</p>
+                <p className="text-[13px] text-white/40 leading-[1.7]">
+                  Spezialisiert auf die fachliche Einordnung und Dokumentation förderfähiger Projekte.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-center text-[12px] text-white/20 mt-5 font-medium tracking-wide">
+              München & Passau
             </p>
           </div>
-
-          <div className="grid md:grid-cols-[1fr,240px] gap-5 md:gap-6 items-start">
-            <div className="glow-blue">
-              <VideoPlayer
-                label="Gespräch ansehen"
-                duration="17:47 Min."
-                variant="dark"
-              />
-            </div>
-
-            <div className="grid grid-cols-3 md:grid-cols-1 gap-1.5 md:gap-2">
-              {chapters.map((ch, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3 bg-white/[0.04] border border-white/[0.06] rounded-lg md:rounded-xl px-2.5 py-2 md:px-3.5 md:py-2.5 hover:bg-white/[0.07] transition-colors duration-200 cursor-pointer"
-                >
-                  <span className="text-[10px] md:text-[11px] font-mono text-[#57a7dd] font-semibold flex-shrink-0">
-                    {ch.time}
-                  </span>
-                  <span className="text-[11px] md:text-[13px] text-white/50 font-medium leading-tight">
-                    {ch.title}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
-      </section>
 
-      {/* ═══ TRUST REINFORCEMENT ═══ */}
-      <section className="py-14 md:py-20">
+        {/* Divider */}
         <div className="max-w-[700px] mx-auto px-6 md:px-8">
-          <div className="flex items-center justify-center gap-3 sm:gap-8 flex-wrap text-center">
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-[22px] sm:text-[26px] md:text-[30px] font-bold tracking-tight">500+</span>
-              <span className="text-[11px] sm:text-[12px] text-muted-foreground">Projekte</span>
+          <div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+        </div>
+
+        {/* Deep Dive Video */}
+        <div className="pt-14 md:pt-20 pb-16 md:pb-24">
+          <div className="max-w-[900px] mx-auto px-6 md:px-8">
+            <div className="text-center max-w-[540px] mx-auto mb-8 md:mb-12">
+              <p className="eyebrow-dark">Vorbereitung für Ihr Gespräch</p>
+              <h2 className="text-[22px] sm:text-[26px] md:text-[32px] font-bold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
+                Erfahren Sie vorab, wie die Forschungszulage funktioniert
+              </h2>
+              <p className="text-[14px] md:text-[15px] text-white/40 leading-[1.7]">
+                In 17 Minuten erklären unsere Wirtschaftsprüfer alles Wichtige — Voraussetzungen, Ablauf und typische Fehler.
+              </p>
             </div>
-            <div className="w-px h-6 bg-border hidden sm:block" />
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-[22px] sm:text-[26px] md:text-[30px] font-bold tracking-tight">98 %</span>
-              <span className="text-[11px] sm:text-[12px] text-muted-foreground">Bewilligung</span>
-            </div>
-            <div className="w-px h-6 bg-border hidden sm:block" />
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-[22px] sm:text-[26px] md:text-[30px] font-bold tracking-tight">0 €</span>
-              <span className="text-[11px] sm:text-[12px] text-muted-foreground">Vorabkosten</span>
+
+            <div className="grid md:grid-cols-[1fr,240px] gap-5 md:gap-6 items-start">
+              <div className="glow-blue">
+                <VideoPlayer
+                  label="Gespräch ansehen"
+                  duration="17:47 Min."
+                  variant="dark"
+                />
+              </div>
+
+              <div className="grid grid-cols-3 md:grid-cols-1 gap-1.5 md:gap-2">
+                {chapters.map((ch, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3 bg-white/[0.04] border border-white/[0.06] rounded-lg md:rounded-xl px-2.5 py-2 md:px-3.5 md:py-2.5 hover:bg-white/[0.07] transition-colors duration-200 cursor-pointer"
+                  >
+                    <span className="text-[10px] md:text-[11px] font-mono text-[#57a7dd] font-semibold flex-shrink-0">
+                      {ch.time}
+                    </span>
+                    <span className="text-[11px] md:text-[13px] text-white/50 font-medium leading-tight">
+                      {ch.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ═══ FOOTER ═══ */}
-      <footer style={{ background: "#050505" }} className="dark-section py-10">
-        <div className="max-w-[700px] mx-auto px-6 md:px-8 text-center">
-          <img src={PCA_LOGO} alt="PCA Partners" className="h-6 brightness-0 invert opacity-40 mx-auto mb-4" />
-          <p className="text-[11px] text-white/20">
-            © 2026 PCA Audit & Tax GmbH WPG StBG. Alle Rechte vorbehalten.
-          </p>
+        {/* Footer — flows directly from dark section */}
+        <div className="border-t border-white/[0.04] py-10">
+          <div className="max-w-[700px] mx-auto px-6 md:px-8 text-center">
+            <img src={PCA_LOGO} alt="PCA Partners" className="h-6 brightness-0 invert opacity-30 mx-auto mb-4" />
+            <p className="text-[11px] text-white/15">
+              © 2026 PCA Audit & Tax GmbH WPG StBG. Alle Rechte vorbehalten.
+            </p>
+          </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
