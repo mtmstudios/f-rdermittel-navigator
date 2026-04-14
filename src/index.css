@@ -438,21 +438,21 @@ nav {
   animation: borderRotate 4s linear infinite;
 }
 
-/* ─── 6. Custom Scrollbar ─── */
+/* ─── 6. Custom Scrollbar — dezent ─── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(48,122,190,0.25);
+  background: rgba(0,0,0,0.12);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(48,122,190,0.45);
+  background: rgba(0,0,0,0.25);
 }
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(48,122,190,0.25) transparent;
+  scrollbar-color: rgba(0,0,0,0.12) transparent;
 }
