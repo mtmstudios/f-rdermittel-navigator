@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Was passiert, wenn ich den Antrag selbst stelle und er abgelehnt wird?",
-    a: "Man hat nur einmal die Möglichkeit, den Antrag zu stellen — ein klassischer One-Shot-Ansatz. Wird der Antrag abgelehnt, hat man keine weitere Möglichkeit, diese Projekte fördern zu lassen. Eigenanträge entsprechen oft nicht der Qualität, die für eine Bewilligung nötig ist. Deshalb übernehmen wir die komplette Antragstellung.",
+    a: "Sie haben nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine zweite Chance für diese Projekte. Eigenanträge entsprechen oft nicht der Qualität, die für eine Bewilligung nötig ist. Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.",
   },
   {
     q: "Muss ich Geschäftsgeheimnisse oder vertrauliche Informationen offenlegen?",
@@ -44,7 +44,7 @@ export default function FAQ() {
           <div className="text-center max-w-[600px] mx-auto mb-14">
             <p className="eyebrow">Häufige Fragen</p>
             <h2 className="text-[28px] md:text-[38px] font-bold leading-[1.1] tracking-[-0.02em]">
-              Was Sie wissen sollten
+              Ist mein Unternehmen förderfähig?
             </h2>
           </div>
 

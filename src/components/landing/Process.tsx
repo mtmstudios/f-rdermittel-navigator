@@ -60,10 +60,10 @@ export default function Process() {
               href="#rechner"
               className="btn-cta text-[13px] sm:text-[14px] md:text-[15px] !py-4 !px-8"
             >
-              Starten Sie mit Schritt 1
+              Kostenlose Ersteinschätzung anfordern
               <ArrowRight size={16} className="ml-2" />
             </a>
-            <p className="text-[12px] text-muted-foreground mt-3">30 Minuten · kostenlos · unverbindlich</p>
+            <p className="text-[12px] text-muted-foreground mt-3">30 Minuten · unverbindlich · erfolgsbasiert</p>
           </div>
         </div>
       </div>

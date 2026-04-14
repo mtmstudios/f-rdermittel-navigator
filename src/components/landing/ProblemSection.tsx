@@ -22,14 +22,14 @@ export default function ProblemSection() {
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
           <div className="text-center max-w-[680px] mx-auto mb-10 md:mb-14">
-            <p className="eyebrow">Das Problem</p>
+            <p className="eyebrow">Warum die meisten leer ausgehen</p>
             <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold leading-[1.1] mb-4 md:mb-5 tracking-[-0.02em]">
               Die meisten Unternehmen verschenken Fördergeld.
             </h2>
             <p className="body-text">
-              Die Forschungszulage ist ein gesetzlich verankertes Förderinstrument.
-              Dennoch schließen sich viele mittelständische Unternehmen selbst aus —
-              obwohl sie genau die Art von Arbeit leisten, die förderfähig ist.
+              Jedes Jahr bleiben Millionen an Forschungszulage ungenutzt — weil
+              Geschäftsführer glauben, ihre Arbeit sei nicht förderfähig. Zwei
+              Irrtümer halten sich besonders hartnäckig:
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function ProblemSection() {
           <div className="flex items-start gap-3 bg-[#307abe]/[0.04] border border-[#307abe]/10 rounded-xl p-5 md:p-6 mb-8 md:mb-10 max-w-[860px] mx-auto">
             <Info size={17} className="text-[#307abe]/60 flex-shrink-0 mt-0.5" />
             <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
-              <span className="font-semibold text-foreground/80">Gut zu wissen:</span> Man hat nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine
+              <span className="font-semibold text-foreground/80">Gut zu wissen:</span> Sie haben nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine
               zweite Chance für diese Projekte. Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
             </p>
           </div>

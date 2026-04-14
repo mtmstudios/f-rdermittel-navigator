@@ -45,7 +45,7 @@ export default function TrustSection() {
               alt="PCA Partners"
               className="h-8 md:h-10 brightness-0 invert opacity-60 mx-auto mb-6"
             />
-            <p className="eyebrow-dark">Ihr Ansprechpartner</p>
+            <p className="eyebrow-dark">Ihre Ansprechpartner</p>
             <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-5 tracking-[-0.02em]">
               Wirtschaftsprüfer.
               <span className="block text-white/50">Nicht nur Berater.</span>

@@ -24,14 +24,14 @@ export default function CustomerStory() {
 
               <div className="space-y-4 mb-6 md:mb-8">
                 <p className="body-text text-[15px]">
-                  Das Unternehmen stand vor einer technischen Herausforderung im Produktionsprozess.
-                  Bestehende Verfahren stießen an ihre Grenzen — es mussten neue technologische
-                  Lösungsansätze entwickelt werden.
+                  Ein mittelständischer Industriebetrieb entwickelte neue Fertigungsverfahren,
+                  um bestehende Produktionsgrenzen zu überwinden — klassische Entwicklungsarbeit,
+                  die das Unternehmen selbst nicht als förderfähig eingestuft hätte.
                 </p>
                 <p className="body-text text-[15px]">
-                  Wir haben die Forschungsaktivitäten fachlich eingeordnet, die Förderfähigkeit
-                  bewertet und den gesamten Prozess begleitet — von der inhaltlichen Aufarbeitung
-                  bis zur Einreichung.
+                  Wir haben die Projekte fachlich eingeordnet, die Förderfähigkeit
+                  bewertet und den gesamten Antrag prüfungssicher aufbereitet — von der
+                  inhaltlichen Dokumentation bis zur Einreichung beim Finanzamt.
                 </p>
               </div>
 

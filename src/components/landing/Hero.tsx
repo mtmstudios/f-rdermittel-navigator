@@ -34,7 +34,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[560px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
-              Staatliche Förderung für Ihre Entwicklungsarbeit — gesetzlich verankert.
+              Sie entwickeln Software, Produkte oder Verfahren? Dann steht Ihnen mit hoher Wahrscheinlichkeit die gesetzliche Forschungszulage zu.
               <span className="block mt-1">Bis zu 4 Jahre rückwirkend. Keine Labore nötig. Kostenlose Ersteinschätzung.</span>
             </p>
 
