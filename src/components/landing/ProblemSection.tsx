@@ -1,5 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ArrowRight, AlertTriangle } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 
 const myths = [
   {
@@ -56,18 +56,13 @@ export default function ProblemSection() {
             ))}
           </div>
 
-          {/* One-Shot Hinweis — dezent aber klar */}
-          <div className="flex items-start gap-3 bg-amber-50 border border-amber-200/60 rounded-xl p-5 md:p-6 mb-8 md:mb-10">
-            <AlertTriangle size={18} className="text-amber-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1">
-                Wichtig: Ein Antrag — eine Chance.
-              </p>
-              <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
-                Man hat nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine
-                zweite Chance für diese Projekte. Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
-              </p>
-            </div>
+          {/* One-Shot Hinweis — dezent */}
+          <div className="flex items-start gap-3 bg-[#307abe]/[0.04] border border-[#307abe]/10 rounded-xl p-5 md:p-6 mb-8 md:mb-10">
+            <Info size={17} className="text-[#307abe]/60 flex-shrink-0 mt-0.5" />
+            <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
+              <span className="font-semibold text-foreground/80">Gut zu wissen:</span> Man hat nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine
+              zweite Chance für diese Projekte. Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
+            </p>
           </div>
 
           {/* CTA */}
