@@ -89,12 +89,17 @@ export default function CalculatorSection() {
   /* On mobile: flip in-place (no scroll). On desktop: scroll to section top. */
   const switchToForm = () => {
     setView("form");
-    if (window.innerWidth >= 768) {
-      setTimeout(() => {
-        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 80);
-    }
+    setTimeout(() => {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
   };
+
+  /* Listen for navbar CTA click */
+  useEffect(() => {
+    const handler = () => switchToForm();
+    window.addEventListener("open-form", handler);
+    return () => window.removeEventListener("open-form", handler);
+  });
 
   const switchToCalc = () => {
     setView("calc");

@@ -47,9 +47,11 @@ export default function Navbar() {
           >
             Ablauf
           </a>
-          <a
-            href="#rechner"
-            className={`flex items-center gap-1.5 text-[13px] font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 ${
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent("open-form"));
+            }}
+            className={`flex items-center gap-1.5 text-[13px] font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 cursor-pointer ${
               scrolled
                 ? "bg-[#307abe] text-white shadow-sm hover:bg-[#2968a3]"
                 : "bg-white/10 text-white/90 border border-white/15 backdrop-blur-sm hover:bg-white/15"
@@ -57,7 +59,7 @@ export default function Navbar() {
           >
             Erstgespräch vereinbaren
             <ArrowRight size={14} />
-          </a>
+          </button>
         </div>
 
         {/* Mobile CTA */}
