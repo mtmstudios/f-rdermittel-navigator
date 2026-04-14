@@ -68,7 +68,7 @@ export default function FAQ() {
                   id={`faq-answer-${i}`}
                   role="region"
                   className="overflow-hidden transition-all duration-300"
-                  style={{ maxHeight: open === i ? "300px" : "0" }}
+                  style={{ maxHeight: open === i ? "500px" : "0" }}
                 >
                   <p className="text-[14px] md:text-[15px] text-muted-foreground leading-[1.7] pb-6">{f.a}</p>
                 </div>

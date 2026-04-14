@@ -28,9 +28,12 @@ export default function Process() {
           <div className="grid md:grid-cols-4 gap-0 max-w-[960px] mx-auto">
             {steps.map((s, i) => (
               <div key={i} className="relative px-5 md:px-6 pb-10 md:pb-0 text-center">
-                {/* Connector line */}
+                {/* Connector line — horizontal on desktop, vertical on mobile */}
                 {i < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-[22px] left-[calc(50%+24px)] right-0 h-px bg-gradient-to-r from-[#307abe]/20 to-border/50" />
+                  <>
+                    <div className="hidden md:block absolute top-[22px] left-[calc(50%+24px)] right-0 h-px bg-gradient-to-r from-[#307abe]/20 to-border/50" />
+                    <div className="md:hidden absolute left-1/2 top-[44px] w-px h-[calc(100%-44px)] bg-gradient-to-b from-[#307abe]/15 to-transparent" />
+                  </>
                 )}
 
                 {/* Step icon circle */}

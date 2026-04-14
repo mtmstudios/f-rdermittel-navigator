@@ -96,10 +96,15 @@ export default function CalculatorSection() {
 
   /* Listen for navbar CTA click */
   useEffect(() => {
-    const handler = () => switchToForm();
+    const handler = () => {
+      setView("form");
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+    };
     window.addEventListener("open-form", handler);
     return () => window.removeEventListener("open-form", handler);
-  });
+  }, []);
 
   const switchToCalc = () => {
     setView("calc");
@@ -273,7 +278,7 @@ export default function CalculatorSection() {
                           Erstgespräch vereinbaren
                           <ArrowRight size={16} />
                         </button>
-                        <p className="text-center text-[11px] text-white/30 mt-3">Kostenlos · Antwort innerhalb von 24h</p>
+                        <p className="text-center text-[11px] text-white/30 mt-3">Kostenlos · Antwort innerhalb von 48h</p>
                       </>
                     ) : (
                       /* ── Form View (replaces result on desktop right card) ── */
@@ -440,7 +445,7 @@ export default function CalculatorSection() {
                   <ArrowRight size={16} />
                 </button>
                 <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
-                  Kostenlos · Antwort innerhalb von 24h
+                  Kostenlos · Antwort innerhalb von 48h
                 </p>
               </div>
             ) : (

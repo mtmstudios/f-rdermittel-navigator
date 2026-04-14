@@ -34,7 +34,7 @@ export default function ProblemSection() {
           </div>
 
           {/* Two myth cards */}
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8 max-w-[860px] mx-auto">
             {myths.map((c, i) => (
               <div
                 key={i}
@@ -57,7 +57,7 @@ export default function ProblemSection() {
           </div>
 
           {/* One-Shot Hinweis — dezent */}
-          <div className="flex items-start gap-3 bg-[#307abe]/[0.04] border border-[#307abe]/10 rounded-xl p-5 md:p-6 mb-8 md:mb-10">
+          <div className="flex items-start gap-3 bg-[#307abe]/[0.04] border border-[#307abe]/10 rounded-xl p-5 md:p-6 mb-8 md:mb-10 max-w-[860px] mx-auto">
             <Info size={17} className="text-[#307abe]/60 flex-shrink-0 mt-0.5" />
             <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
               <span className="font-semibold text-foreground/80">Gut zu wissen:</span> Man hat nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine

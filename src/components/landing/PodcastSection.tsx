@@ -45,7 +45,7 @@ export default function PodcastSection() {
             </div>
 
             {/* Chapter List — compact grid on mobile, sidebar on desktop */}
-            <div className="grid grid-cols-3 md:grid-cols-1 gap-1.5 md:gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 gap-1.5 md:gap-2">
               {chapters.map((ch, i) => (
                 <div
                   key={i}

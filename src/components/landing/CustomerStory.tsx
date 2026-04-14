@@ -36,18 +36,18 @@ export default function CustomerStory() {
               </div>
 
               {/* Key Figures */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-6 sm:gap-8 pt-5 border-t border-border mb-6 md:mb-0">
+              <div className="flex flex-wrap justify-center md:justify-start gap-8 sm:gap-10 pt-6 border-t border-border mb-6 md:mb-0">
                 <div>
-                  <p className="text-[18px] sm:text-[22px] font-bold text-foreground tracking-tight">250.000+ €</p>
-                  <p className="text-[12px] text-muted-foreground mt-1">Forschungszulage</p>
+                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">250.000+ €</p>
+                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">Forschungszulage</p>
                 </div>
                 <div>
-                  <p className="text-[18px] sm:text-[22px] font-bold text-foreground tracking-tight">98 %</p>
-                  <p className="text-[12px] text-muted-foreground mt-1">Bewilligungsquote</p>
+                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">98 %</p>
+                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">Bewilligungsquote</p>
                 </div>
                 <div>
-                  <p className="text-[18px] sm:text-[22px] font-bold text-foreground tracking-tight">0 €</p>
-                  <p className="text-[12px] text-muted-foreground mt-1">Vorabkosten</p>
+                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">0 €</p>
+                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">Vorabkosten</p>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function CustomerStory() {
               </div>
 
               {/* Quote */}
-              <blockquote className="mt-5 md:mt-8 text-center md:text-left md:pl-4 md:border-l-2 md:border-[#307abe]/40">
+              <blockquote className="mt-5 md:mt-8 text-center md:text-left pl-4 border-l-2 border-[#307abe]/20 md:border-[#307abe]/40">
                 <p className="text-[13px] sm:text-[14px] text-muted-foreground leading-relaxed italic">
                   „Viele Unternehmen schließen sich selbst aus — obwohl sie genau die Art von
                   Entwicklungsarbeit leisten, die förderfähig ist."
