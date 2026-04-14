@@ -376,3 +376,81 @@ nav {
 .safe-area-pb {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
+
+/* ─── 1. CTA Button Shimmer Effect ─── */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+.btn-cta, .btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-cta::after, .btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ─── 2. Staggered Child Animations ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+  .stagger-children > *:nth-child(2) { transition-delay: 120ms; }
+  .stagger-children > *:nth-child(3) { transition-delay: 240ms; }
+  .stagger-children > *:nth-child(4) { transition-delay: 360ms; }
+  .stagger-children > *:nth-child(5) { transition-delay: 480ms; }
+  .stagger-children > *:nth-child(6) { transition-delay: 600ms; }
+
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .stagger-children.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── 4. Rotating Gradient Border ─── */
+@keyframes borderRotate {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.rotating-border {
+  position: relative;
+  border-radius: 16px;
+  padding: 1px;
+  background: conic-gradient(from var(--border-angle), rgba(48,122,190,0.4), rgba(48,122,190,0.05) 30%, rgba(48,122,190,0.02) 50%, rgba(48,122,190,0.05) 70%, rgba(48,122,190,0.4));
+  animation: borderRotate 4s linear infinite;
+}
+
+/* ─── 6. Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(48,122,190,0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(48,122,190,0.45);
+}
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(48,122,190,0.25) transparent;
+}

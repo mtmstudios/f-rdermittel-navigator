@@ -1,5 +1,6 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Shield, FileCheck, TrendingUp, CheckCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Shield, FileCheck, TrendingUp } from "lucide-react";
 import VideoPlayer from "./VideoPlayer";
 
 const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
@@ -22,8 +23,48 @@ const credentials = [
   },
 ];
 
+/* ── Animated counter that triggers on scroll ── */
+function useScrollCounter(target: number, suffix: string, duration = 1200) {
+  const [display, setDisplay] = useState(`0${suffix}`);
+  const triggered = useRef(false);
+  const elRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = elRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !triggered.current) {
+          triggered.current = true;
+          const t0 = performance.now();
+          function tick(now: number) {
+            const p = Math.min((now - t0) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const val = Math.round(target * eased);
+            setDisplay(`${val.toLocaleString("de-DE")}${suffix}`);
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, suffix, duration]);
+
+  return { display, elRef };
+}
+
 export default function TrustSection() {
   const ref = useScrollAnimation();
+
+  const stat1 = useScrollCounter(500, "+");
+  const stat2 = useScrollCounter(98, " %");
+  const stat3 = useScrollCounter(95000, " €", 1600);
 
   return (
     <section
@@ -87,20 +128,20 @@ export default function TrustSection() {
               Standorte: München & Passau
             </p>
 
-            {/* Stats row — clean horizontal layout */}
+            {/* Stats row — animated counters */}
             <div className="flex items-center justify-center gap-3 sm:gap-6 mb-10 md:mb-12 flex-wrap">
               <div className="flex items-baseline gap-1.5">
-                <span className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight">500+</span>
+                <span ref={stat1.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat1.display}</span>
                 <span className="text-[11px] sm:text-[12px] text-white/40">Projekte</span>
               </div>
               <div className="w-px h-6 bg-white/10 hidden sm:block" />
               <div className="flex items-baseline gap-1.5">
-                <span className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight">98 %</span>
+                <span ref={stat2.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat2.display}</span>
                 <span className="text-[11px] sm:text-[12px] text-white/40">Bewilligung</span>
               </div>
               <div className="w-px h-6 bg-white/10 hidden sm:block" />
               <div className="flex items-baseline gap-1.5">
-                <span className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight">95.000 €</span>
+                <span ref={stat3.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat3.display}</span>
                 <span className="text-[11px] sm:text-[12px] text-white/40">Ø Förderung</span>
               </div>
             </div>

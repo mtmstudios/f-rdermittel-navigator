@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
 import { ArrowRight, Phone, FileSearch, Send, BadgeEuro } from "lucide-react";
 
 const steps = [
@@ -10,6 +11,7 @@ const steps = [
 
 export default function Process() {
   const ref = useScrollAnimation();
+  const staggerRef = useStaggerAnimation();
 
   return (
     <section id="prozess" className="section-padding section-alt">
@@ -25,7 +27,7 @@ export default function Process() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-0 max-w-[960px] mx-auto">
+          <div ref={staggerRef} className="stagger-children grid md:grid-cols-4 gap-0 max-w-[960px] mx-auto">
             {steps.map((s, i) => (
               <div key={i} className="relative px-5 md:px-6 pb-10 md:pb-0 text-center">
                 {/* Connector line — horizontal on desktop, vertical on mobile */}

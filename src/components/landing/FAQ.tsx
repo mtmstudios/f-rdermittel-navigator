@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -35,6 +36,7 @@ const faqs = [
 
 export default function FAQ() {
   const ref = useScrollAnimation();
+  const staggerRef = useStaggerAnimation();
   const [open, setOpen] = useState<number | null>(null);
 
   return (
@@ -48,7 +50,7 @@ export default function FAQ() {
             </h2>
           </div>
 
-          <div className="max-w-[740px] mx-auto">
+          <div ref={staggerRef} className="stagger-children max-w-[740px] mx-auto">
             {faqs.map((f, i) => (
               <div key={i} className={`border-b border-border ${i === 0 ? "border-t" : ""}`}>
                 <button

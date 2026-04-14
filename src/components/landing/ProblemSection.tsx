@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
 import { ArrowRight, Info } from "lucide-react";
 
 const myths = [
@@ -16,6 +17,7 @@ const myths = [
 
 export default function ProblemSection() {
   const ref = useScrollAnimation();
+  const staggerRef = useStaggerAnimation();
 
   return (
     <section className="section-padding">
@@ -34,7 +36,7 @@ export default function ProblemSection() {
           </div>
 
           {/* Two myth cards */}
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8 max-w-[860px] mx-auto">
+          <div ref={staggerRef} className="stagger-children grid sm:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8 max-w-[860px] mx-auto">
             {myths.map((c, i) => (
               <div
                 key={i}

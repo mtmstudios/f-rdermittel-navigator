@@ -344,8 +344,9 @@ export default function CalculatorSection() {
             {view === "calc" ? (
               <div className="animate-fade-in" key="calc">
                 {/* Result Card */}
+                <div className="rotating-border mb-5">
                 <div
-                  className="rounded-2xl overflow-hidden pulse-glow mb-5"
+                  className="rounded-2xl overflow-hidden"
                   style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
                 >
                   <div className="px-5 py-5 text-center">
@@ -370,6 +371,7 @@ export default function CalculatorSection() {
                       </p>
                     </div>
                   </div>
+                </div>
                 </div>
 
                 {/* Sliders */}

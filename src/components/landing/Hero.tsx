@@ -1,7 +1,22 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
   const ref = useScrollAnimation();
+  const glowRef = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 40;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      setMouse({ x, y });
+    };
+    if (window.innerWidth >= 768) {
+      window.addEventListener("mousemove", handler, { passive: true });
+      return () => window.removeEventListener("mousemove", handler);
+    }
+  }, []);
 
   return (
     <section
@@ -10,10 +25,14 @@ export default function Hero() {
         background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)",
       }}
     >
-      {/* Radial glow */}
+      {/* Parallax radial glow — follows mouse on desktop */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[800px] h-[500px] md:h-[600px] opacity-[0.07] pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)" }}
+        ref={glowRef}
+        className="absolute top-0 left-1/2 w-[600px] md:w-[800px] h-[500px] md:h-[600px] opacity-[0.07] pointer-events-none transition-transform duration-[800ms] ease-out"
+        style={{
+          background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)",
+          transform: `translate(calc(-50% + ${mouse.x}px), ${mouse.y}px)`,
+        }}
       />
 
       <div className="relative pt-28 pb-36 md:pt-44 md:pb-44">
