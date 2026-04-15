@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
-const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
+const PCA_LOGO_COLOR = "/pca-logo-color.svg";
+const PCA_LOGO_WHITE = "/pca-logo-white.svg";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,9 +24,9 @@ export default function Navbar() {
       <div className="container-main flex items-center justify-between h-[72px]">
         <a href="/" className="flex items-center">
           <img
-            src={PCA_LOGO}
+            src={scrolled ? PCA_LOGO_COLOR : PCA_LOGO_WHITE}
             alt="PCA Partners"
-            className={`h-7 transition-all duration-500 ${scrolled ? "" : "brightness-0 invert"}`}
+            className="h-7 transition-all duration-500"
           />
         </a>
 
