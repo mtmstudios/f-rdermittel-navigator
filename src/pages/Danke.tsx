@@ -51,7 +51,7 @@ export default function Danke() {
           <div className="max-w-[700px] mx-auto px-6 md:px-8">
             {/* Logo */}
             <div className="flex justify-center mb-10 md:mb-14">
-              <img src={PCA_LOGO} alt="PCA Partners" className="h-7 md:h-8 brightness-0 invert opacity-50" />
+              <img src={PCA_LOGO} alt="PCA Partners" className="h-7 md:h-8 brightness-0 invert opacity-80" />
             </div>
 
             {/* Confirmation */}
