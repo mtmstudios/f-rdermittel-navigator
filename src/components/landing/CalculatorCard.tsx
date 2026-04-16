@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useUtmParams } from "@/hooks/useUtmParams";
-import { ArrowRight, ArrowLeft, TrendingUp, Users, Coins, Building2, Lock, ChevronDown, Check } from "lucide-react";
+import { ArrowRight, ArrowLeft, TrendingUp, Users, Coins, Building2, Lock, ChevronDown, Check, Info } from "lucide-react";
 
 /* ── Meta Pixel ── */
 const fbqTrackOnce = (() => {
@@ -86,7 +86,6 @@ export default function CalculatorSection() {
 
   const formCardRef = useRef<HTMLDivElement>(null);
 
-  /* On mobile: flip in-place (no scroll). On desktop: scroll to section top. */
   const switchToForm = () => {
     setView("form");
     setTimeout(() => {
@@ -159,16 +158,16 @@ export default function CalculatorSection() {
     >
       <div className="container-main" ref={ref}>
         <div className="fade-in-up">
-          {/* Section Header — compact on mobile */}
+          {/* Section Header */}
           <div className="text-center mb-6 md:mb-12">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#307abe] mb-2 md:mb-3">
               Förder-Rechner
             </p>
             <h2 className="text-[20px] sm:text-[28px] md:text-[40px] font-extrabold tracking-[-0.02em] mb-1.5 md:mb-3">
-              Wie viel steht Ihrem Unternehmen zu?
+              Wie hoch könnte Ihre Förderung sein?
             </h2>
             <p className="text-[12px] sm:text-[15px] text-muted-foreground max-w-md mx-auto">
-              Zwei Angaben genügen — Sie sehen Ihr Ergebnis sofort.
+              Zwei Angaben genügen — Sie sehen Ihre Einschätzung sofort.
             </p>
           </div>
 
@@ -176,7 +175,7 @@ export default function CalculatorSection() {
               DESKTOP LAYOUT (md+)
               ═══════════════════════════════════════════════ */}
           <div className="hidden md:block">
-            <div className="max-w-[960px] mx-auto grid md:grid-cols-[1fr,360px] gap-8 items-start">
+            <div className="max-w-[960px] mx-auto grid md:grid-cols-[1fr,380px] gap-8 items-start">
               {/* Left: Sliders */}
               <div className="space-y-4">
                 <SliderCard
@@ -228,44 +227,60 @@ export default function CalculatorSection() {
                     </button>
                   </div>
                 )}
+
+                {/* Disclaimer — directly under sliders */}
+                <div className="flex items-start gap-2.5 pt-2">
+                  <Info size={13} className="text-muted-foreground/40 flex-shrink-0 mt-0.5" />
+                  <p className="text-[11px] text-muted-foreground/60 leading-[1.6]">
+                    Unverbindliche Ersteinschätzung auf Basis Ihrer Angaben. Die tatsächliche Förderhöhe
+                    hängt von der individuellen Prüfung Ihrer Projekte ab. Keine Steuerberatung.
+                  </p>
+                </div>
               </div>
 
               {/* Right: Result Card (sticky) */}
               <div className="sticky top-24">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a1628]" />
-                  <div className="absolute top-0 right-0 w-40 h-40 opacity-20 pointer-events-none"
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-white/[0.06]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0c1a30] via-[#102442] to-[#0c1a30]" />
+                  <div className="absolute top-0 right-0 w-48 h-48 opacity-15 pointer-events-none"
                     style={{ background: "radial-gradient(circle, #307abe 0%, transparent 70%)" }} />
 
                   <div className="relative p-7">
                     {view === "calc" ? (
                       <>
+                        {/* Estimate badge */}
+                        <div className="flex justify-center mb-5">
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#57a7dd]/60 bg-[#57a7dd]/[0.08] px-3 py-1 rounded-full border border-[#57a7dd]/10">
+                            Geschätzte Förderung
+                          </span>
+                        </div>
+
                         {/* Result Display */}
-                        <div className="mb-6 text-center">
+                        <div className="mb-5 text-center">
                           <div className="flex items-center justify-center gap-2 mb-2">
                             <TrendingUp size={14} className="text-[#57a7dd]" />
-                            <p className="text-[11px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
+                            <p className="text-[11px] text-white/40 uppercase tracking-wider font-medium">Pro Jahr</p>
                           </div>
-                          <p className="text-[42px] font-extrabold text-white tracking-tight leading-none">
+                          <p className="text-[44px] font-extrabold text-white tracking-tight leading-none">
                             {fmt(animPerYear)}
                           </p>
                         </div>
 
-                        <div className="h-px bg-white/10 mb-5" />
+                        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5" />
 
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                          <div>
-                            <p className="text-[11px] text-white/40 mb-1">3 Jahre gesamt</p>
-                            <p className="text-[20px] font-bold text-white">{fmtShort(animTotal)}</p>
+                        <div className="grid grid-cols-2 gap-4 mb-5">
+                          <div className="bg-white/[0.04] rounded-xl px-3 py-3 text-center border border-white/[0.04]">
+                            <p className="text-[10px] text-white/35 mb-1">3 Jahre gesamt</p>
+                            <p className="text-[19px] font-bold text-white">{fmtShort(animTotal)}</p>
                           </div>
-                          <div>
-                            <p className="text-[11px] text-white/40 mb-1">Förderquote</p>
-                            <p className="text-[20px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
+                          <div className="bg-white/[0.04] rounded-xl px-3 py-3 text-center border border-white/[0.04]">
+                            <p className="text-[10px] text-white/35 mb-1">Förderquote</p>
+                            <p className="text-[19px] font-bold text-white">{isKmu ? "35" : "25"} %</p>
                           </div>
                         </div>
 
-                        <div className="bg-white/[0.06] rounded-xl px-4 py-3 mb-6 border border-white/[0.06]">
-                          <p className="text-[12px] text-white/60 leading-relaxed">
+                        <div className="bg-white/[0.05] rounded-xl px-4 py-3 mb-6 border border-white/[0.06]">
+                          <p className="text-[12px] text-white/55 leading-relaxed">
                             <span className="text-[#57a7dd] font-semibold">Bis zu 4 Jahre rückwirkend</span> —
                             bis zu <span className="text-white font-semibold">{fmtShort(perYear * 4)}</span> möglich.
                           </p>
@@ -273,28 +288,27 @@ export default function CalculatorSection() {
 
                         <button
                           onClick={switchToForm}
-                          className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 cursor-pointer"
+                          className="btn-shimmer flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 cursor-pointer"
                         >
-                          Erstgespräch vereinbaren
+                          Kostenlose Ersteinschätzung anfordern
                           <ArrowRight size={16} />
                         </button>
-                        <p className="text-center text-[11px] text-white/30 mt-3">Kostenlos · Antwort innerhalb von 48h</p>
+                        <p className="text-center text-[11px] text-white/25 mt-3">Unverbindlich · Antwort innerhalb von 48h</p>
                       </>
                     ) : (
-                      /* ── Form View (replaces result on desktop right card) ── */
+                      /* ── Form View ── */
                       <div className="animate-fade-in">
-                        {/* Compact result reminder */}
                         <div className="flex items-center justify-between mb-5">
                           <div>
-                            <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-0.5">Ihr Förderpotenzial</p>
-                            <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}<span className="text-[14px] text-white/40 font-medium"> / Jahr</span></p>
+                            <p className="text-[10px] text-white/35 uppercase tracking-wider font-medium mb-0.5">Geschätzte Förderung</p>
+                            <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">{fmt(animPerYear)}<span className="text-[14px] text-white/35 font-medium"> / Jahr</span></p>
                           </div>
                         </div>
 
                         <div className="h-px bg-white/10 mb-5" />
 
-                        <p className="text-[14px] text-white/60 font-medium mb-4">
-                          Lassen Sie sich von einem Wirtschaftsprüfer beraten:
+                        <p className="text-[14px] text-white/55 font-medium mb-4">
+                          Lassen Sie Ihre Projekte von einem Wirtschaftsprüfer prüfen:
                         </p>
 
                         <form onSubmit={handleSubmit} className="space-y-3">
@@ -311,28 +325,25 @@ export default function CalculatorSection() {
                             onChange={e => update("email", e.target.value)}
                             className="calc-input" autoComplete="email" />
                           <button type="submit" disabled={submitting}
-                            className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 disabled:opacity-60 cursor-pointer">
+                            className="btn-shimmer flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#307abe]/20 disabled:opacity-60 cursor-pointer">
                             {submitting ? "Wird gesendet..." : (
-                              <>Erstgespräch anfordern<ArrowRight size={16} /></>
+                              <>Ersteinschätzung anfordern<ArrowRight size={16} /></>
                             )}
                           </button>
                         </form>
 
-                        <p className="flex items-center gap-1.5 text-[11px] text-white/30 justify-center mt-3">
+                        <p className="flex items-center gap-1.5 text-[11px] text-white/25 justify-center mt-3">
                           <Lock size={11} /> Kostenlos & unverbindlich
                         </p>
 
                         <button onClick={switchToCalc}
-                          className="flex items-center gap-1.5 text-[12px] text-white/30 hover:text-white/50 transition-colors mt-4 mx-auto cursor-pointer">
+                          className="flex items-center gap-1.5 text-[12px] text-white/25 hover:text-white/45 transition-colors mt-4 mx-auto cursor-pointer">
                           <ArrowLeft size={12} /> Zurück zum Rechner
                         </button>
                       </div>
                     )}
                   </div>
                 </div>
-                <p className="text-center text-[10px] text-muted-foreground/60 mt-4 px-2">
-                  Unverbindliche Erstschätzung. Keine Steuerberatung.
-                </p>
               </div>
             </div>
           </div>
@@ -350,9 +361,13 @@ export default function CalculatorSection() {
                   style={{ background: "linear-gradient(160deg, #0c1a30 0%, #102442 50%, #0c1a30 100%)" }}
                 >
                   <div className="px-5 py-5 text-center">
+                    {/* Estimate badge */}
+                    <span className="inline-block text-[9px] font-semibold uppercase tracking-[0.15em] text-[#57a7dd]/60 bg-[#57a7dd]/[0.08] px-2.5 py-0.5 rounded-full border border-[#57a7dd]/10 mb-3">
+                      Geschätzte Förderung
+                    </span>
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <TrendingUp size={13} className="text-[#57a7dd]" />
-                      <p className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Ihr Förderpotenzial / Jahr</p>
+                      <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium">Pro Jahr</p>
                     </div>
                     <p className="text-[34px] sm:text-[40px] font-extrabold text-white tracking-tight leading-none mb-3 overflow-hidden">
                       {fmt(animPerYear)}
@@ -431,23 +446,23 @@ export default function CalculatorSection() {
                 <div className="flex items-center justify-center gap-4 mb-4 text-[11px] text-muted-foreground/70">
                   <span className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    98 % Bewilligung
+                    Wirtschaftsprüfer
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    500+ Projekte
+                    Erfolgsbasiert
                   </span>
                 </div>
 
                 <button
                   onClick={switchToForm}
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
+                  className="btn-shimmer flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 shadow-lg cursor-pointer"
                 >
-                  Erstgespräch vereinbaren
+                  Kostenlose Ersteinschätzung
                   <ArrowRight size={16} />
                 </button>
                 <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
-                  Kostenlos · Antwort innerhalb von 48h
+                  Unverbindlich · Antwort innerhalb von 48h
                 </p>
               </div>
             ) : (
@@ -459,9 +474,9 @@ export default function CalculatorSection() {
                     style={{ background: "linear-gradient(160deg, #0c1a30 0%, #102442 50%, #0c1a30 100%)" }}
                   >
                     <div className="p-5">
-                      {/* Result reminder — prominent */}
+                      {/* Result reminder */}
                       <div className="text-center mb-4">
-                        <p className="text-[10px] text-white/40 uppercase tracking-wider font-medium mb-1">Ihr Förderpotenzial</p>
+                        <p className="text-[10px] text-white/35 uppercase tracking-wider font-medium mb-1">Geschätzte Förderung</p>
                         <p className="text-[28px] font-extrabold text-white tracking-tight leading-none">
                           {fmt(animPerYear)}<span className="text-[13px] text-white/30 font-medium"> / Jahr</span>
                         </p>
@@ -469,8 +484,8 @@ export default function CalculatorSection() {
 
                       <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-4" />
 
-                      <p className="text-[12px] text-white/45 text-center mb-4 font-medium">
-                        Lassen Sie sich von einem Wirtschaftsprüfer beraten:
+                      <p className="text-[12px] text-white/40 text-center mb-4 font-medium">
+                        Lassen Sie Ihre Projekte von einem Wirtschaftsprüfer prüfen:
                       </p>
 
                       <form onSubmit={handleSubmit} className="space-y-2.5">
@@ -489,21 +504,21 @@ export default function CalculatorSection() {
                           onChange={e => update("email", e.target.value)}
                           className="calc-input !py-3 !text-[14px]" autoComplete="email" />
                         <button type="submit" disabled={submitting}
-                          className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer">
+                          className="btn-shimmer flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#307abe] hover:bg-[#2968a3] text-white font-semibold text-[15px] transition-all duration-200 disabled:opacity-60 cursor-pointer">
                           {submitting ? "Wird gesendet..." : (
-                            <>Erstgespräch anfordern<ArrowRight size={16} /></>
+                            <>Ersteinschätzung anfordern<ArrowRight size={16} /></>
                           )}
                         </button>
                       </form>
 
                       <div className="flex items-center justify-center gap-5 mt-3.5">
-                        <span className="flex items-center gap-1.5 text-[10px] text-white/35 font-medium">
-                          <Lock size={10} className="text-white/25" /> Vertraulich
+                        <span className="flex items-center gap-1.5 text-[10px] text-white/30 font-medium">
+                          <Lock size={10} className="text-white/20" /> Vertraulich
                         </span>
-                        <span className="flex items-center gap-1.5 text-[10px] text-white/35 font-medium">
+                        <span className="flex items-center gap-1.5 text-[10px] text-white/30 font-medium">
                           <Check size={10} className="text-emerald-400/50" /> Kostenlos
                         </span>
-                        <span className="flex items-center gap-1.5 text-[10px] text-white/35 font-medium">
+                        <span className="flex items-center gap-1.5 text-[10px] text-white/30 font-medium">
                           <Check size={10} className="text-emerald-400/50" /> Unverbindlich
                         </span>
                       </div>
@@ -518,8 +533,9 @@ export default function CalculatorSection() {
               </div>
             )}
 
-            <p className="text-center text-[10px] text-muted-foreground/50 mt-3">
-              Unverbindliche Erstschätzung. Keine Steuerberatung.
+            {/* Mobile disclaimer */}
+            <p className="text-center text-[10px] text-muted-foreground/40 mt-4 px-4 leading-[1.6]">
+              Unverbindliche Einschätzung auf Basis Ihrer Angaben. Die tatsächliche Förderhöhe wird individuell geprüft.
             </p>
           </div>
         </div>
@@ -553,6 +569,7 @@ function SliderCard({
   badge, badgeVariant = "green", minLabel, maxLabel, compact,
 }: SliderCardProps) {
   const padding = compact ? "p-4" : "p-5 sm:p-6";
+  const pct = ((value - min) / (max - min)) * 100;
 
   return (
     <div className={`bg-white rounded-2xl border border-border/60 ${padding} shadow-sm hover:shadow-md transition-shadow duration-300`}>
@@ -570,11 +587,16 @@ function SliderCard({
           {displayValue}
         </span>
       </div>
-      <input
-        type="range" min={min} max={max} step={step} value={value}
-        onChange={e => onChange(Number(e.target.value))}
-        className="w-full accent-[#307abe]" aria-label={label}
-      />
+      <div className="relative">
+        <input
+          type="range" min={min} max={max} step={step} value={value}
+          onChange={e => onChange(Number(e.target.value))}
+          className="w-full accent-[#307abe] relative z-10" aria-label={label}
+          style={{
+            background: `linear-gradient(to right, hsl(210 60% 46%) ${pct}%, hsl(var(--border)) ${pct}%)`
+          }}
+        />
+      </div>
       {(minLabel || maxLabel || badge) && (
         <div className="flex justify-between items-center mt-1.5">
           <span className="text-[10px] text-muted-foreground">{minLabel}</span>
