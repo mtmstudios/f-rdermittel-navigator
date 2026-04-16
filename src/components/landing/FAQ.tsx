@@ -5,32 +5,32 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    q: "Ist die Forschungszulage nur für Großkonzerne oder High-Tech-Unternehmen?",
-    a: "Nein. Es muss kein High-Tech-Unternehmen und kein Großkonzern sein. Wenn Sie ein Produkt oder eine Lösung entwickeln, die es so noch nicht auf dem Markt gibt — Software, Produktinnovationen, neue Verfahren — sind Sie grundsätzlich förderfähig. Gerade mittelständische Unternehmen schließen sich hier oft selbst aus, obwohl sie genau diese Art von Arbeit leisten.",
+    q: "Welche Art von Unternehmen ist förderfähig?",
+    a: "Jedes Unternehmen, das Produkte, Software oder Verfahren entwickelt, die es so noch nicht gibt. Branche und Größe spielen keine Rolle — vom 10-Mann-Betrieb bis zum Konzern. Entscheidend ist, dass technische Herausforderungen gelöst werden.",
   },
   {
-    q: "Was genau zählt als förderfähige Forschung und Entwicklung?",
-    a: "Gefördert werden Projekte, bei denen technische Unsicherheiten überwunden und neue Lösungen erarbeitet werden. Das kann Softwareentwicklung betreffen, Produktinnovationen oder neue Verfahren im Produktionsprozess. Entscheidend ist der neuartige Charakter — keine Grundlagenforschung, keine Labore nötig.",
+    q: "Was genau zählt als förderfähige Entwicklung?",
+    a: "Projekte, bei denen technische Unsicherheiten überwunden werden: neue Softwaremodule, Produktverbesserungen, optimierte Fertigungsprozesse. Es muss keine Grundlagenforschung sein — angewandte Entwicklungsarbeit reicht.",
   },
   {
-    q: "Was passiert, wenn ich den Antrag selbst stelle und er abgelehnt wird?",
-    a: "Sie haben nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine zweite Chance für diese Projekte. Eigenanträge entsprechen oft nicht der Qualität, die für eine Bewilligung nötig ist. Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.",
+    q: "Was passiert, wenn der Antrag abgelehnt wird?",
+    a: "Dann ist er für diese Projekte endgültig abgelehnt. Es gibt keinen zweiten Versuch. Genau deshalb setzen wir jeden Antrag auf dem Qualitätsniveau einer Wirtschaftsprüfung auf — nicht auf Beraterniveau.",
   },
   {
-    q: "Muss ich Geschäftsgeheimnisse oder vertrauliche Informationen offenlegen?",
-    a: "Viele Unternehmen haben Bedenken, dass sie Geschäftsgeheimnisse oder Trade Secrets preisgeben müssen. Wir erarbeiten die Antragsdokumentation so, dass Ihre vertraulichen Informationen geschützt bleiben. Die Beschreibung fokussiert sich auf die förderfähigen Aspekte — nicht auf proprietäre Details.",
+    q: "Muss ich vertrauliche Informationen offenlegen?",
+    a: "Nein. Wir dokumentieren die förderfähigen Aspekte Ihrer Projekte, ohne proprietäre Details oder Geschäftsgeheimnisse preiszugeben. Das ist Teil unserer Expertise.",
   },
   {
-    q: "Wie hoch ist der Aufwand für mein Unternehmen?",
-    a: "Minimal. Wir benötigen zu Beginn ein kurzes Gespräch (ca. 30 Minuten) und einige Eckdaten zu Ihren Projekten. Die gesamte Dokumentation, Aufbereitung und Antragstellung übernehmen wir.",
+    q: "Wie viel Zeit muss ich investieren?",
+    a: "Ein Erstgespräch von ca. 30 Minuten und einige Eckdaten zu Ihren Projekten. Den Rest — Dokumentation, Aufbereitung, Einreichung — übernehmen wir komplett.",
   },
   {
-    q: "Was kostet die Beratung?",
-    a: "Die Ersteinschätzung ist kostenlos und unverbindlich. Unser Vergütungsmodell ist erfolgsbasiert — Sie zahlen nur, wenn Sie tatsächlich Förderung erhalten. Kein Erfolg, keine Kosten.",
+    q: "Was kostet das?",
+    a: "Die Ersteinschätzung ist kostenlos. Danach arbeiten wir erfolgsbasiert: Sie zahlen nur, wenn tatsächlich Förderung bewilligt wird.",
   },
   {
-    q: "Kann ich die Forschungszulage rückwirkend beantragen?",
-    a: "Ja. Projekte der letzten vier Geschäftsjahre können in der Regel noch berücksichtigt werden — bis zu vier Jahre rückwirkend.",
+    q: "Kann ich die Förderung rückwirkend beantragen?",
+    a: "Ja. Projekte der letzten vier Geschäftsjahre können eingereicht werden. Das ist oft der größte Hebel — viele Unternehmen erhalten so eine sechsstellige Nachzahlung.",
   },
 ];
 

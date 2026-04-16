@@ -92,9 +92,9 @@ export default function TrustSection() {
               <span className="block text-white/50">Nicht nur Berater.</span>
             </h2>
             <p className="text-[15px] md:text-[17px] text-white/50 leading-[1.7]">
-              Wir übernehmen die komplette Antragstellung — von der inhaltlichen Aufarbeitung
-              bis zur Einreichung. Und wir sagen Ihnen ehrlich, ob sich eine Prüfung lohnt —
-              oder ob Sie sich den Aufwand besser sparen.
+              Wir übernehmen den gesamten Antrag — von der fachlichen Einordnung bis
+              zur Einreichung beim Finanzamt. Und wir sagen Ihnen vorher ehrlich,
+              ob es sich lohnt.
             </p>
           </div>
 
@@ -132,17 +132,17 @@ export default function TrustSection() {
             <div className="flex items-center justify-center gap-3 sm:gap-6 mb-10 md:mb-12 flex-wrap">
               <div className="flex items-baseline gap-1.5">
                 <span ref={stat1.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat1.display}</span>
-                <span className="text-[11px] sm:text-[12px] text-white/40">Projekte</span>
+                <span className="text-[11px] sm:text-[12px] text-white/40">geprüfte Projekte</span>
               </div>
               <div className="w-px h-6 bg-white/10 hidden sm:block" />
               <div className="flex items-baseline gap-1.5">
                 <span ref={stat2.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat2.display}</span>
-                <span className="text-[11px] sm:text-[12px] text-white/40">Bewilligung</span>
+                <span className="text-[11px] sm:text-[12px] text-white/40">Bewilligungsquote</span>
               </div>
               <div className="w-px h-6 bg-white/10 hidden sm:block" />
               <div className="flex items-baseline gap-1.5">
                 <span ref={stat3.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat3.display}</span>
-                <span className="text-[11px] sm:text-[12px] text-white/40">Ø Förderung</span>
+                <span className="text-[11px] sm:text-[12px] text-white/40">Ø Fördersumme</span>
               </div>
             </div>
 

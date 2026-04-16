@@ -16,34 +16,34 @@ export default function CustomerStory() {
             {/* Text */}
             <div className="order-2 md:order-1 text-center md:text-left">
               <h2 className="text-[24px] sm:text-[28px] md:text-[36px] font-bold leading-[1.1] mb-4 md:mb-6 tracking-[-0.02em]">
-                Über 250.000 € Forschungszulage
+                250.000 € Forschungszulage
                 <span className="block text-[17px] sm:text-[20px] md:text-[26px] font-semibold text-muted-foreground mt-2">
-                  — für ein mittelständisches Industrieunternehmen.
+                  für einen Maschinenbauer aus Süddeutschland.
                 </span>
               </h2>
 
               <div className="space-y-4 mb-6 md:mb-8">
                 <p className="body-text text-[15px]">
-                  Ein mittelständischer Industriebetrieb entwickelte neue Fertigungsverfahren,
-                  um bestehende Produktionsgrenzen zu überwinden — klassische Entwicklungsarbeit,
-                  die das Unternehmen selbst nicht als förderfähig eingestuft hätte.
+                  Das Unternehmen entwickelte neue Fertigungsverfahren, um bestehende
+                  Produktionsgrenzen zu überwinden. Klassische Ingenieurarbeit — intern
+                  nie als „Forschung" eingestuft.
                 </p>
                 <p className="body-text text-[15px]">
-                  Wir haben die Projekte fachlich eingeordnet, die Förderfähigkeit
-                  bewertet und den gesamten Antrag prüfungssicher aufbereitet — von der
-                  inhaltlichen Dokumentation bis zur Einreichung beim Finanzamt.
+                  Wir haben die Projekte fachlich eingeordnet, die Förderfähigkeit bewertet
+                  und den Antrag prüfungssicher aufbereitet. Ergebnis: Bewilligung in voller Höhe,
+                  rückwirkend für drei Geschäftsjahre.
                 </p>
               </div>
 
-              {/* Key Figures */}
+              {/* Key Figures — unique stats, no redundancy */}
               <div className="flex flex-wrap justify-center md:justify-start gap-8 sm:gap-10 pt-6 border-t border-border mb-6 md:mb-0">
                 <div>
                   <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">250.000+ €</p>
-                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">Forschungszulage</p>
+                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">bewilligte Förderung</p>
                 </div>
                 <div>
-                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">98 %</p>
-                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">Bewilligungsquote</p>
+                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">3 Jahre</p>
+                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">rückwirkend eingereicht</p>
                 </div>
                 <div>
                   <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">0 €</p>
@@ -63,10 +63,10 @@ export default function CustomerStory() {
               </div>
 
               {/* Quote */}
-              <blockquote className="mt-5 md:mt-8 text-center md:text-left pl-4 border-l-2 border-[#307abe]/20 md:border-[#307abe]/40">
+              <blockquote className="mt-5 md:mt-8 text-center md:text-left pl-4 border-l-2 border-[#307abe]/30">
                 <p className="text-[13px] sm:text-[14px] text-muted-foreground leading-relaxed italic">
-                  „Viele Unternehmen schließen sich selbst aus — obwohl sie genau die Art von
-                  Entwicklungsarbeit leisten, die förderfähig ist."
+                  „Die meisten Unternehmen wissen nicht, dass ihre tägliche Entwicklungsarbeit
+                  förderfähig ist. Genau das prüfen wir."
                 </p>
                 <footer className="text-[11px] sm:text-[12px] text-muted-foreground/70 mt-2 not-italic font-medium">
                   — Elias von der Linden, PCA Partners

@@ -165,10 +165,10 @@ export default function CalculatorSection() {
               Förder-Rechner
             </p>
             <h2 className="text-[20px] sm:text-[28px] md:text-[40px] font-extrabold tracking-[-0.02em] mb-1.5 md:mb-3">
-              Berechnen Sie Ihr Förderpotenzial
+              Wie viel steht Ihrem Unternehmen zu?
             </h2>
             <p className="text-[12px] sm:text-[15px] text-muted-foreground max-w-md mx-auto">
-              Erfahren Sie in 30 Sekunden, wie viel Förderung Sie erhalten können.
+              Zwei Angaben genügen — Sie sehen Ihr Ergebnis sofort.
             </p>
           </div>
 

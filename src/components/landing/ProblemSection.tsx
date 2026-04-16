@@ -1,17 +1,17 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight, AlertTriangle } from "lucide-react";
 
 const myths = [
   {
     num: "01",
     title: "\u201EUnsere Arbeit ist nicht forschungsnah genug.\u201C",
-    text: "Der h\u00E4ufigste Irrtum. Sie m\u00FCssen kein High-Tech-Konzern sein. Wenn Sie ein Produkt oder eine L\u00F6sung entwickeln, die es so noch nicht auf dem Markt gibt \u2014 Software, Produktinnovationen, neue Verfahren \u2014 sind Sie grunds\u00E4tzlich f\u00F6rderf\u00E4hig.",
+    text: "Der häufigste Irrtum. Sie müssen kein Labor betreiben. Wenn Sie Software entwickeln, Produkte verbessern oder neue Fertigungsverfahren erarbeiten, sind Sie grundsätzlich förderfähig.",
   },
   {
     num: "02",
-    title: "\u201EDas ist nur f\u00FCr Gro\u00DFkonzerne.\u201C",
-    text: "Falsch. Die Forschungszulage richtet sich gezielt an den Mittelstand. Gerade Unternehmen mit 10\u2013250 Mitarbeitern profitieren \u00FCberproportional \u2014 mit bis zu 35 % F\u00F6rderquote.",
+    title: "\u201EDas lohnt sich nur für Großkonzerne.\u201C",
+    text: "Das Gegenteil ist der Fall. Unternehmen mit 10–250 Mitarbeitern erhalten bis zu 35 % Förderquote — Großkonzerne nur 25 %. Der Mittelstand profitiert am stärksten.",
   },
 ];
 
@@ -26,17 +26,17 @@ export default function ProblemSection() {
           <div className="text-center max-w-[680px] mx-auto mb-10 md:mb-14">
             <p className="eyebrow">Warum die meisten leer ausgehen</p>
             <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold leading-[1.1] mb-4 md:mb-5 tracking-[-0.02em]">
-              Die meisten Unternehmen verschenken Fördergeld.
+              Zwei Irrtümer kosten den Mittelstand
+              <span className="block">jedes Jahr Millionen.</span>
             </h2>
             <p className="body-text">
-              Jedes Jahr bleiben Millionen an Forschungszulage ungenutzt — weil
-              Geschäftsführer glauben, ihre Arbeit sei nicht förderfähig. Zwei
-              Irrtümer halten sich besonders hartnäckig:
+              Die meisten Geschäftsführer glauben, ihre Entwicklungsarbeit sei nicht förderfähig.
+              In über 90 % der Fälle liegen sie falsch.
             </p>
           </div>
 
           {/* Two myth cards */}
-          <div ref={staggerRef} className="stagger-children grid sm:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8 max-w-[860px] mx-auto">
+          <div ref={staggerRef} className="stagger-children grid sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-10 max-w-[860px] mx-auto">
             {myths.map((c, i) => (
               <div
                 key={i}
@@ -58,13 +58,23 @@ export default function ProblemSection() {
             ))}
           </div>
 
-          {/* One-Shot Hinweis — dezent */}
-          <div className="flex items-start gap-3 bg-[#307abe]/[0.04] border border-[#307abe]/10 rounded-xl p-5 md:p-6 mb-8 md:mb-10 max-w-[860px] mx-auto">
-            <Info size={17} className="text-[#307abe]/60 flex-shrink-0 mt-0.5" />
-            <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
-              <span className="font-semibold text-foreground/80">Gut zu wissen:</span> Sie haben nur einmal die Möglichkeit, den Antrag zu stellen. Wird er abgelehnt, gibt es keine
-              zweite Chance für diese Projekte. Deshalb übernehmen wir die komplette Antragstellung — prüfungssicher und auf WP-Niveau.
-            </p>
+          {/* One-Shot Warnung — Premium callout */}
+          <div className="relative max-w-[860px] mx-auto mb-8 md:mb-10 rounded-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-500/[0.04] to-orange-500/[0.02]" />
+            <div className="relative flex items-start gap-4 p-6 md:p-7 border border-amber-500/15 rounded-2xl">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                <AlertTriangle size={18} className="text-amber-500/70" />
+              </div>
+              <div>
+                <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1 tracking-[-0.01em]">
+                  Nur ein Versuch pro Projekt.
+                </p>
+                <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
+                  Wird Ihr Antrag abgelehnt, ist er endgültig abgelehnt — für genau diese Projekte gibt es keine zweite Chance.
+                  Deshalb übernehmen wir die komplette Antragstellung auf WP-Niveau.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* CTA */}

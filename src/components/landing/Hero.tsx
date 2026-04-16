@@ -53,8 +53,9 @@ export default function Hero() {
             </h1>
 
             <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[560px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
-              Sie entwickeln Software, Produkte oder Verfahren? Dann steht Ihnen mit hoher Wahrscheinlichkeit die gesetzliche Forschungszulage zu.
-              <span className="block mt-1">Bis zu 4 Jahre rückwirkend. Keine Labore nötig. Kostenlose Ersteinschätzung.</span>
+              Ihr Unternehmen entwickelt Software, Produkte oder Produktionsverfahren?
+              Dann steht Ihnen die gesetzliche Forschungszulage zu — bis zu 1 Mio. € pro Jahr.
+              <span className="block mt-2 text-white/40">Rückwirkend für 4 Geschäftsjahre. Ersteinschätzung kostenlos.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-14 px-4 sm:px-0">
@@ -67,15 +68,15 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-x-8 text-[12px] sm:text-[13px] text-white/60 font-medium">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                98 % Bewilligungsquote
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                500+ geprüfte Projekte
+                Wirtschaftsprüfer-Qualität
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 Erfolgsbasiertes Honorar
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                Ersteinschätzung in 30 Min.
               </span>
             </div>
           </div>

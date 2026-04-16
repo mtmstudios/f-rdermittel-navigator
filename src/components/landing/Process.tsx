@@ -3,9 +3,9 @@ import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
 import { ArrowRight, Phone, FileSearch, Send, BadgeEuro } from "lucide-react";
 
 const steps = [
-  { icon: Phone, title: "Ersteinschätzung", text: "In einem kurzen Gespräch klären wir, ob Ihr Unternehmen grundsätzlich förderfähig ist.", time: "30 Min." },
+  { icon: Phone, title: "Ersteinschätzung", text: "30 Minuten, kostenlos. Wir prüfen, ob Ihre Projekte grundsätzlich förderfähig sind.", time: "30 Min." },
   { icon: FileSearch, title: "Projektanalyse", text: "Wir identifizieren alle förderfähigen Projekte und bereiten die Dokumentation prüfungssicher auf.", time: "2–4 Wochen" },
-  { icon: Send, title: "Antragstellung", text: "Wir übernehmen den gesamten Antragsprozess — von der Bescheinigungsstelle bis zum Finanzamt.", time: "4–8 Wochen" },
+  { icon: Send, title: "Antragstellung", text: "Wir reichen den Antrag bei der Bescheinigungsstelle und dem Finanzamt ein — komplett.", time: "4–8 Wochen" },
   { icon: BadgeEuro, title: "Auszahlung", text: "Die Forschungszulage wird mit Ihrer Steuerschuld verrechnet oder direkt ausgezahlt.", time: "Ergebnis" },
 ];
 
@@ -20,10 +20,10 @@ export default function Process() {
           <div className="text-center max-w-[600px] mx-auto mb-12 md:mb-16">
             <p className="eyebrow">Ablauf</p>
             <h2 className="text-[28px] md:text-[38px] font-bold leading-[1.1] mb-5 tracking-[-0.02em]">
-              Von der Ersteinschätzung bis zur Auszahlung
+              Vier Schritte bis zur Auszahlung.
             </h2>
             <p className="body-text">
-              Sie konzentrieren sich auf Ihr Tagesgeschäft. Wir kümmern uns um den Rest.
+              Sie investieren 30 Minuten. Wir übernehmen alles Weitere.
             </p>
           </div>
 
