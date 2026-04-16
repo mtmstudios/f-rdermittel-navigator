@@ -347,7 +347,7 @@ export default function CalculatorSection() {
                 <div className="rotating-border mb-5">
                 <div
                   className="rounded-2xl overflow-hidden"
-                  style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                  style={{ background: "linear-gradient(160deg, #0c1a30 0%, #102442 50%, #0c1a30 100%)" }}
                 >
                   <div className="px-5 py-5 text-center">
                     <div className="flex items-center justify-center gap-2 mb-2">
@@ -456,7 +456,7 @@ export default function CalculatorSection() {
                 <div className="rounded-2xl p-px bg-gradient-to-b from-[#307abe]/30 via-[#307abe]/10 to-transparent">
                   <div
                     className="rounded-2xl overflow-hidden shadow-2xl"
-                    style={{ background: "linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%)" }}
+                    style={{ background: "linear-gradient(160deg, #0c1a30 0%, #102442 50%, #0c1a30 100%)" }}
                   >
                     <div className="p-5">
                       {/* Result reminder — prominent */}

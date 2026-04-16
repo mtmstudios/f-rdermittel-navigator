@@ -22,7 +22,7 @@ export default function Hero() {
     <section
       className="dark-section relative grain overflow-hidden"
       style={{
-        background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)",
+        background: "linear-gradient(170deg, #0a1628 0%, #0d1b30 40%, #0f1f38 100%)",
       }}
     >
       {/* Parallax radial glow — follows mouse on desktop */}

@@ -17,7 +17,7 @@ export default function PodcastSection() {
   return (
     <section
       className="py-16 md:py-32 dark-section relative grain overflow-hidden"
-      style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)" }}
+      style={{ background: "linear-gradient(170deg, #0a1628 0%, #0d1b30 40%, #0f1f38 100%)" }}
     >
       <div className="container-main relative" ref={ref}>
         <div className="fade-in-up">

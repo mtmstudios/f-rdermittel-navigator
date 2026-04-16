@@ -2,7 +2,7 @@ const PCA_LOGO_WHITE = "/pca-logo-white.svg";
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#050505" }} className="dark-section py-14 md:py-20">
+    <footer style={{ background: "#081425" }} className="dark-section py-14 md:py-20">
       <div className="container-main">
         {/* Top */}
         <div className="flex flex-col items-center gap-6 mb-8">

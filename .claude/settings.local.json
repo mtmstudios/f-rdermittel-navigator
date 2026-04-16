@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")",
+      "Bash(npm run:*)",
+      "Read(//opt/**)",
+      "Read(//Users/mich/**)",
+      "WebFetch(domain:pca-partners.de)",
+      "Bash(echo $PATH)",
+      "Read(//usr/local/**)",
+      "Bash(ls /Users/mich/.nvm/versions/node/*/bin/npx)"
+    ]
+  }
+}

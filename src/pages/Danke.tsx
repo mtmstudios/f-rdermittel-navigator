@@ -41,7 +41,7 @@ export default function Danke() {
       {/* ═══ HERO: Confirmation ═══ */}
       <section
         className="dark-section relative grain overflow-hidden"
-        style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)" }}
+        style={{ background: "linear-gradient(170deg, #0a1628 0%, #0d1b30 40%, #0f1f38 100%)" }}
       >
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[800px] h-[400px] md:h-[500px] opacity-[0.07] pointer-events-none"
           style={{ background: "radial-gradient(ellipse at center, #307abe 0%, transparent 70%)" }}
@@ -194,7 +194,7 @@ export default function Danke() {
       {/* ═══ TEAM + DEEP DIVE — combined dark section into footer ═══ */}
       <section
         className="dark-section relative grain overflow-hidden"
-        style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 30%, #0f1118 60%, #050505 100%)" }}
+        style={{ background: "linear-gradient(170deg, #0a1628 0%, #0d1b30 30%, #0f1f38 60%, #081425 100%)" }}
       >
         {/* Team */}
         <div className="pt-16 md:pt-24 pb-14 md:pb-20">

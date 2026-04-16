@@ -69,7 +69,7 @@ export default function TrustSection() {
   return (
     <section
       className="section-padding dark-section relative grain overflow-hidden"
-      style={{ background: "linear-gradient(170deg, #050505 0%, #0d0d0f 40%, #0f1118 100%)" }}
+      style={{ background: "linear-gradient(170deg, #0a1628 0%, #0d1b30 40%, #0f1f38 100%)" }}
     >
       {/* Subtle glow */}
       <div
