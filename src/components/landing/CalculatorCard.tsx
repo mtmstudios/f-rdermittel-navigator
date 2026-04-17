@@ -93,13 +93,10 @@ export default function CalculatorSection() {
     }, 80);
   };
 
-  /* Listen for navbar CTA click */
+  /* Listen for navbar CTA click — navbar already scrolled, just switch view */
   useEffect(() => {
     const handler = () => {
       setView("form");
-      setTimeout(() => {
-        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 80);
     };
     window.addEventListener("open-form", handler);
     return () => window.removeEventListener("open-form", handler);

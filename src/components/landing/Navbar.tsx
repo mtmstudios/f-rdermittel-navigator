@@ -50,7 +50,14 @@ export default function Navbar() {
           </a>
           <button
             onClick={() => {
-              window.dispatchEvent(new CustomEvent("open-form"));
+              // First scroll to section, then switch view after render
+              const section = document.getElementById("rechner");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+              setTimeout(() => {
+                window.dispatchEvent(new CustomEvent("open-form"));
+              }, 400);
             }}
             className={`btn-shimmer flex items-center gap-1.5 text-[13px] font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 cursor-pointer ${
               scrolled

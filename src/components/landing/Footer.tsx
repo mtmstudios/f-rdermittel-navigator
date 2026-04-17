@@ -27,10 +27,10 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col items-center gap-3 text-center">
           <p className="text-[11px] text-white/25 leading-relaxed">
-            © 2026 PCA Advisory &amp; Services GmbH StBG. Alle Rechte vorbehalten.
+            © 2026 PCA Audit &amp; Tax GmbH WPG StBG. Alle Rechte vorbehalten.
           </p>
           <p className="text-[10px] text-white/15 max-w-[400px]">
-            Die Inhalte dieser Seite stellen keine Steuerberatung dar. Die Domain fe-zulage.pca-partners.de wird von der PCA Advisory &amp; Services GmbH StBG betrieben.
+            Die Inhalte dieser Seite stellen keine Steuerberatung dar. Betrieben von der PCA Audit &amp; Tax GmbH Wirtschaftsprüfungsgesellschaft Steuerberatungsgesellschaft.
           </p>
         </div>
       </div>

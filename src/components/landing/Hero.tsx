@@ -54,13 +54,13 @@ export default function Hero() {
 
             <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[560px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
               Ihr Unternehmen entwickelt Software, Produkte oder Produktionsverfahren?
-              Dann steht Ihnen die gesetzliche Forschungszulage zu — bis zu 1 Mio. € pro Jahr.
-              <span className="block mt-2 text-white/40">Rückwirkend für 4 Geschäftsjahre. Ersteinschätzung kostenlos.</span>
+              Dann könnte Ihnen die gesetzliche Forschungszulage zustehen — bis zu 1 Mio. € pro Jahr.
+              <span className="block mt-2 text-white/40">Rückwirkend für 4 Geschäftsjahre. Kostenlose Ersteinschätzung.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-14 px-4 sm:px-0">
               <a href="#rechner" className="btn-cta w-full sm:w-auto text-[15px] sm:text-[16px] !py-4 sm:!py-[18px] !px-8 sm:!px-10">
-                Förderpotenzial berechnen
+                Förderung einschätzen lassen
               </a>
             </div>
 
