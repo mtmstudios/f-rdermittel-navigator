@@ -1,20 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-
-const fbqTrackOnce = (() => {
-  let fired = false;
-  return () => {
-    if (fired) return;
-    fired = true;
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "ViewContent", {
-        content_name: "Förder-Rechner Ergebnis",
-        content_category: "calculator",
-      });
-    }
-  };
-})();
+import { trackCalculatorResult } from "@/lib/pixel";
 
 const branches = [
   "Software & IT",
@@ -214,7 +201,7 @@ export default function Calculator() {
                       <ArrowLeft size={16} className="mr-1" /> Zurück
                     </button>
                     <button
-                      onClick={() => { setShowResult(true); fbqTrackOnce(); }}
+                      onClick={() => { setShowResult(true); trackCalculatorResult(); }}
                       className="btn-primary flex-1 !py-3 !text-[14px]"
                     >
                       Berechnen

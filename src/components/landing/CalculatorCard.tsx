@@ -3,21 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useUtmParams } from "@/hooks/useUtmParams";
 import { ArrowRight, ArrowLeft, TrendingUp, Users, Coins, Building2, Lock, ChevronDown, Check, Info } from "lucide-react";
-
-/* ── Meta Pixel ── */
-const fbqTrackOnce = (() => {
-  let fired = false;
-  return () => {
-    if (fired) return;
-    fired = true;
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "ViewContent", {
-        content_name: "Förder-Rechner Ergebnis",
-        content_category: "calculator",
-      });
-    }
-  };
-})();
+import { trackCalculatorStart, trackLead } from "@/lib/pixel";
 
 /* ── Smooth count-up ── */
 function useCountUp(target: number, duration = 800) {
@@ -76,11 +62,11 @@ export default function CalculatorSection() {
   const animPerYear = useCountUp(perYear);
   const animTotal = useCountUp(total3y);
 
-  /* Pixel */
+  /* Pixel — CalculatorStart fires on first slider interaction (Upper-Funnel) */
   useEffect(() => {
     if (!hasFired && (mitarbeiter !== 50 || kostenPersonal !== 400000)) {
       setHasFired(true);
-      fbqTrackOnce();
+      trackCalculatorStart();
     }
   }, [mitarbeiter, kostenPersonal, hasFired]);
 
@@ -132,12 +118,7 @@ export default function CalculatorSection() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Webhook error");
-      if (typeof window !== "undefined" && (window as any).fbq) {
-        (window as any).fbq("track", "Lead", {
-          content_name: "Forschungszulage Ersteinschätzung",
-          content_category: "calculator_form",
-        });
-      }
+      trackLead({ value: perYear, currency: "EUR" });
       navigate("/danke");
     } catch {
       navigate("/danke");

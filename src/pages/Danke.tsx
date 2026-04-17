@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { CheckCircle, Clock, FileSearch, Send, Mail, ArrowRight, Calendar } from "lucide-react";
 import VideoPlayer from "@/components/landing/VideoPlayer";
+import { trackCompleteRegistration } from "@/lib/pixel";
 
 const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
 
@@ -34,6 +35,7 @@ const chapters = [
 export default function Danke() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    trackCompleteRegistration();
   }, []);
 
   return (

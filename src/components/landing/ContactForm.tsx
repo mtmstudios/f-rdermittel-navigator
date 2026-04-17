@@ -5,6 +5,7 @@ import { useUtmParams } from "@/hooks/useUtmParams";
 import { Lock, Check, ArrowRight } from "lucide-react";
 import CustomSelect from "./CustomSelect";
 import VideoPlayer from "./VideoPlayer";
+import { trackLead } from "@/lib/pixel";
 
 export default function ContactForm() {
   const ref = useScrollAnimation();
@@ -37,12 +38,7 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Webhook error");
-      if (typeof window !== "undefined" && (window as any).fbq) {
-        (window as any).fbq("track", "Lead", {
-          content_name: "Forschungszulage Ersteinschätzung",
-          content_category: "lead_form",
-        });
-      }
+      trackLead();
       navigate("/danke");
     } catch {
       navigate("/danke");
