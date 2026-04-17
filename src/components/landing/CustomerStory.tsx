@@ -35,19 +35,19 @@ export default function CustomerStory() {
                 </p>
               </div>
 
-              {/* Key Figures — unique stats, no redundancy */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-8 sm:gap-10 pt-6 border-t border-border mb-6 md:mb-0">
-                <div>
-                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">250.000+ €</p>
-                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">bewilligte Förderung</p>
+              {/* Key Figures — 3-column grid with dividers */}
+              <div className="grid grid-cols-3 pt-6 border-t border-border mb-6 md:mb-0">
+                <div className="text-center md:text-left pr-4 md:pr-6">
+                  <p className="text-[20px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight">250.000+&nbsp;€</p>
+                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 font-medium leading-tight">bewilligte Förderung</p>
                 </div>
-                <div>
-                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">3 Jahre</p>
-                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">rückwirkend eingereicht</p>
+                <div className="text-center px-4 md:px-6 border-x border-border">
+                  <p className="text-[20px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight">3 Jahre</p>
+                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 font-medium leading-tight">rückwirkend eingereicht</p>
                 </div>
-                <div>
-                  <p className="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-foreground tracking-tight">0 €</p>
-                  <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1 font-medium">Vorabkosten</p>
+                <div className="text-center md:text-right pl-4 md:pl-6">
+                  <p className="text-[20px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight">0&nbsp;€</p>
+                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 font-medium leading-tight">Vorabkosten</p>
                 </div>
               </div>
             </div>
