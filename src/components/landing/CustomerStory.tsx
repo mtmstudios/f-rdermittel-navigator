@@ -69,7 +69,7 @@ export default function CustomerStory() {
                   förderfähig ist. Genau das prüfen wir."
                 </p>
                 <footer className="text-[11px] sm:text-[12px] text-muted-foreground/70 mt-2 not-italic font-medium">
-                  — Elias von der Linden, PCA Partners
+                  — Alexander Bernauer, PCA Partners
                 </footer>
               </blockquote>
             </div>
