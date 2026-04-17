@@ -36,18 +36,18 @@ export default function CustomerStory() {
               </div>
 
               {/* Key Figures — 3-column grid with dividers */}
-              <div className="grid grid-cols-3 pt-6 border-t border-border mb-6 md:mb-0">
-                <div className="text-center md:text-left pr-4 md:pr-6">
-                  <p className="text-[20px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight">250.000+&nbsp;€</p>
-                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 font-medium leading-tight">bewilligte Förderung</p>
+              <div className="grid grid-cols-3 items-start pt-6 border-t border-border mb-6 md:mb-0">
+                <div className="text-center md:text-left pr-3 md:pr-6">
+                  <p className="text-[19px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight leading-none">250.000+&nbsp;€</p>
+                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1.5 font-medium leading-tight">bewilligte Förderung</p>
                 </div>
-                <div className="text-center px-4 md:px-6 border-x border-border">
-                  <p className="text-[20px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight">3 Jahre</p>
-                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 font-medium leading-tight">rückwirkend eingereicht</p>
+                <div className="text-center px-3 md:px-6 border-x border-border">
+                  <p className="text-[19px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight leading-none">3 Jahre</p>
+                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1.5 font-medium leading-tight">rückwirkend</p>
                 </div>
-                <div className="text-center md:text-right pl-4 md:pl-6">
-                  <p className="text-[20px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight">0&nbsp;€</p>
-                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 font-medium leading-tight">Vorabkosten</p>
+                <div className="text-center md:text-right pl-3 md:pl-6">
+                  <p className="text-[19px] sm:text-[22px] md:text-[26px] font-extrabold text-foreground tracking-tight leading-none">100&nbsp;%</p>
+                  <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1.5 font-medium leading-tight">erfolgsbasiert</p>
                 </div>
               </div>
             </div>
