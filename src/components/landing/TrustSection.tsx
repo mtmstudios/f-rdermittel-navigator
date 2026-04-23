@@ -109,7 +109,7 @@ export default function TrustSection() {
                 <img
                   src={carolinaImg}
                   alt="Carolina Kellermann"
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-white/10"
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-top border border-white/10"
                 />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
@@ -129,7 +129,7 @@ export default function TrustSection() {
                 <img
                   src={alexanderImg}
                   alt="Alexander Bernauer"
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-white/10"
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-top border border-white/10"
                 />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
