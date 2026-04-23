@@ -106,18 +106,20 @@ export default function TrustSection() {
             {/* Team */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-10 md:mb-12">
               <div className="flex items-center gap-3">
-                <img
-                  src={carolinaImg}
-                  alt="Carolina Kellermann"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
-                />
+                <div className="w-24 h-24 rounded-full overflow-hidden border border-white/10 bg-[#0f1f38] flex-shrink-0">
+                  <img
+                    src={carolinaImg}
+                    alt="Carolina Kellermann"
+                    className="w-full h-full object-cover object-top scale-[0.85] md:scale-100"
+                  />
+                </div>
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
                   <p className="text-[11px] md:text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10 flex-shrink-0">
                   <span className="text-[22px] font-bold text-[#57a7dd]">EvdL</span>
                 </div>
                 <div>
@@ -126,11 +128,13 @@ export default function TrustSection() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <img
-                  src={alexanderImg}
-                  alt="Alexander Bernauer"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
-                />
+                <div className="w-24 h-24 rounded-full overflow-hidden border border-white/10 bg-[#0f1f38] flex-shrink-0">
+                  <img
+                    src={alexanderImg}
+                    alt="Alexander Bernauer"
+                    className="w-full h-full object-cover object-top scale-[0.85] md:scale-100"
+                  />
+                </div>
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
                   <p className="text-[11px] md:text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
