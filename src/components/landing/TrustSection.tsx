@@ -109,7 +109,7 @@ export default function TrustSection() {
                 <img
                   src={carolinaImg}
                   alt="Carolina Kellermann"
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover object-top border border-white/10"
+                  className="w-22 h-22 md:w-24 md:h-24 rounded-full object-cover object-top border border-white/10"
                 />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
