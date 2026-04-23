@@ -109,7 +109,7 @@ export default function TrustSection() {
                 <img
                   src={carolinaImg}
                   alt="Carolina Kellermann"
-                  className="w-22 h-22 md:w-24 md:h-24 rounded-full object-cover object-top border border-white/10"
+                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
                 />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
@@ -117,8 +117,8 @@ export default function TrustSection() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
-                  <span className="text-[18px] md:text-[22px] font-bold text-[#57a7dd]">EvdL</span>
+                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[22px] font-bold text-[#57a7dd]">EvdL</span>
                 </div>
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Elias von der Linden</p>
@@ -129,7 +129,7 @@ export default function TrustSection() {
                 <img
                   src={alexanderImg}
                   alt="Alexander Bernauer"
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover object-top border border-white/10"
+                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
                 />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
