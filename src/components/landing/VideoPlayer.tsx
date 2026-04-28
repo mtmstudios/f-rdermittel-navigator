@@ -102,17 +102,19 @@ export default function VideoPlayer({
                 <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
               </svg>
             </div>
-            <p className={`text-[13px] sm:text-[14px] font-medium ${isDark ? "text-white/40" : "text-muted-foreground"}`}>
+            <p className={`text-[13px] sm:text-[14px] font-medium relative z-10 ${isDark ? "text-white/90" : "text-muted-foreground"}`} style={{ textShadow: thumb ? "0 1px 4px rgba(0,0,0,0.6)" : undefined }}>
               {label}
             </p>
             {duration && (
-              <p className={`text-[11px] sm:text-[12px] mt-1 ${isDark ? "text-white/20" : "text-muted-foreground/60"}`}>
+              <p className={`text-[11px] sm:text-[12px] mt-1 relative z-10 ${isDark ? "text-white/70" : "text-muted-foreground/60"}`} style={{ textShadow: thumb ? "0 1px 4px rgba(0,0,0,0.6)" : undefined }}>
                 {duration}
               </p>
             )}
           </div>
 
         </div>
+          );
+        })()}
       </div>
     </button>
   );
