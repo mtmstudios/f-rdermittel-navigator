@@ -40,8 +40,8 @@ export default function VideoPlayer({
   const isDark = variant === "dark";
   const ytMatch = embedUrl?.match(/(?:youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
   const ytId = ytMatch?.[1];
-  const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg` : null;
-  const thumbFallback = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+  const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+  const thumbHi = ytId ? `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg` : null;
 
   return (
     <button
