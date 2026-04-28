@@ -64,7 +64,8 @@ export default function VideoPlayer({
         {(() => {
           const ytMatch = embedUrl?.match(/(?:youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
           const ytId = ytMatch?.[1];
-          const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+          const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg` : null;
+          const thumbFallback = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
           return (
             <div className={`absolute inset-0 flex items-center justify-center ${
               isDark
@@ -77,6 +78,12 @@ export default function VideoPlayer({
                   alt={label}
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    if (thumbFallback && e.currentTarget.src !== thumbFallback) {
+                      e.currentTarget.src = thumbFallback;
+                    }
+                  }}
                 />
               )}
               {thumb && <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />}
