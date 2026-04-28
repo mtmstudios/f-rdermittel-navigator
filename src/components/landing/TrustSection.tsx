@@ -182,6 +182,7 @@ export default function TrustSection() {
               <div className="order-2 md:order-1">
                 <div className="glow-blue">
                   <VideoPlayer
+                    embedUrl="https://www.youtube.com/embed/HDs7g4zyqJY"
                     label="Alexander Bernauer & Elias von der Linden im Gespräch"
                     duration="5:00 Min."
                     variant="dark"
