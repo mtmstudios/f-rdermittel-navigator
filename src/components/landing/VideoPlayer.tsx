@@ -61,17 +61,32 @@ export default function VideoPlayer({
         className="relative w-full"
         style={{ paddingBottom: "56.25%" }}
       >
-        <div className={`absolute inset-0 flex items-center justify-center ${
-          isDark
-            ? "bg-gradient-to-br from-[#0a0a0e] to-[#14141e]"
-            : "bg-gradient-to-br from-gray-50 to-gray-100 border border-border"
-        }`}>
-          {/* Dot pattern */}
-          <div className="absolute inset-0 opacity-[0.04]" style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
-            backgroundSize: "24px 24px",
-            color: isDark ? "white" : "black",
-          }} />
+        {(() => {
+          const ytMatch = embedUrl?.match(/(?:youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+          const ytId = ytMatch?.[1];
+          const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+          return (
+            <div className={`absolute inset-0 flex items-center justify-center ${
+              isDark
+                ? "bg-gradient-to-br from-[#0a0a0e] to-[#14141e]"
+                : "bg-gradient-to-br from-gray-50 to-gray-100 border border-border"
+            }`}>
+              {thumb && (
+                <img
+                  src={thumb}
+                  alt={label}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              )}
+              {thumb && <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />}
+              {!thumb && (
+                <div className="absolute inset-0 opacity-[0.04]" style={{
+                  backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+                  backgroundSize: "24px 24px",
+                  color: isDark ? "white" : "black",
+                }} />
+              )}
 
           {/* Play button */}
           <div className="text-center relative z-10">
