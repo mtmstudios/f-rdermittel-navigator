@@ -56,7 +56,7 @@ export default function CustomerStory() {
             <div className="order-1 md:order-2">
               <div className="glow-blue">
                 <VideoPlayer
-                  embedUrl="https://www.youtube.com/embed/HDs7g4zyqJY"
+                  embedUrl="https://www.youtube.com/embed/0oZAUSGa8kQ"
                   label="Alexander Bernauer erklärt den Case"
                   duration="1:45 Min."
                   variant="dark"
