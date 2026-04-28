@@ -40,8 +40,8 @@ export default function VideoPlayer({
   const isDark = variant === "dark";
   const ytMatch = embedUrl?.match(/(?:youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
   const ytId = ytMatch?.[1];
-  const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg` : null;
-  const thumbFallback = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+  const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+  const thumbHi = ytId ? `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg` : null;
 
   return (
     <button
@@ -60,20 +60,20 @@ export default function VideoPlayer({
         >
           {thumb && (
             <img
-              src={thumb}
+              src={thumbHi || thumb}
               alt={label}
               className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"
               decoding="async"
               onError={(e) => {
-                if (thumbFallback && e.currentTarget.src !== thumbFallback) {
-                  e.currentTarget.src = thumbFallback;
+                if (thumb && e.currentTarget.src !== thumb) {
+                  e.currentTarget.src = thumb;
                 }
               }}
             />
           )}
           {thumb && (
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
           )}
           {!thumb && (
             <div
