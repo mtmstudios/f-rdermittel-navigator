@@ -37,7 +37,7 @@ export default function PodcastSection() {
             {/* Video */}
             <div className="glow-blue">
               <VideoPlayer
-                /* TODO: Replace with YouTube/Vimeo URL after upload of "Podcast Video.mp4" */
+                embedUrl="https://www.youtube.com/embed/gd4G87CP2WU"
                 label="Gespräch ansehen"
                 duration="17:47 Min."
                 variant="dark"
