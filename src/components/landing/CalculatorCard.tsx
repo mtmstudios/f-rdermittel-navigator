@@ -266,7 +266,7 @@ export default function CalculatorSection() {
                         {/* Estimate badge */}
                         <div className="flex justify-center mb-5">
                           <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#57a7dd]/60 bg-[#57a7dd]/[0.08] px-3 py-1 rounded-full border border-[#57a7dd]/10">
-                            Geschätzte Förderung
+                            Indikative Schätzung — kein verbindlicher Wert
                           </span>
                         </div>
 
