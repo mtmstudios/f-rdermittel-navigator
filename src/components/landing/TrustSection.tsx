@@ -2,6 +2,8 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useEffect, useRef, useState } from "react";
 import { Shield, FileCheck, TrendingUp } from "lucide-react";
 import VideoPlayer from "./VideoPlayer";
+import alexanderImg from "@/assets/alexander-bernauer.png";
+import carolinaImg from "@/assets/carolina-kellermann.png";
 
 const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
 
@@ -107,18 +109,22 @@ export default function TrustSection() {
             {/* Team — Bilder & Texte aus Flyer (OFFEN, Platzhalter) */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-10 md:mb-12">
               <div className="flex items-center gap-3">
-                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
-                  <span className="text-[22px] font-bold text-[#57a7dd]">CK</span>
-                </div>
+                <img
+                  src={carolinaImg}
+                  alt="Carolina Kellermann"
+                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
+                />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
                   <p className="text-[11px] md:text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
-                  <span className="text-[22px] font-bold text-[#57a7dd]">AB</span>
-                </div>
+                <img
+                  src={alexanderImg}
+                  alt="Alexander Bernauer"
+                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
+                />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
                   <p className="text-[11px] md:text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
