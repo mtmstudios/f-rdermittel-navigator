@@ -64,9 +64,8 @@ function useScrollCounter(target: number, suffix: string, duration = 1200) {
 export default function TrustSection() {
   const ref = useScrollAnimation();
 
-  const stat1 = useScrollCounter(500, "+");
+  const stat1 = useScrollCounter(150, "+");
   const stat2 = useScrollCounter(98, " %");
-  const stat3 = useScrollCounter(95000, " €", 1600);
 
   return (
     <section
