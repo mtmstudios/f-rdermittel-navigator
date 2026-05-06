@@ -42,8 +42,10 @@ export default function CalculatorSection() {
   /* Calculator state */
   const [mitarbeiter, setMitarbeiter] = useState(50);
   const [kostenPersonal, setKostenPersonal] = useState(400000);
+  const [kostenSonstige, setKostenSonstige] = useState(0);
   const [kostenExtern, setKostenExtern] = useState(0);
   const [showExtern, setShowExtern] = useState(false);
+  const [showSonstige, setShowSonstige] = useState(false);
   const [hasFired, setHasFired] = useState(false);
 
   /* Form state */
@@ -52,11 +54,17 @@ export default function CalculatorSection() {
   const [form, setForm] = useState({ name: "", unternehmen: "", email: "", telefon: "" });
   const sectionRef = useRef<HTMLElement>(null);
 
-  /* Calculation */
+  /* Calculation
+     - Interne F&E-Personalkosten + sonstige F&E-Kosten: Ø 35 % (KMU) / 25 % (Großunternehmen)
+     - Externe / beauftragte F&E-Kosten: Ø 21 % (KMU) / 15 % (Großunternehmen) */
   const isKmu = mitarbeiter < 250;
-  const rate = isKmu ? 0.35 : 0.25;
-  const basis = Math.min(kostenPersonal + kostenExtern * 0.6, 4_000_000);
-  const perYear = Math.min(Math.round((basis * rate) / 100) * 100, 1_000_000);
+  const rateInternal = isKmu ? 0.35 : 0.25;
+  const rateExtern = isKmu ? 0.21 : 0.15;
+  const basisInternal = Math.min(kostenPersonal + kostenSonstige, 4_000_000);
+  const perYear = Math.min(
+    Math.round((basisInternal * rateInternal + kostenExtern * rateExtern) / 100) * 100,
+    1_000_000,
+  );
   const total3y = perYear * 3;
 
   const animPerYear = useCountUp(perYear);
