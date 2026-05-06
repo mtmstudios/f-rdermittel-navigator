@@ -171,7 +171,7 @@ export default function CalculatorSection() {
                   displayValue={String(mitarbeiter)}
                   min={1} max={500} step={1}
                   onChange={setMitarbeiter}
-                  badge={isKmu ? "KMU — 35 % Förderquote" : "Großunternehmen — 25 %"}
+                  badge={isKmu ? "KMU — Ø 35 % Förderquote" : "Großunternehmen — 25 %"}
                   badgeVariant={isKmu ? "green" : "gray"}
                   minLabel="1" maxLabel="500+"
                 />
@@ -184,20 +184,49 @@ export default function CalculatorSection() {
                   onChange={setKostenPersonal}
                   minLabel="50k €" maxLabel="4 Mio. €"
                 />
+                {!showSonstige ? (
+                  <button
+                    onClick={() => setShowSonstige(true)}
+                    className="flex items-center gap-2 text-[13px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors pl-1 cursor-pointer"
+                  >
+                    <ChevronDown size={14} />
+                    Sonstige Entwicklungs- und Forschungskosten hinzufügen
+                  </button>
+                ) : (
+                  <div>
+                    <SliderCard
+                      icon={<Coins size={18} className="text-[#307abe]" />}
+                      label="Sonstige Entwicklungs- und Forschungskosten"
+                      sublabel="(gleiche Förderquote wie Personalkosten)"
+                      value={kostenSonstige}
+                      displayValue={kostenSonstige === 0 ? "—" : fmtShort(kostenSonstige)}
+                      min={0} max={2000000} step={10000}
+                      onChange={setKostenSonstige}
+                      minLabel="0 €" maxLabel="2 Mio. €"
+                    />
+                    <button
+                      onClick={() => { setShowSonstige(false); setKostenSonstige(0); }}
+                      className="flex items-center gap-1.5 text-[12px] text-muted-foreground hover:text-foreground transition-colors mt-2 pl-1 cursor-pointer"
+                    >
+                      <ChevronDown size={13} className="rotate-180" />
+                      Sonstige Kosten entfernen
+                    </button>
+                  </div>
+                )}
                 {!showExtern ? (
                   <button
                     onClick={() => setShowExtern(true)}
                     className="flex items-center gap-2 text-[13px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors pl-1 cursor-pointer"
                   >
                     <ChevronDown size={14} />
-                    Externe Entwicklungsaufträge hinzufügen
+                    Externe oder beauftragte F&E-Kosten hinzufügen
                   </button>
                 ) : (
                   <div>
                     <SliderCard
                       icon={<Building2 size={18} className="text-[#307abe]" />}
-                      label="Externe Aufträge"
-                      sublabel="(zu 60 % förderfähig)"
+                      label="Externe oder beauftragte F&E-Kosten"
+                      sublabel="(Ø 21 % Förderquote)"
                       value={kostenExtern}
                       displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
                       min={0} max={2000000} step={10000}
@@ -209,7 +238,7 @@ export default function CalculatorSection() {
                       className="flex items-center gap-1.5 text-[12px] text-muted-foreground hover:text-foreground transition-colors mt-2 pl-1 cursor-pointer"
                     >
                       <ChevronDown size={13} className="rotate-180" />
-                      Externe Aufträge entfernen
+                      Externe Kosten entfernen
                     </button>
                   </div>
                 )}
@@ -218,8 +247,8 @@ export default function CalculatorSection() {
                 <div className="flex items-start gap-2.5 pt-2">
                   <Info size={13} className="text-muted-foreground/40 flex-shrink-0 mt-0.5" />
                   <p className="text-[11px] text-muted-foreground/60 leading-[1.6]">
-                    Unverbindliche Ersteinschätzung auf Basis Ihrer Angaben. Die tatsächliche Förderhöhe
-                    hängt von der individuellen Prüfung Ihrer Projekte ab. Keine Steuerberatung.
+                    <span className="font-semibold text-muted-foreground/80">Indikative Schätzung — kein verbindlicher Wert.</span>{" "}
+                    Die tatsächliche Förderhöhe hängt von der individuellen Prüfung Ihrer Projekte ab. Keine Steuerberatung.
                   </p>
                 </div>
               </div>
