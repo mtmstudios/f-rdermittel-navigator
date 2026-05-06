@@ -2,8 +2,6 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useEffect, useRef, useState } from "react";
 import { Shield, FileCheck, TrendingUp } from "lucide-react";
 import VideoPlayer from "./VideoPlayer";
-import alexanderImg from "@/assets/alexander-bernauer.png";
-import carolinaImg from "@/assets/carolina-kellermann.png";
 
 const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
 
