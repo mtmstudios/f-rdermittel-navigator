@@ -1,6 +1,6 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useStaggerAnimation } from "@/hooks/useStaggerAnimation";
-import { ArrowRight, AlertTriangle } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
 const myths = [
   {
@@ -58,20 +58,21 @@ export default function ProblemSection() {
             ))}
           </div>
 
-          {/* One-Shot Warnung — Premium callout */}
+          {/* Qualität entscheidet — neutral, vertrauensbildend */}
           <div className="relative max-w-[860px] mx-auto mb-8 md:mb-10 rounded-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-500/[0.04] to-orange-500/[0.02]" />
-            <div className="relative flex items-start gap-4 p-6 md:p-7 border border-amber-500/15 rounded-2xl">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                <AlertTriangle size={18} className="text-amber-500/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#307abe]/[0.04] to-[#307abe]/[0.02]" />
+            <div className="relative flex items-start gap-4 p-6 md:p-7 border border-[#307abe]/15 rounded-2xl">
+              <div className="w-10 h-10 rounded-xl bg-[#307abe]/10 flex items-center justify-center flex-shrink-0">
+                <ShieldCheck size={18} className="text-[#307abe]" />
               </div>
               <div>
                 <p className="text-[14px] md:text-[15px] font-semibold text-foreground mb-1 tracking-[-0.01em]">
-                  Nur ein Versuch pro Projekt.
+                  Ein gescheiterter Antrag ist verlorenes Geld.
                 </p>
                 <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7]">
-                  Wird Ihr Antrag abgelehnt, ist er endgültig abgelehnt — für genau diese Projekte gibt es keine zweite Chance.
-                  Deshalb übernehmen wir die komplette Antragstellung auf WP-Niveau.
+                  Die Qualität des Antrags entscheidet. Durch die Bearbeitung über eine
+                  Wirtschaftsprüfer-Kanzlei (PCA) erhöht sich die Erfolgswahrscheinlichkeit
+                  deutlich gegenüber Eigenanträgen.
                 </p>
               </div>
             </div>

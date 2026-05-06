@@ -2,8 +2,6 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useEffect, useRef, useState } from "react";
 import { Shield, FileCheck, TrendingUp } from "lucide-react";
 import VideoPlayer from "./VideoPlayer";
-import alexanderImg from "@/assets/alexander-bernauer.png";
-import carolinaImg from "@/assets/carolina-kellermann.png";
 
 const PCA_LOGO = "https://pca-partners.de/wp-content/uploads/2025/03/PCA_Logo_horizontal-1.svg";
 
@@ -20,8 +18,8 @@ const credentials = [
   },
   {
     icon: TrendingUp,
-    title: "Erfolgsbasiertes Honorar",
-    text: "Kein Erfolg — keine Kosten. Sie zahlen nur, wenn Sie tatsächlich Förderung erhalten.",
+    title: "Überwiegend erfolgsabhängiges Honorar",
+    text: "Eine einmalige Aufwandsentschädigung für die Erstprüfung — danach orientiert sich unser Honorar am tatsächlichen Erfolg.",
   },
 ];
 
@@ -64,9 +62,8 @@ function useScrollCounter(target: number, suffix: string, duration = 1200) {
 export default function TrustSection() {
   const ref = useScrollAnimation();
 
-  const stat1 = useScrollCounter(500, "+");
+  const stat1 = useScrollCounter(150, "+");
   const stat2 = useScrollCounter(98, " %");
-  const stat3 = useScrollCounter(95000, " €", 1600);
 
   return (
     <section
@@ -88,10 +85,14 @@ export default function TrustSection() {
               alt="PCA Partners"
               className="h-8 md:h-10 brightness-0 invert opacity-60 mx-auto mb-6"
             />
+            <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#57a7dd] bg-[#307abe]/10 border border-[#307abe]/20 px-3 py-1.5 rounded-full mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#57a7dd]" />
+              Zugelassene Wirtschaftsprüfungsgesellschaft
+            </span>
             <p className="eyebrow-dark">Ihre Ansprechpartner</p>
             <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-5 tracking-[-0.02em]">
-              Wirtschaftsprüfer.
-              <span className="block text-white/50">Nicht nur Berater.</span>
+              PCA Partners.
+              <span className="block text-white/50">Wirtschaftsprüfer, nicht nur Berater.</span>
             </h2>
             <p className="text-[15px] md:text-[17px] text-white/50 leading-[1.7]">
               Wir übernehmen den gesamten Antrag — von der fachlichen Einordnung bis
@@ -103,17 +104,24 @@ export default function TrustSection() {
           {/* People + Credentials — always before video on mobile */}
           <div className="max-w-[960px] mx-auto">
 
-            {/* Team */}
+            {/* Team — Bilder & Texte aus Flyer (OFFEN, Platzhalter) */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-10 md:mb-12">
               <div className="flex items-center gap-3">
-                <img
-                  src={carolinaImg}
-                  alt="Carolina Kellermann"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
-                />
+                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[22px] font-bold text-[#57a7dd]">CK</span>
+                </div>
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
                   <p className="text-[11px] md:text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[22px] font-bold text-[#57a7dd]">AB</span>
+                </div>
+                <div>
+                  <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
+                  <p className="text-[11px] md:text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -125,17 +133,6 @@ export default function TrustSection() {
                   <p className="text-[11px] md:text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <img
-                  src={alexanderImg}
-                  alt="Alexander Bernauer"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
-                />
-                <div>
-                  <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
-                  <p className="text-[11px] md:text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
-                </div>
-              </div>
             </div>
 
             {/* Location */}
@@ -143,8 +140,8 @@ export default function TrustSection() {
               Standorte: München & Passau
             </p>
 
-            {/* Stats row — animated counters */}
-            <div className="flex items-center justify-center gap-3 sm:gap-6 mb-10 md:mb-12 flex-wrap">
+            {/* Stats row — animated counters (Platzhalter — finale Zahlen folgen) */}
+            <div className="flex items-center justify-center gap-3 sm:gap-6 mb-4 flex-wrap">
               <div className="flex items-baseline gap-1.5">
                 <span ref={stat1.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat1.display}</span>
                 <span className="text-[11px] sm:text-[12px] text-white/40">geprüfte Projekte</span>
@@ -154,12 +151,11 @@ export default function TrustSection() {
                 <span ref={stat2.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat2.display}</span>
                 <span className="text-[11px] sm:text-[12px] text-white/40">Bewilligungsquote</span>
               </div>
-              <div className="w-px h-6 bg-white/10 hidden sm:block" />
-              <div className="flex items-baseline gap-1.5">
-                <span ref={stat3.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat3.display}</span>
-                <span className="text-[11px] sm:text-[12px] text-white/40">Ø Fördersumme</span>
-              </div>
             </div>
+            {/* TODO: finale Zahl einfügen — z.B. "Über 25 Mio. € erfolgreich beantragt" */}
+            <p className="text-center text-[12px] sm:text-[13px] text-white/40 mb-10 md:mb-12 font-medium">
+              Über X Mio. € erfolgreich beantragt
+            </p>
 
             {/* Video + Credentials Grid */}
             <div className="grid md:grid-cols-[1.2fr,1fr] gap-8 md:gap-12 items-start">
