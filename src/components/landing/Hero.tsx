@@ -73,7 +73,7 @@ export default function Hero() {
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                Erfolgsbasiertes Honorar
+                Überwiegend erfolgsabhängiges Honorar
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />

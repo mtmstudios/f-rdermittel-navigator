@@ -14,8 +14,8 @@ const points = [
   },
   {
     icon: TrendingUp,
-    title: "Erfolgsbasiertes Modell",
-    text: "Unser Honorar orientiert sich am tatsächlichen Ergebnis. Kein Erfolg — keine Kosten.",
+    title: "Überwiegend erfolgsabhängiges Honorar",
+    text: "Einmalige Aufwandsentschädigung für die Erstprüfung. Danach orientiert sich unser Honorar am tatsächlichen Ergebnis.",
   },
   {
     icon: User,

@@ -18,8 +18,8 @@ const credentials = [
   },
   {
     icon: TrendingUp,
-    title: "Erfolgsbasiertes Honorar",
-    text: "Kein Erfolg — keine Kosten. Sie zahlen nur, wenn Sie tatsächlich Förderung erhalten.",
+    title: "Überwiegend erfolgsabhängiges Honorar",
+    text: "Eine einmalige Aufwandsentschädigung für die Erstprüfung — danach orientiert sich unser Honorar am tatsächlichen Erfolg.",
   },
 ];
 
