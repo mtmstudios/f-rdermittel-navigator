@@ -106,17 +106,24 @@ export default function TrustSection() {
           {/* People + Credentials — always before video on mobile */}
           <div className="max-w-[960px] mx-auto">
 
-            {/* Team */}
+            {/* Team — Bilder & Texte aus Flyer (OFFEN, Platzhalter) */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-10 md:mb-12">
               <div className="flex items-center gap-3">
-                <img
-                  src={carolinaImg}
-                  alt="Carolina Kellermann"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
-                />
+                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[22px] font-bold text-[#57a7dd]">CK</span>
+                </div>
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
                   <p className="text-[11px] md:text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[22px] font-bold text-[#57a7dd]">AB</span>
+                </div>
+                <div>
+                  <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
+                  <p className="text-[11px] md:text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -126,17 +133,6 @@ export default function TrustSection() {
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Elias von der Linden</p>
                   <p className="text-[11px] md:text-[12px] text-white/40">Forschungs- & Entwicklungszulage</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <img
-                  src={alexanderImg}
-                  alt="Alexander Bernauer"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
-                />
-                <div>
-                  <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
-                  <p className="text-[11px] md:text-[12px] text-white/40">Geschäftsführender Gesellschafter</p>
                 </div>
               </div>
             </div>
