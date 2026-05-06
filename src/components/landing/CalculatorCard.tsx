@@ -115,6 +115,7 @@ export default function CalculatorSection() {
       telefon: form.telefon,
       mitarbeiter: String(mitarbeiter),
       kostenPersonal: String(kostenPersonal),
+      kostenSonstige: String(kostenSonstige),
       kostenExtern: String(kostenExtern),
       foerderpotenzial: String(perYear),
       ...utm,
