@@ -4,8 +4,8 @@ import { ArrowRight, Phone, FileSearch, Send, BadgeEuro } from "lucide-react";
 
 const steps = [
   { icon: Phone, title: "Ersteinschätzung", text: "30 Minuten, kostenlos. Wir prüfen, ob Ihre Projekte grundsätzlich förderfähig sind.", time: "30 Min." },
-  { icon: FileSearch, title: "Projektanalyse", text: "Wir identifizieren alle förderfähigen Projekte und bereiten die Dokumentation prüfungssicher auf.", time: "2–4 Wochen" },
-  { icon: Send, title: "Antragstellung", text: "Wir reichen den Antrag bei der Bescheinigungsstelle und dem Finanzamt ein — komplett.", time: "4–8 Wochen" },
+  { icon: FileSearch, title: "Projektanalyse", text: "Wir identifizieren alle förderfähigen Projekte und bereiten die Dokumentation prüfungssicher auf.", time: "1–2 Wochen" },
+  { icon: Send, title: "Antragstellung", text: "Wir reichen den Antrag bei der Bescheinigungsstelle und dem Finanzamt ein — komplett.", time: "2–4 Wochen" },
   { icon: BadgeEuro, title: "Auszahlung", text: "Die Forschungszulage wird mit Ihrer Steuerschuld verrechnet oder direkt ausgezahlt.", time: "Ergebnis" },
 ];
 

@@ -52,10 +52,11 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[560px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
-              Ihr Unternehmen entwickelt Software, Produkte oder Produktionsverfahren?
-              Dann könnte Ihnen die gesetzliche Forschungszulage zustehen — bis zu 1 Mio. € pro Jahr.
-              <span className="block mt-2 text-white/40">Rückwirkend für 4 Geschäftsjahre. Kostenlose Ersteinschätzung.</span>
+            <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[620px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
+              Ob Forschung &amp; Entwicklung, technische Innovation, neue Produkte oder Verfahren —
+              Software, Hardware, Maschinenbau, Prozessentwicklung oder Auftragsforschung:
+              die gesetzliche Forschungszulage könnte Ihnen bis zu 1 Mio. € pro Jahr bringen.
+              <span className="block mt-2 text-white/40">Förderzeitraum 8 Jahre — bis zu 4 Jahre rückwirkend. Kostenlose Ersteinschätzung.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-14 px-4 sm:px-0">
