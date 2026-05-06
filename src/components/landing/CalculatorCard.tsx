@@ -413,7 +413,7 @@ export default function CalculatorSection() {
                     displayValue={String(mitarbeiter)}
                     min={1} max={500} step={1}
                     onChange={setMitarbeiter}
-                    badge={isKmu ? "KMU · 35 %" : "25 %"}
+                    badge={isKmu ? "KMU · Ø 35 %" : "25 %"}
                     badgeVariant={isKmu ? "green" : "gray"}
                     compact
                   />
@@ -426,20 +426,49 @@ export default function CalculatorSection() {
                     onChange={setKostenPersonal}
                     compact
                   />
+                  {!showSonstige ? (
+                    <button
+                      onClick={() => setShowSonstige(true)}
+                      className="flex items-center gap-1.5 text-[12px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors cursor-pointer"
+                    >
+                      <ChevronDown size={13} />
+                      Sonstige Entwicklungs- und Forschungskosten hinzufügen
+                    </button>
+                  ) : (
+                    <div>
+                      <SliderCard
+                        icon={<Coins size={16} className="text-[#307abe]" />}
+                        label="Sonstige F&E-Kosten"
+                        sublabel="gleiche Quote wie Personal"
+                        value={kostenSonstige}
+                        displayValue={kostenSonstige === 0 ? "—" : fmtShort(kostenSonstige)}
+                        min={0} max={2000000} step={10000}
+                        onChange={setKostenSonstige}
+                        compact
+                      />
+                      <button
+                        onClick={() => { setShowSonstige(false); setKostenSonstige(0); }}
+                        className="flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors mt-1.5 cursor-pointer"
+                      >
+                        <ChevronDown size={12} className="rotate-180" />
+                        Sonstige entfernen
+                      </button>
+                    </div>
+                  )}
                   {!showExtern ? (
                     <button
                       onClick={() => setShowExtern(true)}
                       className="flex items-center gap-1.5 text-[12px] text-[#307abe] font-medium hover:text-[#2968a3] transition-colors cursor-pointer"
                     >
                       <ChevronDown size={13} />
-                      Externe Aufträge hinzufügen
+                      Externe oder beauftragte F&E-Kosten hinzufügen
                     </button>
                   ) : (
                     <div>
                       <SliderCard
                         icon={<Building2 size={16} className="text-[#307abe]" />}
-                        label="Externe Aufträge"
-                        sublabel="60 % förderfähig"
+                        label="Externe / beauftragte F&E"
+                        sublabel="Ø 21 % Förderquote"
                         value={kostenExtern}
                         displayValue={kostenExtern === 0 ? "—" : fmtShort(kostenExtern)}
                         min={0} max={2000000} step={10000}
