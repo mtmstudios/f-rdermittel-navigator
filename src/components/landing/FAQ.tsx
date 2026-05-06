@@ -25,12 +25,16 @@ const faqs = [
     a: "Ein Erstgespräch von ca. 30 Minuten und einige Eckdaten zu Ihren Projekten. Den Rest — Dokumentation, Aufbereitung, Einreichung — übernehmen wir komplett.",
   },
   {
-    q: "Was kostet das?",
-    a: "Die Ersteinschätzung ist kostenlos. Danach arbeiten wir erfolgsbasiert: Sie zahlen nur, wenn tatsächlich Förderung bewilligt wird.",
+    q: "Welche Kosten entstehen bei der Erstprüfung?",
+    a: "Für die Erstprüfung berechnen wir eine einmalige Gebühr von 2.000 €. Danach arbeiten wir überwiegend erfolgsabhängig — der Großteil unseres Honorars fällt nur an, wenn die Förderung tatsächlich bewilligt wird.",
   },
   {
-    q: "Kann ich die Förderung rückwirkend beantragen?",
-    a: "Ja. Projekte der letzten vier Geschäftsjahre können eingereicht werden. Das ist oft der größte Hebel — viele Unternehmen erhalten so eine sechsstellige Nachzahlung.",
+    q: "Was kostet das insgesamt?",
+    a: "Die telefonische Ersteinschätzung ist kostenlos. Für die anschließende Erstprüfung fällt eine einmalige Gebühr von 2.000 € an. Das eigentliche Honorar ist überwiegend erfolgsabhängig.",
+  },
+  {
+    q: "Für welchen Zeitraum gilt die Forschungszulage?",
+    a: "Die Forschungszulage gilt für insgesamt 8 Jahre. Davon können bis zu 4 Jahre rückwirkend geltend gemacht werden — Projekte aus den letzten vier Geschäftsjahren lassen sich also noch einreichen. Das ist oft der größte Hebel.",
   },
 ];
 
