@@ -76,14 +76,21 @@ export default function CustomerStory() {
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="text-center mt-10 md:mt-14">
+          {/* CTAs — primary booking + secondary calculator */}
+          <div className="mt-10 md:mt-14 flex flex-col items-center gap-4">
+            <a
+              href="#booking"
+              className="btn-cta text-[14px] md:text-[15px] !py-4 !px-8"
+            >
+              Erstgespräch vereinbaren
+              <ArrowRight size={16} className="ml-2" />
+            </a>
             <a
               href="#rechner"
-              className="inline-flex items-center gap-2 text-[14px] md:text-[15px] font-semibold text-[#307abe] hover:text-[#2968a3] transition-colors"
+              className="inline-flex items-center gap-2 text-[13px] md:text-[14px] font-medium text-muted-foreground hover:text-[#307abe] transition-colors"
             >
-              Prüfen Sie Ihr eigenes Förderpotenzial
-              <ArrowRight size={16} />
+              Oder zuerst Förderpotenzial prüfen
+              <ArrowRight size={14} />
             </a>
           </div>
         </div>
