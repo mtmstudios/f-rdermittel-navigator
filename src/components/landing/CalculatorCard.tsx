@@ -378,7 +378,7 @@ export default function CalculatorSection() {
                   <div className="px-5 py-5 text-center">
                     {/* Estimate badge */}
                     <span className="inline-block text-[9px] font-semibold uppercase tracking-[0.15em] text-[#57a7dd]/60 bg-[#57a7dd]/[0.08] px-2.5 py-0.5 rounded-full border border-[#57a7dd]/10 mb-3">
-                      Geschätzte Förderung
+                      Indikative Schätzung — kein verbindlicher Wert
                     </span>
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <TrendingUp size={13} className="text-[#57a7dd]" />
