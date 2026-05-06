@@ -87,10 +87,14 @@ export default function TrustSection() {
               alt="PCA Partners"
               className="h-8 md:h-10 brightness-0 invert opacity-60 mx-auto mb-6"
             />
+            <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#57a7dd] bg-[#307abe]/10 border border-[#307abe]/20 px-3 py-1.5 rounded-full mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#57a7dd]" />
+              Zugelassene Wirtschaftsprüfungsgesellschaft
+            </span>
             <p className="eyebrow-dark">Ihre Ansprechpartner</p>
             <h2 className="text-[24px] sm:text-[28px] md:text-[38px] font-bold text-white leading-[1.1] mb-5 tracking-[-0.02em]">
-              Wirtschaftsprüfer.
-              <span className="block text-white/50">Nicht nur Berater.</span>
+              PCA Partners.
+              <span className="block text-white/50">Wirtschaftsprüfer, nicht nur Berater.</span>
             </h2>
             <p className="text-[15px] md:text-[17px] text-white/50 leading-[1.7]">
               Wir übernehmen den gesamten Antrag — von der fachlichen Einordnung bis
@@ -142,8 +146,8 @@ export default function TrustSection() {
               Standorte: München & Passau
             </p>
 
-            {/* Stats row — animated counters */}
-            <div className="flex items-center justify-center gap-3 sm:gap-6 mb-10 md:mb-12 flex-wrap">
+            {/* Stats row — animated counters (Platzhalter — finale Zahlen folgen) */}
+            <div className="flex items-center justify-center gap-3 sm:gap-6 mb-4 flex-wrap">
               <div className="flex items-baseline gap-1.5">
                 <span ref={stat1.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat1.display}</span>
                 <span className="text-[11px] sm:text-[12px] text-white/40">geprüfte Projekte</span>
@@ -153,12 +157,11 @@ export default function TrustSection() {
                 <span ref={stat2.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat2.display}</span>
                 <span className="text-[11px] sm:text-[12px] text-white/40">Bewilligungsquote</span>
               </div>
-              <div className="w-px h-6 bg-white/10 hidden sm:block" />
-              <div className="flex items-baseline gap-1.5">
-                <span ref={stat3.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat3.display}</span>
-                <span className="text-[11px] sm:text-[12px] text-white/40">Ø Fördersumme</span>
-              </div>
             </div>
+            {/* TODO: finale Zahl einfügen — z.B. "Über 25 Mio. € erfolgreich beantragt" */}
+            <p className="text-center text-[12px] sm:text-[13px] text-white/40 mb-10 md:mb-12 font-medium">
+              Über X Mio. € erfolgreich beantragt
+            </p>
 
             {/* Video + Credentials Grid */}
             <div className="grid md:grid-cols-[1.2fr,1fr] gap-8 md:gap-12 items-start">
