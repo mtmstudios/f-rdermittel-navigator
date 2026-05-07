@@ -29,26 +29,28 @@ export default function Process() {
 
           <div ref={staggerRef} className="stagger-children grid md:grid-cols-4 gap-0 max-w-[960px] mx-auto">
             {steps.map((s, i) => (
-              <div key={i} className="relative px-5 md:px-6 pb-10 md:pb-0 text-center">
+              <div key={i} className="relative flex md:block items-start gap-5 md:gap-0 px-4 md:px-6 pb-8 md:pb-0 last:pb-0 md:text-center">
                 {/* Connector line — desktop only */}
                 {i < steps.length - 1 && (
                   <div className="hidden md:block absolute top-[22px] left-[calc(50%+24px)] right-0 h-px bg-gradient-to-r from-[#307abe]/20 to-border/50" />
                 )}
 
                 {/* Step icon circle */}
-                <div className="w-11 h-11 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center mb-5 relative z-10 mx-auto"
+                <div className="w-11 h-11 rounded-full bg-[#307abe]/[0.08] border border-[#307abe]/20 flex items-center justify-center flex-shrink-0 mb-0 md:mb-5 relative z-10 md:mx-auto"
                   style={{ boxShadow: "0 0 20px rgba(48,122,190,0.08)" }}>
                   <s.icon size={18} className="text-[#307abe]" />
                 </div>
 
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-2 block">
-                  Schritt {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-[17px] font-bold mb-2 tracking-[-0.01em]">{s.title}</h3>
-                <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7] mb-3">{s.text}</p>
-                <span className="inline-block text-[12px] font-semibold text-[#307abe] bg-[#307abe]/[0.06] px-3 py-1 rounded-full">
-                  {s.time}
-                </span>
+                <div className="flex-1 md:block">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#307abe]/60 mb-1.5 block">
+                    Schritt {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-[17px] font-bold mb-1.5 tracking-[-0.01em]">{s.title}</h3>
+                  <p className="text-[13px] md:text-[14px] text-muted-foreground leading-[1.7] mb-2">{s.text}</p>
+                  <span className="inline-block text-[12px] font-semibold text-[#307abe] bg-[#307abe]/[0.06] px-3 py-1 rounded-full">
+                    {s.time}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

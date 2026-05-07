@@ -35,7 +35,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative pt-28 pb-36 md:pt-44 md:pb-44">
+      <div className="relative pt-24 pb-28 md:pt-44 md:pb-44">
         <div className="container-main" ref={ref}>
           <div className="fade-in-up max-w-[800px] mx-auto text-center">
             <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] text-white/50 mb-6 md:mb-10">
@@ -52,11 +52,9 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-[15px] sm:text-[17px] md:text-[20px] text-white/55 max-w-[620px] mx-auto mb-8 md:mb-12 leading-[1.7] font-light px-2">
-              Ob Forschung &amp; Entwicklung, technische Innovation, neue Produkte oder Verfahren —
-              Software, Hardware, Maschinenbau, Prozessentwicklung oder Auftragsforschung:
-              die gesetzliche Forschungszulage könnte Ihnen bis zu 1 Mio. € pro Jahr bringen.
-              <span className="block mt-2 text-white/40">Förderzeitraum 8 Jahre — bis zu 4 Jahre rückwirkend. Kostenlose Ersteinschätzung.</span>
+            <p className="text-[16px] sm:text-[18px] md:text-[20px] text-white/55 max-w-[520px] mx-auto mb-8 md:mb-12 leading-[1.65] font-light px-4 sm:px-0">
+              Für Mittelständler, die Software, Produkte oder Verfahren entwickeln —
+              bis zu 1 Mio. € pro Jahr, rückwirkend für 4 Geschäftsjahre.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-14 px-4 sm:px-0">

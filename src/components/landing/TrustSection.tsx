@@ -106,13 +106,13 @@ export default function TrustSection() {
           {/* People + Credentials — always before video on mobile */}
           <div className="max-w-[960px] mx-auto">
 
-            {/* Team — Bilder & Texte aus Flyer (OFFEN, Platzhalter) */}
+            {/* Team */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-10 md:mb-12">
               <div className="flex items-center gap-3">
                 <img
                   src={carolinaImg}
                   alt="Carolina Kellermann"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-top border border-white/10"
                 />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Carolina Kellermann</p>
@@ -123,7 +123,7 @@ export default function TrustSection() {
                 <img
                   src={alexanderImg}
                   alt="Alexander Bernauer"
-                  className="w-24 h-24 rounded-full object-cover object-top border border-white/10"
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-top border border-white/10"
                 />
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Alexander Bernauer</p>
@@ -131,8 +131,8 @@ export default function TrustSection() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-24 h-24 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
-                  <span className="text-[22px] font-bold text-[#57a7dd]">EvdL</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#307abe]/15 flex items-center justify-center border border-white/10">
+                  <span className="text-[18px] md:text-[20px] font-bold text-[#57a7dd]">EvdL</span>
                 </div>
                 <div>
                   <p className="text-[14px] md:text-[15px] font-semibold text-white">Elias von der Linden</p>
@@ -146,22 +146,17 @@ export default function TrustSection() {
               Standorte: München & Passau
             </p>
 
-            {/* Stats row — animated counters (Platzhalter — finale Zahlen folgen) */}
-            <div className="flex items-center justify-center gap-3 sm:gap-6 mb-4 flex-wrap">
-              <div className="flex items-baseline gap-1.5">
-                <span ref={stat1.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat1.display}</span>
-                <span className="text-[11px] sm:text-[12px] text-white/40">geprüfte Projekte</span>
+            {/* Stats row — 2-column grid with divider */}
+            <div className="grid grid-cols-2 max-w-[400px] mx-auto mb-10 md:mb-12 border border-white/[0.07] rounded-2xl overflow-hidden">
+              <div className="text-center py-4 px-4">
+                <span ref={stat1.elRef} className="block text-[22px] sm:text-[26px] md:text-[30px] font-bold text-white tracking-tight tabular-nums leading-none">{stat1.display}</span>
+                <span className="text-[10px] sm:text-[11px] text-white/40 mt-1.5 block leading-tight">geprüfte Projekte</span>
               </div>
-              <div className="w-px h-6 bg-white/10 hidden sm:block" />
-              <div className="flex items-baseline gap-1.5">
-                <span ref={stat2.elRef} className="text-[20px] sm:text-[24px] md:text-[28px] font-bold text-white tracking-tight tabular-nums">{stat2.display}</span>
-                <span className="text-[11px] sm:text-[12px] text-white/40">Bewilligungsquote</span>
+              <div className="text-center py-4 px-4 border-l border-white/[0.07]">
+                <span ref={stat2.elRef} className="block text-[22px] sm:text-[26px] md:text-[30px] font-bold text-white tracking-tight tabular-nums leading-none">{stat2.display}</span>
+                <span className="text-[10px] sm:text-[11px] text-white/40 mt-1.5 block leading-tight">Bewilligungsquote</span>
               </div>
             </div>
-            {/* TODO: finale Zahl einfügen — z.B. "Über 25 Mio. € erfolgreich beantragt" */}
-            <p className="text-center text-[12px] sm:text-[13px] text-white/40 mb-10 md:mb-12 font-medium">
-              Über X Mio. € erfolgreich beantragt
-            </p>
 
             {/* Video + Credentials Grid */}
             <div className="grid md:grid-cols-[1.2fr,1fr] gap-8 md:gap-12 items-start">
